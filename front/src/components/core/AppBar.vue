@@ -1,0 +1,70 @@
+<template>
+  <v-app-bar
+    id="core-app-bar"
+    app
+    color="#270949"
+    elevate-on-scroll
+    height="96"
+  >
+    <v-container>
+      <v-row>
+        <div class="d-flex align-center">
+          <v-img
+            :src="require('@/assets/logo3.png')"
+            contain
+            class="shrink mr-2"
+            height="90"
+            width="200"
+          />
+        </div>
+
+        <v-spacer />
+
+        <v-toolbar-items
+          v-if="$vuetify.breakpoint.smAndUp"
+          class="shrink"
+        >
+          <v-btn
+            v-for="(link, i) in links"
+            :key="i"
+            :to="{
+              name: link
+            }"
+            active-class="primary--text"
+            class="subtitle-1 ml-1"
+            exact
+            min-width="128"
+            text="accent"
+            color="accent"
+          >
+            <span>{{ link }}</span>
+          </v-btn>
+        </v-toolbar-items>
+
+        <v-app-bar-nav-icon
+          v-else
+          @click="setDrawer(true)"
+        />
+      </v-row>
+    </v-container>
+  </v-app-bar>
+</template>
+
+<script>
+  // Utilities
+  import { mapMutations, mapState } from 'vuex'
+
+  export default {
+    name: 'CoreAppBar',
+
+    computed: {
+      ...mapState(['links']),
+    },
+
+    methods: {
+      ...mapMutations({
+        setDrawer: 'SET_DRAWER',
+      }),
+    },
+  }
+</script>
