@@ -71,9 +71,13 @@
           class="pa-0"
         /> -->
         <v-container class="text-center">
-          <router-link to="/community-post">
-            글쓰기
-          </router-link>
+          <v-btn
+            text
+            medium
+            to="/community-post"
+          >
+            Write
+          </v-btn>
         </v-container>
       </v-col>
     </v-row>

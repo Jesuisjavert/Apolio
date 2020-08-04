@@ -56,7 +56,6 @@
 
     components: {
       editor: Editor,
-      viewer: Viewer,
     },
     data () {
       return {
