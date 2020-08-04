@@ -1,0 +1,93 @@
+<template>
+  <v-container
+    id="community"
+    class="pa-0"
+    fluid
+    tag="section"
+  >
+    <blog-hero
+      class="text-center white--text align-center"
+      height="30vh"
+    >
+      <h1 class="display-2">
+        jesuisjavert's Blog
+      </h1>
+    </blog-hero>
+    <v-row
+      align="center"
+      justify="center"
+    >
+      <v-col
+        cols="12"
+      >
+        <v-simple-table>
+          <thead>
+            <tr>
+              <th class="body-1 font-weight-bold text-center">
+                게시글
+              </th>
+              <th class="body-1 font-weight-bold text-center">
+                작성자
+              </th>
+            </tr>
+          </thead>
+          <!-- <tbody>
+            <tr
+              v-for="feature in features"
+              :key="feature.id"
+            >
+              <v-dialog
+                v-model="dialog"
+                width="600px"
+              >
+                <template v-slot:activator="{ on, attrs }">
+                  <td
+                    v-bind="attrs"
+                    v-on="on"
+                    v-text="feature.title"
+                  />
+                </template>
+                <v-card>
+                  <v-card-title>
+                    <span class="headline">{{ feature.title }}</span>
+                  </v-card-title>
+                  <v-card-text>
+                    <span> {{ feature.content }}</span>
+                  </v-card-text>
+                  <v-card-actions>
+                    <v-spacer />
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+              <td class="text-center">
+                {{ feature.user.username }}
+              </td>
+            </tr>
+          </tbody> -->
+        </v-simple-table>
+        <!-- <v-spacer /> -->
+        <!-- <base-article-create
+          fluid
+          class="pa-0"
+        /> -->
+        <v-container class="text-center">
+          <router-link to="/community-post">
+            글쓰기
+          </router-link>
+        </v-container>
+      </v-col>
+    </v-row>
+  </v-container>
+</template>
+
+<script>
+  export default {
+    name: 'Community',
+
+    components: {
+      BlogHero: () => import('@/components/base/BlogHero'),
+      // eslint-disable-next-line vue/no-unused-components
+      ArticleCreate: () => import('@/components/base/ArticleCreate'),
+    },
+  }
+</script>

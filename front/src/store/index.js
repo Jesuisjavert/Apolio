@@ -15,6 +15,7 @@ export default new Vuex.Store({
       'About me',
       'Portfolio',
       'Blog',
+      'Community',
       'Contact',
     ],
   },

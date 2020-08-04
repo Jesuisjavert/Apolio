@@ -37,6 +37,16 @@ export default new Router({
           component: () => import('@/views/blog-post/Index.vue'),
         },
         {
+          path: '/community',
+          name: 'Community',
+          component: () => import('@/views/community/Index.vue'),
+        },
+        {
+          path: '/community-post',
+          name: 'Community Post',
+          component: () => import('@/views/community-post/Index.vue'),
+        },
+        {
           path: '/contact',
           name: 'Contact',
           component: () => import('@/views/contact/Index.vue'),
