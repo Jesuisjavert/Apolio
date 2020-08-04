@@ -2,26 +2,19 @@ package com.ssafy.apolio.web;
 
 
 import com.ssafy.apolio.domain.Comment;
-import com.ssafy.apolio.domain.Tag;
 import com.ssafy.apolio.service.CommentService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import net.bytebuddy.implementation.bind.MethodDelegationBinder;
-import org.springframework.boot.configurationprocessor.json.JSONException;
-import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 @RestController
 //@Controller
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class CommentController {
 
     private final CommentService commentService;
@@ -48,7 +41,7 @@ public class CommentController {
         return new ResponseEntity<List<Comment>>(commentList, HttpStatus.OK);
     }
     @ApiOperation(value = "댓글 전체를 조회한다", response = List.class)
-    @GetMapping(value = "/comment/all")
+    @GetMapping(value = "/comment")
     public ResponseEntity<List<Comment>> listCommentAll(){
         List<Comment> commentList = commentService.findCommentAll();
         return new ResponseEntity<List<Comment>>(commentList, HttpStatus.OK);
