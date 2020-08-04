@@ -3,7 +3,6 @@ package com.ssafy.apolio.web;
 import com.ssafy.apolio.domain.Article;
 import com.ssafy.apolio.domain.ArticleSearch;
 import com.ssafy.apolio.domain.Comment;
-import com.ssafy.apolio.domain.Tag;
 import com.ssafy.apolio.repository.HeartRepository;
 import com.ssafy.apolio.service.ArticleService;
 import com.ssafy.apolio.service.CommentService;
@@ -14,13 +13,13 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 @RestController
 //@Controller
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class ArticleController {
     private final ArticleService articleService;
     private final CommentService commentService;

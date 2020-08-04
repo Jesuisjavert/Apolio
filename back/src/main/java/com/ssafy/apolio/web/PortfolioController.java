@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+@RequestMapping("/api")
 public class PortfolioController {
 
     private final PortfolioService portfolioService;
@@ -29,7 +30,7 @@ public class PortfolioController {
         return new ResponseEntity<String>("portfolio insert fail", HttpStatus.NO_CONTENT);
     }
     @ApiOperation(value = "포트폴리오 게시물 전체를 조회한다.", response = List.class)
-    @GetMapping("/portfolio/all")
+    @GetMapping("/portfolio")
     public ResponseEntity<List<Portfolio>> findPortfolioAll(){
         List<Portfolio> portfolios = portfolioService.searchAll();
         return new ResponseEntity<List<Portfolio>>(portfolios, HttpStatus.OK);

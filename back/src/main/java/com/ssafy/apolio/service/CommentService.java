@@ -7,7 +7,6 @@ import com.ssafy.apolio.repository.AccountRepository;
 import com.ssafy.apolio.repository.ArticleRepository;
 import com.ssafy.apolio.repository.CommentRepository;
 import lombok.RequiredArgsConstructor;
-import net.minidev.json.JSONArray;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -50,7 +49,5 @@ public class CommentService {
     public int delete(Long comment_id){
         return commentRepository.deleteComment(comment_id);
     }
-
-    public JSONArray findByArticleId(Long article_id) { return commentRepository.findByArticleId(article_id); }
 
 }

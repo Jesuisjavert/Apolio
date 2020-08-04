@@ -1,7 +1,6 @@
 package com.ssafy.apolio.dto;
 
 import lombok.Getter;
-import net.minidev.json.JSONObject;
 
 import javax.persistence.ColumnResult;
 import java.time.LocalDateTime;
@@ -26,14 +25,4 @@ public class CommentAccountDto {
         this.picture = picture;
     }
 
-    public JSONObject getJSON() {
-        JSONObject data = new JSONObject();
-        data.put("comment_id",this.getComment_id());
-        data.put("content",this.getContent());
-        data.put("create_date",this.getCreate_date());
-        data.put("username",this.getUsername());
-        data.put("email",this.getEmail());
-        data.put("picture",this.getPicture());
-        return data;
-    }
 }

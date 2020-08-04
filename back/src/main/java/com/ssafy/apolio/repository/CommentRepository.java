@@ -4,7 +4,6 @@ import com.ssafy.apolio.domain.Comment;
 import com.ssafy.apolio.domain.Portfolio;
 import com.ssafy.apolio.dto.CommentAccountDto;
 import lombok.RequiredArgsConstructor;
-import net.minidev.json.JSONArray;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -56,19 +55,5 @@ public class CommentRepository {
         return check;
     }
 
-    public JSONArray findByArticleId(Long article_id) {
-
-        Query nativeQuery = em.createNativeQuery("select a.comment_id, a.content, a.create_date, b.username, b.email, b.picture" +
-                " from Comment a, Account b " +
-                "where a.article_id = :article_id", "CommentAccountMapping")
-                .setParameter("article_id", article_id);
-        List<CommentAccountDto> data = nativeQuery.getResultList();
-        JSONArray commentList = new JSONArray();
-        for(CommentAccountDto ojt : data){
-            commentList.add(ojt.getJSON());
-        }
-
-        return commentList;
-    }
 
 }

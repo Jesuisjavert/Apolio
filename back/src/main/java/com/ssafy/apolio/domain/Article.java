@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import net.minidev.json.JSONObject;
 
 @Entity
 @Getter
@@ -72,12 +71,4 @@ public class Article {
         return article;
     }
 
-    public JSONObject getJSON() {
-        JSONObject data = new JSONObject();
-        data.put("title", this.getTitle());
-        data.put("content", this.getContent());
-        data.put("img_thumb", this.getImg_thumb());
-        data.put("create_date", this.getCreate_date());
-        return data;
-    }
 }
