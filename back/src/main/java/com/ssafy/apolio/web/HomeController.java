@@ -8,6 +8,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,24 +17,29 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(origins = { "*" }, maxAge = 6000)
 @RequestMapping("/api")
 @RestController
 public class HomeController {
-    @ApiOperation(value = "최신 IT 동향 정보를 크롤링하여서 정보들을 메인 화면에 띄어준다", response = TrendsDto.class)
+    @ApiOperation(value = "최신 IT 동향 정보를 크롤링 하여서 제목과 이미지를 메인 화면에 보여준다.", response = TrendsDto.class)
     @GetMapping("/")
-    public ResponseEntity<TrendsDto> getTrends() throws IOException {
-        TrendsDto trendsDto = new TrendsDto();
-        Document doc = Jsoup.connect("https://www.itfind.or.kr/trend/trend/organScrap/list.do").get();
-        Elements items1 = doc.select(".tit a");
-        Elements items2 = doc.select(".writer2");
-        Elements items3 = doc.select("date");
-        for(Element e : items1){
-            System.out.println("동향 제목: " + e.text());
-
+    public ResponseEntity<List<TrendsDto>> getTrends() throws IOException {
+        List<TrendsDto> trendsDtoList = new ArrayList<>();
+        Document doc = Jsoup.connect("https://www.itfind.or.kr/trend/trend/bestData/list.do").get();
+        Elements item = doc.select("dl");
+        for(Element e : item){
+            TrendsDto trendsDto = new TrendsDto();
+            String title = e.select("a").text();
+            Element content = e.select("a").first();
+            String content_url = content.attr("href");
+            Element img_element = e.select("img").first();
+            String img_url = "https://www.itfind.or.kr" + img_element.attr("src");
+            trendsDto.setTitle(title);
+            trendsDto.setContent_url(content_url);
+            trendsDto.setImg_url(img_url);
+            trendsDtoList.add(trendsDto);
         }
-        trendsDto.setTitle(items1.text());
-        trendsDto.setWriter(items2.text());
-        trendsDto.setCreate_date(items3.text());
-        return new ResponseEntity<TrendsDto>(trendsDto, HttpStatus.OK);
+
+        return new ResponseEntity<List<TrendsDto>>(trendsDtoList, HttpStatus.OK);
     }
 }
