@@ -8,6 +8,6 @@ import lombok.Setter;
 @Setter
 public class TrendsDto {
     private String title;
-    private String writer;
-    private String create_date;
+    private String img_url;
+    private String content_url;
 }
