@@ -1,7 +1,6 @@
 package com.ssafy.apolio.web;
 
 import com.ssafy.apolio.domain.account.Account;
-import com.ssafy.apolio.domain.account.MyAccount;
 import com.ssafy.apolio.service.AccountService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +19,7 @@ public class AccountController {
     @ApiOperation(value = "유저 이름, 비밀번호, 이메일, 닉네임, 프로필 사진을 입력받아서 회원가입을 완료시킨다.", response = String.class)
     @PostMapping(value = "/account")
     public ResponseEntity<String> createAccount(@RequestBody AccountForm accountForm){
-        MyAccount account = new MyAccount();
+        Account account = new Account();
         account.setUsername(accountForm.getUsername());
         account.setPassword(accountForm.getPassword());
         account.setEmail(accountForm.getEmail());
