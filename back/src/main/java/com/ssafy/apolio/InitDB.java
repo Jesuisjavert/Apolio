@@ -48,9 +48,9 @@ public class InitDB {
         public void dbInit2() {
             Account account = createAccount("최일송", "ilsong@gmail.com", "https://www.google.com/url?sa=i&url=http%3A%2F%2Fm.blog.naver.com%2Fsjinwon2%2F220022462092%23%3A~%3Atext%3D%5B%25EC%259B%2590%25EB%25B3%25B8%2520%25EB%25B3%25B4%25EA%25B8%25B0%5D&psig=AOvVaw0agqQHDXly_HYWLse5urJ_&ust=1596707835818000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCICny63mg-sCFQAAAAAdAAAAABAD", "쏭이", Role.MEMBER);
             em.persist(account);
-            Tag tag1 = createTag("웹");
+            Tag tag1 = createTag("스프링");
             em.persist(tag1);
-            Tag tag2 = createTag("앱");
+            Tag tag2 = createTag("클라우드");
             em.persist(tag2);
             TagArticle tagArticle1 = TagArticle.createTagArticle(tag1);
             TagArticle tagArticle2 = TagArticle.createTagArticle(tag2);
