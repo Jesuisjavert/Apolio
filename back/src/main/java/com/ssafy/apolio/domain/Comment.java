@@ -33,16 +33,31 @@ public class Comment {
     @JsonBackReference
     private Account account;
 
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "community_id")
+    @JsonBackReference
+    private Community community;
+
     private String content;
 
     private LocalDateTime create_date;
 
 
     // 댓글 작성 메소드
-    public static Comment createComment(Account account, Article article, String content){
+    public static Comment createCommentArticle(Account account, Article article, String content){
         Comment comment = new Comment();
         comment.setAccount(account);
         comment.setArticle(article);
+        comment.setContent(content);//댓글 내용
+        comment.setCreate_date(LocalDateTime.now());//댓글 작성 시간
+        return comment;
+
+    }
+
+    public static Comment createCommentCommuinty(Account account, Community community, String content){
+        Comment comment = new Comment();
+        comment.setAccount(account);
+        comment.setCommunity(community);
         comment.setContent(content);//댓글 내용
         comment.setCreate_date(LocalDateTime.now());//댓글 작성 시간
         return comment;
