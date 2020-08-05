@@ -1,7 +1,7 @@
 // Utilities
 import { make } from 'vuex-pathify'
 
-let image = 246
+let image = 247
 const categories = [
   'All',
   'Vue',
