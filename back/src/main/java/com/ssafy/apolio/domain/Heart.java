@@ -29,6 +29,11 @@ public class Heart {
     @JsonBackReference
     private Article article;
 
+    @ManyToOne(fetch = LAZY)
+    @JoinColumn(name = "community_id")
+    @JsonBackReference
+    private Community community;
+
     @Enumerated(EnumType.STRING)
     private HeartStatus status;// 하트상태 [HEART, CANCEL]
 

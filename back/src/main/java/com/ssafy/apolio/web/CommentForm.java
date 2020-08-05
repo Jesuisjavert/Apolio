@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class CommentForm {
     private String article_id;
+    private String community_id;
     private String account_id;
     private String content;
 

@@ -2,10 +2,12 @@ package com.ssafy.apolio.service;
 
 import com.ssafy.apolio.domain.Article;
 import com.ssafy.apolio.domain.Comment;
+import com.ssafy.apolio.domain.Community;
 import com.ssafy.apolio.domain.account.Account;
 import com.ssafy.apolio.repository.AccountRepository;
 import com.ssafy.apolio.repository.ArticleRepository;
 import com.ssafy.apolio.repository.CommentRepository;
+import com.ssafy.apolio.repository.CommunityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,20 +22,35 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final ArticleRepository articleRepository;
     private final AccountRepository accountRepository;
+    private final CommunityRepository communityRepository;
 
     @Transactional
-    public long comment(Long account_id, Long article_id, String content){
+    public long commentArticle(Long account_id, Long article_id, String content){
         Account account = accountRepository.findOne(account_id);
         Article article = articleRepository.findOne(article_id);
-        Comment comment = Comment.createComment(account, article, content);
+        Comment comment = Comment.createCommentArticle(account, article, content);
+        commentRepository.save(comment);
+
+        return comment.getId();
+    }
+
+    @Transactional
+    public long commentCommunity(Long account_id, Long community_id, String content){
+        Account account = accountRepository.findOne(account_id);
+        Community community = communityRepository.findOne(community_id);
+        Comment comment = Comment.createCommentCommuinty(account, community, content);
         commentRepository.save(comment);
 
         return comment.getId();
     }
 
 
-    public List<Comment> findCommentById(Long id){
-        return commentRepository.findAllById(id);
+    public List<Comment> findCommentByArticle(Long id){
+        return commentRepository.findAllByArticleId(id);
+    }
+
+    public List<Comment> findCommentByCommunity(Long id){
+        return commentRepository.findAllByCommId(id);
     }
 
     public List<Comment> findCommentAll(){

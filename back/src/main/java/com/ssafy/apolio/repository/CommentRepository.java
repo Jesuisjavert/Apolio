@@ -21,13 +21,25 @@ public class CommentRepository {
         em.persist(comment);
     }
 
-    public List<Comment> findAllById(Long id){
+    public List<Comment> findAllByArticleId(Long id){
         String jpql = "select c from Comment c where c.article.id = :id";
         TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
         query.setParameter("id", id);
         List<Comment> commentList = query.getResultList();
         for(Comment comment : commentList){
-            System.out.println("댓글 달린 게시물 번호: " + comment.getArticle().getId());
+            System.out.println("댓글 달린 블로그 게시물 번호: " + comment.getArticle().getId());
+            System.out.println("댓글 내용: " + comment.getContent());
+        }
+        return commentList;
+    }
+
+    public List<Comment> findAllByCommId(Long id){
+        String jpql = "select c from Comment c where c.community.id = :id";
+        TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
+        query.setParameter("id", id);
+        List<Comment> commentList = query.getResultList();
+        for(Comment comment : commentList){
+            System.out.println("댓글 달린 커뮤니티 게시물 번호: " + comment.getCommunity().getId());
             System.out.println("댓글 내용: " + comment.getContent());
         }
         return commentList;
