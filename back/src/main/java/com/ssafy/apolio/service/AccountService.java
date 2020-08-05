@@ -1,7 +1,6 @@
 package com.ssafy.apolio.service;
 
 import com.ssafy.apolio.domain.account.Account;
-import com.ssafy.apolio.domain.account.MyAccount;
 import com.ssafy.apolio.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +19,7 @@ public class AccountService {
      * 회원 가입
      */
     @Transactional
-    public Long join(MyAccount account) {
+    public Long join(Account account) {
         validateDuplicateAccount(account); //중복 회원 검증
         accountRepository.save(account);
         return account.getId();

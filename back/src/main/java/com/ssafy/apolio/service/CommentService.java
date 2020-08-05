@@ -1,8 +1,8 @@
 package com.ssafy.apolio.service;
 
-import com.ssafy.apolio.domain.account.Account;
 import com.ssafy.apolio.domain.Article;
 import com.ssafy.apolio.domain.Comment;
+import com.ssafy.apolio.domain.account.Account;
 import com.ssafy.apolio.repository.AccountRepository;
 import com.ssafy.apolio.repository.ArticleRepository;
 import com.ssafy.apolio.repository.CommentRepository;
