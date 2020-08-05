@@ -25,6 +25,8 @@ public class AccountController {
         account.setEmail(accountForm.getEmail());
         account.setPicture(accountForm.getPicture());
         account.setNickname(accountForm.getNickname());
+        account.setRole(accountForm.getRole());
+        account.setProvider(accountForm.getAuthProvider());
         Long check = accountService.join(account);
         if(check != 0){
             return new ResponseEntity<String>("account success", HttpStatus.OK);
