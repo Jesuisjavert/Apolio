@@ -3,16 +3,14 @@ package com.ssafy.apolio.web;
 
 import com.ssafy.apolio.domain.Portfolio;
 import com.ssafy.apolio.service.PortfolioService;
-import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.*;
 import java.util.List;
 
+@CrossOrigin(origins = { "*" }, maxAge = 6000)
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
