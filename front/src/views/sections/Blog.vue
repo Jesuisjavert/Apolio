@@ -40,7 +40,7 @@
 <script>
   import axios from 'axios'
 
-  const API_URL = 'http://localhost:8080/'
+  const API_URL = 'http://localhost:8080'
 
   export default {
     name: 'Blog',
@@ -51,8 +51,9 @@
       VFilter: () => import('@/components/base/Filter'),
     },
 
-    data: () => ({
-      posts: [
+    data () {
+      return {
+        posts: [
         {
           blurb: '일타싸피 하드코딩으로 광주가 1등한거 실화냐.. ㄹㅇ 가슴이 웅장해진다. 그뿐만 아니라 후공일 상황도 대비하여 탄탄한 알고리즘을 짜내다니 이것이 광주 클라스~',
           category: 'Branding',
@@ -117,13 +118,25 @@
           title: '프론드엔드란?',
         },
       ],
-      tabs: [
+        tabs: [
         'All',
         'Nature',
         'Cities',
         'Branding',
         'Design',
-      ],
-    }),
+        ]
+      }
+    }, // data 끝
+  //   created () {
+  //     this.loadArticle()
+  //   },
+  //   methods: {
+  //     loadArticle () {
+  //       axios.get(`${API_URL}/blog/`).then((res) => {
+  //         this.posts = res.data
+  //       })
+  //       console.log(this.posts)
+  //     },
+  //   }
   }
 </script>

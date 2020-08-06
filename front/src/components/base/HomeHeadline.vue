@@ -22,6 +22,6 @@
 
 <script>
   export default {
-    name: 'Headline',
+    name: 'HomeHeadline',
   }
 </script>
