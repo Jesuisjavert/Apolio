@@ -1,13 +1,13 @@
 package com.ssafy.apolio.service;
 
-import com.ssafy.apolio.domain.Article;
+import com.ssafy.apolio.domain.Board;
 import com.ssafy.apolio.domain.Comment;
-import com.ssafy.apolio.domain.Community;
-import com.ssafy.apolio.domain.account.Account;
+import com.ssafy.apolio.domain.Blog;
+import com.ssafy.apolio.domain.account.User;
 import com.ssafy.apolio.repository.AccountRepository;
-import com.ssafy.apolio.repository.ArticleRepository;
+import com.ssafy.apolio.repository.BoardRepository;
 import com.ssafy.apolio.repository.CommentRepository;
-import com.ssafy.apolio.repository.CommunityRepository;
+import com.ssafy.apolio.repository.BlogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -20,37 +20,37 @@ import java.util.List;
 public class CommentService {
 
     private final CommentRepository commentRepository;
-    private final ArticleRepository articleRepository;
+    private final BoardRepository boardRepository;
     private final AccountRepository accountRepository;
-    private final CommunityRepository communityRepository;
+    private final BlogRepository blogRepository;
 
     @Transactional
-    public long commentArticle(Long account_id, Long article_id, String content){
-        Account account = accountRepository.findOne(account_id);
-        Article article = articleRepository.findOne(article_id);
-        Comment comment = Comment.createCommentArticle(account, article, content);
+    public long commentArticle(Long user_id, Long article_id, String content){
+        User user = accountRepository.findOne(user_id);
+        Board board = boardRepository.findOne(article_id);
+        Comment comment = Comment.createCommentBoard(user.getUsername(), board, content);
         commentRepository.save(comment);
 
         return comment.getId();
     }
 
     @Transactional
-    public long commentCommunity(Long account_id, Long community_id, String content){
-        Account account = accountRepository.findOne(account_id);
-        Community community = communityRepository.findOne(community_id);
-        Comment comment = Comment.createCommentCommuinty(account, community, content);
+    public long commentCommunity(Long user_id, Long blog_id, String content){
+        User user = accountRepository.findOne(user_id);
+        Blog blog = blogRepository.findOne(blog_id);
+        Comment comment = Comment.createCommentBlog(user.getUsername(), blog, content);
         commentRepository.save(comment);
 
         return comment.getId();
     }
 
 
-    public List<Comment> findCommentByArticle(Long id){
-        return commentRepository.findAllByArticleId(id);
+    public List<Comment> findCommentByBoard(Long id){
+        return commentRepository.findAllByBoardId(id);
     }
 
-    public List<Comment> findCommentByCommunity(Long id){
-        return commentRepository.findAllByCommId(id);
+    public List<Comment> findCommentByBlog(Long id){
+        return commentRepository.findAllByBlogId(id);
     }
 
     public List<Comment> findCommentAll(){

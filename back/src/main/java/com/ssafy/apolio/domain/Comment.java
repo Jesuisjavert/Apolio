@@ -1,7 +1,7 @@
 package com.ssafy.apolio.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.ssafy.apolio.domain.account.Account;
+import com.ssafy.apolio.domain.account.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -24,19 +24,19 @@ public class Comment {
 
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "article_id")
+    @JoinColumn(name = "board_id")
     @JsonBackReference
-    private Article article;
+    private Board board;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "account_id")
+    @JoinColumn(name = "user_id")
     @JsonBackReference
-    private Account account;
+    private User user;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "community_id")
+    @JoinColumn(name = "blog_id")
     @JsonBackReference
-    private Community community;
+    private Blog blog;
 
     private String content;
 
@@ -44,22 +44,30 @@ public class Comment {
 
 
     // 댓글 작성 메소드
-    public static Comment createCommentArticle(Account account, Article article, String content){
+    public static Comment createCommentBoard(String username, Board board, String content){
         Comment comment = new Comment();
-        comment.setAccount(account);
-        comment.setArticle(article);
+        User user = new User();
+        user.setUsername(username);
+        comment.setUser(user);
+        comment.setBoard(board);
         comment.setContent(content);//댓글 내용
         comment.setCreate_date(LocalDateTime.now());//댓글 작성 시간
+        user.addComment(comment);
+        board.addComment(comment);
         return comment;
 
     }
 
-    public static Comment createCommentCommuinty(Account account, Community community, String content){
+    public static Comment createCommentBlog(String username, Blog blog, String content){
         Comment comment = new Comment();
-        comment.setAccount(account);
-        comment.setCommunity(community);
+        User user = new User();
+        user.setUsername(username);
+        comment.setUser(user);
+        comment.setBlog(blog);
         comment.setContent(content);//댓글 내용
         comment.setCreate_date(LocalDateTime.now());//댓글 작성 시간
+        user.addComment(comment);
+        blog.addComment(comment);
         return comment;
 
     }

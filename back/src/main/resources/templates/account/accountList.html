@@ -17,13 +17,13 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="account : ${accounts}">
-                <td th:text="${account.id}"></td>
-                <td th:text="${account.username}"></td>
-                <td th:text="${account.email}"></td>
-                <td th:text="${account.picture}"></td>
-                <td th:text="${account.created_date}"></td>
-                <td th:text="${account.nickname}"></td>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.username}"></td>
+                <td th:text="${user.email}"></td>
+                <td th:text="${user.picture}"></td>
+                <td th:text="${user.created_date}"></td>
+                <td th:text="${user.nickname}"></td>
             </tr>
             </tbody>
         </table>

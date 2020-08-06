@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ArticleSearch {
+public class BoardSearch {
 
     private String articleTitle; //게시글 이름
     private String tagName; //태그 이름

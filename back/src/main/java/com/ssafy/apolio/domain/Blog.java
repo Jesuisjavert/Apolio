@@ -2,7 +2,7 @@ package com.ssafy.apolio.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.ssafy.apolio.domain.account.Account;
+import com.ssafy.apolio.domain.account.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,22 +16,22 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Getter
 @Setter
-public class Community {
+public class Blog {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "community_id")
+    @Column(name = "blog_id")
     private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "account_id")
+    @JoinColumn(name = "user_id")
     @JsonBackReference
-    private Account account;
+    private User user;
 
-    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Heart> hearts = new ArrayList<>();
 
@@ -43,22 +43,20 @@ public class Community {
 
     public void addComment(Comment comment) {
         comments.add(comment);
-        comment.setCommunity(this);
+        comment.setBlog(this);
     }
 
     public void addHeart(Heart heart) {
         hearts.add(heart);
-        heart.setCommunity(this);
+        heart.setBlog(this);
     }
 
-    public static Community createCommunity(String title, String content, Account account) {
-        Community community = new Community();
-
-        community.setTitle(title);
-        community.setContent(content);
-        community.setAccount(account);
-        community.setCreate_date(LocalDateTime.now());
-
-        return community;
+    public static Blog createBlog(String title, String content, User user) {
+        Blog blog = new Blog();
+        blog.setTitle(title);
+        blog.setContent(content);
+        blog.setUser(user);
+        blog.setCreate_date(LocalDateTime.now());
+        return blog;
     }
 }

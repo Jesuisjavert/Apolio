@@ -1,8 +1,6 @@
 package com.ssafy.apolio.repository;
 
 import com.ssafy.apolio.domain.Comment;
-import com.ssafy.apolio.domain.Portfolio;
-import com.ssafy.apolio.dto.CommentAccountDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -21,25 +19,25 @@ public class CommentRepository {
         em.persist(comment);
     }
 
-    public List<Comment> findAllByArticleId(Long id){
+    public List<Comment> findAllByBoardId(Long id){
         String jpql = "select c from Comment c where c.article.id = :id";
         TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
         query.setParameter("id", id);
         List<Comment> commentList = query.getResultList();
         for(Comment comment : commentList){
-            System.out.println("댓글 달린 블로그 게시물 번호: " + comment.getArticle().getId());
+            System.out.println("댓글 달린 커뮤니티 게시물 번호: " + comment.getBoard().getId());
             System.out.println("댓글 내용: " + comment.getContent());
         }
         return commentList;
     }
 
-    public List<Comment> findAllByCommId(Long id){
-        String jpql = "select c from Comment c where c.community.id = :id";
+    public List<Comment> findAllByBlogId(Long id){
+        String jpql = "select c from Comment c where c.blog.id = :id";
         TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
         query.setParameter("id", id);
         List<Comment> commentList = query.getResultList();
         for(Comment comment : commentList){
-            System.out.println("댓글 달린 커뮤니티 게시물 번호: " + comment.getCommunity().getId());
+            System.out.println("댓글 달린 블로그 게시물 번호: " + comment.getBlog().getId());
             System.out.println("댓글 내용: " + comment.getContent());
         }
         return commentList;

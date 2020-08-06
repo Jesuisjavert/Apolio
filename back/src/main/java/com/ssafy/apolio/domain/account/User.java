@@ -2,10 +2,7 @@ package com.ssafy.apolio.domain.account;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.ssafy.apolio.domain.BaseTimeEntity;
-import com.ssafy.apolio.domain.Comment;
-import com.ssafy.apolio.domain.Community;
-import com.ssafy.apolio.domain.Heart;
+import com.ssafy.apolio.domain.*;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,10 +14,10 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-public class Account extends BaseTimeEntity {
+public class User extends BaseTimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "uid")
+    @Column(name = "user_id")
     private Long id;
 
     private String username;
@@ -45,16 +42,36 @@ public class Account extends BaseTimeEntity {
 
     private String providerId;
 
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Heart> hearts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "account", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Community> communities = new ArrayList<>();
 
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Blog> blogs = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<Board> boards = new ArrayList<>();
+
+
+    public void addBoard(Board board){
+        boards.add(board);
+        board.setUser(this);
+    }
+
+    public void addBlog(Blog blog){
+        blogs.add(blog);
+        blog.setUser(this);
+    }
+
+    public void addComment(Comment comment){
+        comments.add(comment);
+        comment.setUser(this);
+    }
 }

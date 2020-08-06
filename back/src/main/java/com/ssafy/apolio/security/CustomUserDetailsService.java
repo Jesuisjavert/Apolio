@@ -1,6 +1,6 @@
 package com.ssafy.apolio.security;
 
-import com.ssafy.apolio.domain.account.Account;
+import com.ssafy.apolio.domain.account.User;
 import com.ssafy.apolio.exception.ResourceNotFoundException;
 import com.ssafy.apolio.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,20 +20,20 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String email)
             throws UsernameNotFoundException {
-        Account account = userRepository.findByEmail(email)
+        User user = userRepository.findByEmail(email)
                 .orElseThrow(() ->
                         new UsernameNotFoundException("User not found with email : " + email)
         );
 
-        return UserPrincipal.create(account);
+        return UserPrincipal.create(user);
     }
 
     @Transactional
     public UserDetails loadUserById(Long id) {
-        Account account = userRepository.findById(id).orElseThrow(
+        User user = userRepository.findById(id).orElseThrow(
             () -> new ResourceNotFoundException("User", "id", id)
         );
 
-        return UserPrincipal.create(account);
+        return UserPrincipal.create(user);
     }
 }

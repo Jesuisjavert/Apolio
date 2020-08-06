@@ -1,7 +1,7 @@
 package com.ssafy.apolio.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.ssafy.apolio.domain.account.Account;
+import com.ssafy.apolio.domain.account.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,19 +20,19 @@ public class Heart {
     private Long id;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "account_id")
+    @JoinColumn(name = "user_id")
     @JsonBackReference
-    private Account account;
+    private User user;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "article_id")
     @JsonBackReference
-    private Article article;
+    private Board board;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "community_id")
+    @JoinColumn(name = "blog_id")
     @JsonBackReference
-    private Community community;
+    private Blog blog;
 
     @Enumerated(EnumType.STRING)
     private HeartStatus status;// 하트상태 [HEART, CANCEL]

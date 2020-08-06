@@ -25,9 +25,9 @@ public class TagArticle {
     private Tag tag;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "article_id")
+    @JoinColumn(name = "board_id")
     @JsonBackReference
-    private Article article;
+    private Board board;
 
     //==생성 메서드==//
     public static TagArticle createTagArticle(Tag tag) {

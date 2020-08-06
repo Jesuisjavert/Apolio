@@ -1,6 +1,6 @@
 package com.ssafy.apolio.security;
 
-import com.ssafy.apolio.domain.account.Account;
+import com.ssafy.apolio.domain.account.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,20 +25,20 @@ public class UserPrincipal implements OAuth2User, UserDetails {
         this.authorities = authorities;
     }
 
-    public static UserPrincipal create(Account account) {
+    public static UserPrincipal create(User user) {
         List<GrantedAuthority> authorities = Collections.
                 singletonList(new SimpleGrantedAuthority("ROLE_USER"));
 
         return new UserPrincipal(
-                account.getId(),
-                account.getEmail(),
-                account.getPassword(),
+                user.getId(),
+                user.getEmail(),
+                user.getPassword(),
                 authorities
         );
     }
 
-    public static UserPrincipal create(Account account, Map<String, Object> attributes) {
-        UserPrincipal userPrincipal = UserPrincipal.create(account);
+    public static UserPrincipal create(User user, Map<String, Object> attributes) {
+        UserPrincipal userPrincipal = UserPrincipal.create(user);
         userPrincipal.setAttributes(attributes);
         return userPrincipal;
     }

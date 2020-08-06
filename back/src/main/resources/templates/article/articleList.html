@@ -5,7 +5,7 @@
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
     <div>
-        <form th:object="${articleSearch}" class="form-inline">
+        <form th:object="${boardSearch}" class="form-inline">
             <div class="form-group mx-sm-1 mb-2">
                 <select th:field="*{tagName}" class="form-control">
                     <option value="">태그</option>
@@ -30,10 +30,10 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="article : ${articles}">
-                <td th:text="${article.id}"></td>
-                <td th:text="${article.tagArticles[0].tag.name}"></td>
-                <td th:text="${article.title}"></td>
+            <tr th:each="board : ${boards}">
+                <td th:text="${board.id}"></td>
+                <td th:text="${board.tagArticles[0].tag.name}"></td>
+                <td th:text="${board.title}"></td>
             </tr>
             </tbody>
         </table>

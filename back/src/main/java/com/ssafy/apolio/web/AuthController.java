@@ -1,6 +1,6 @@
 package com.ssafy.apolio.web;
 
-import com.ssafy.apolio.domain.account.Account;
+import com.ssafy.apolio.domain.account.User;
 import com.ssafy.apolio.domain.account.AuthProvider;
 import com.ssafy.apolio.domain.account.Role;
 import com.ssafy.apolio.exception.BadRequestException;
@@ -65,17 +65,17 @@ public class AuthController {
         if(userRepository.existsByEmail(signUpRequest.getEmail())) {
             throw new BadRequestException("Email address already in use.");
         }
-        // Creating user's account
-        Account account = new Account();
-        account.setUsername(signUpRequest.getName());
-        account.setEmail(signUpRequest.getEmail());
-        account.setPassword(signUpRequest.getPassword());
-        account.setRole(Role.MEMBER);
-        account.setProvider(AuthProvider.local);
+        // Creating user's user
+        User user = new User();
+        user.setUsername(signUpRequest.getName());
+        user.setEmail(signUpRequest.getEmail());
+        user.setPassword(signUpRequest.getPassword());
+        user.setRole(Role.MEMBER);
+        user.setProvider(AuthProvider.local);
 
-        account.setPassword(passwordEncoder.encode(account.getPassword()));
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        Account result = userRepository.save(account);
+        User result = userRepository.save(user);
 
         URI location = ServletUriComponentsBuilder
                 .fromCurrentContextPath().path("/user/me")

@@ -4,7 +4,7 @@
 <body>
 <div class="container">
     <div th:replace="fragments/bodyHeader :: bodyHeader"/>
-    <form role="form" action="/article" th:object="${articleForm}" method="post">
+    <form role="form" action="/board" th:object="${boardForm}" method="post">
         <div class="form-group">
             <label for="tag">태그명</label>
             <select name="tagId" id="tag" class="form-control">

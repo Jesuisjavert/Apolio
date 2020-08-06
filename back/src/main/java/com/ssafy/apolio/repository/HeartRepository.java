@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 
+@Repository
 public interface HeartRepository extends JpaRepository<Heart, Long> {
-    Long countByarticleId(Long article_id);
+    Long countByBoardId(Long board_id);
 }
