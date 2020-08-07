@@ -1,30 +1,18 @@
+# Apolio
+
 <p align="center">
   <a href="https://lab.ssafy.com/s03-webmobile1-sub3/s03p13c103">
     <img src="https://user-images.githubusercontent.com/59798335/89629268-7ffc5400-d8d8-11ea-8167-e51ddb9ff63f.png" alt="Apolio" width="400" />
   </a>
 </p>
 
-# Apolio
-
 > 간략한 프로젝트 소개 문구를 작성합니다.
-
-
-
-| <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a>[강동훈](https://lab.ssafy.com/jesuisjavert) | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a>[강동훈](https://lab.ssafy.com/jesuisjavert) | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a>[강동훈](https://lab.ssafy.com/jesuisjavert) | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a>[강동훈](https://lab.ssafy.com/jesuisjavert) | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a>[강동훈](https://lab.ssafy.com/jesuisjavert) |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|                                                              |                                                              |                                                              |                                                              |                                                              |
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
 한 두 문단으로 프로젝트 소개 글을 작성합니다.
-
-
-
-| [![img](https://avatars3.githubusercontent.com/u/21700738?s=460&v=4)](https://avatars3.githubusercontent.com/u/21700738?s=460&v=4)[ykk2006](https://github.com/ykk2006) | [![img](https://avatars1.githubusercontent.com/u/38597469?s=460&u=2dfb09e65b47940c7661b7093c6cf8c91b8f13ea&v=4)](https://avatars1.githubusercontent.com/u/38597469?s=460&u=2dfb09e65b47940c7661b7093c6cf8c91b8f13ea&v=4)[ksundong](https://github.com/ksundong) | [![img](https://avatars1.githubusercontent.com/u/43029633?s=460&u=4897a0df8a8ac97067112eb57de2167e243c4548&v=4)](https://avatars1.githubusercontent.com/u/43029633?s=460&u=4897a0df8a8ac97067112eb57de2167e243c4548&v=4)[qwer9412](https://github.com/qwer9412) | [![img](https://avatars2.githubusercontent.com/u/29394651?s=460&u=3c063ccc82426a6ae3e793d850c2e43d5d501499&v=4)](https://avatars2.githubusercontent.com/u/29394651?s=460&u=3c063ccc82426a6ae3e793d850c2e43d5d501499&v=4)[LOG-INFO](https://github.com/LOG-INFO) | [![img](https://avatars3.githubusercontent.com/u/13811604?s=460&u=4224297ac21c625fd85c6f77fc335ec2745d4845&v=4)](https://avatars3.githubusercontent.com/u/13811604?s=460&u=4224297ac21c625fd85c6f77fc335ec2745d4845&v=4)[JungWinter](https://github.com/JungWinter) | [![img](https://avatars0.githubusercontent.com/u/11865970?s=460&u=b49b71d66a5cf2ebae68c14e8b88030b9bcf7152&v=4)](https://avatars0.githubusercontent.com/u/11865970?s=460&u=b49b71d66a5cf2ebae68c14e8b88030b9bcf7152&v=4)[inspire12](https://github.com/inspire12) |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-|                                                              |                                                              |                                                              |                                                              |                                                              |                                                              |
 
 ## 설치 방법
 
@@ -94,3 +82,10 @@ XYZ 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확인할
 [travis-image]: https://img.shields.io/travis/dbader/node-datadog-metrics/master.svg?style=flat-square
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
 [wiki]: https://github.com/yourname/yourproject/wiki
+
+## 개발자들
+
+| <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|         [강동훈](https://lab.ssafy.com/jesuisjavert)         |         [강동훈](https://lab.ssafy.com/jesuisjavert)         |         [강동훈](https://lab.ssafy.com/jesuisjavert)         |         [강동훈](https://lab.ssafy.com/jesuisjavert)         |         [강동훈](https://lab.ssafy.com/jesuisjavert)         |
+
