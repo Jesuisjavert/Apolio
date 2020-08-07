@@ -32,6 +32,7 @@ dependencies {
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
     compileOnly 'org.projectlombok:lombok'
     compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
+    compile group: 'org.apache.clerezza.ext', name: 'org.json.simple', version: '0.4'
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'

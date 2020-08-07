@@ -21,7 +21,7 @@ public class CommentController {
     @ApiOperation(value = "유저 번호, 블로그 게시물 번호, 댓글 내용을 받아서 댓글에 입력시킨다", response = String.class)
     @PostMapping(value = "/comment/article")
     public ResponseEntity<String> insertCommentBoard(@RequestBody CommentForm commentForm){
-        Long check = commentService.commentArticle(Long.parseLong(commentForm.getUsername()), Long.parseLong(commentForm.getArticle_id()), commentForm.getContent());
+        Long check = commentService.commentBoard(Long.parseLong(commentForm.getUsername()), Long.parseLong(commentForm.getBoard_id()), commentForm.getContent());
         if(check != 0){
             return new ResponseEntity<String>("comment success", HttpStatus.OK);
         }
@@ -31,7 +31,7 @@ public class CommentController {
     @ApiOperation(value = "유저 번호, 블로그 게시물 번호, 댓글 내용을 받아서 댓글에 입력시킨다", response = String.class)
     @PostMapping(value = "/comment/blog")
     public ResponseEntity<String> insertCommentBlog(@RequestBody CommentForm commentForm){
-        Long check = commentService.commentCommunity(Long.parseLong(commentForm.getUsername()), Long.parseLong(commentForm.getCommunity_id()), commentForm.getContent());
+        Long check = commentService.commentBlog(Long.parseLong(commentForm.getUsername()), Long.parseLong(commentForm.getBlog_id()), commentForm.getContent());
         if(check != 0){
             return new ResponseEntity<String>("comment success", HttpStatus.OK);
         }
@@ -40,7 +40,7 @@ public class CommentController {
 
     @ApiOperation(value = "블로그 게시물 번호에 해당하는 댓글들을 조회한다", response = List.class)
     @GetMapping(value = "/comment/article/{article_id}")
-    public ResponseEntity<List<Comment>> ArticleComment(@PathVariable Long article_id){
+    public ResponseEntity<List<Comment>> BoardComment(@PathVariable Long article_id){
         List<Comment> commentList = commentService.findCommentByBoard(article_id);
         for(Comment c : commentList){
             System.out.println("댓글 작성자: " + c.getUser().getUsername());
@@ -52,7 +52,7 @@ public class CommentController {
 
     @ApiOperation(value = "커뮤니티 게시물 번호에 해당하는 댓글들을 조회한다", response = List.class)
     @GetMapping(value = "/comment/blog/{id}")
-    public ResponseEntity<List<Comment>> CommunityBlog(@PathVariable Long id){
+    public ResponseEntity<List<Comment>> BlogComment(@PathVariable Long id){
         List<Comment> commentList = commentService.findCommentByBlog(id);
         for(Comment c : commentList){
             System.out.println("댓글 작성자: " + c.getUser().getUsername());

@@ -25,7 +25,7 @@ public class CommentService {
     private final BlogRepository blogRepository;
 
     @Transactional
-    public long commentArticle(Long user_id, Long article_id, String content){
+    public long commentBoard(Long user_id, Long article_id, String content){
         User user = accountRepository.findOne(user_id);
         Board board = boardRepository.findOne(article_id);
         Comment comment = Comment.createCommentBoard(user.getUsername(), board, content);
@@ -35,7 +35,7 @@ public class CommentService {
     }
 
     @Transactional
-    public long commentCommunity(Long user_id, Long blog_id, String content){
+    public long commentBlog(Long user_id, Long blog_id, String content){
         User user = accountRepository.findOne(user_id);
         Blog blog = blogRepository.findOne(blog_id);
         Comment comment = Comment.createCommentBlog(user.getUsername(), blog, content);

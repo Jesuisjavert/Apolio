@@ -4,11 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ssafy.apolio.domain.account.User;
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.time.LocalDateTime;
-
-
 import static javax.persistence.FetchType.LAZY;
 
 
@@ -37,6 +34,13 @@ public class Comment {
     @JoinColumn(name = "blog_id")
     @JsonBackReference
     private Blog blog;
+
+    private Long parent;
+
+    private Long depth;
+
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long seq;
 
     private String content;
 
