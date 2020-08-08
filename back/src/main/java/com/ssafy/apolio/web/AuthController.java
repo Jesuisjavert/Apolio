@@ -1,8 +1,8 @@
 package com.ssafy.apolio.web;
 
-import com.ssafy.apolio.domain.account.User;
-import com.ssafy.apolio.domain.account.AuthProvider;
-import com.ssafy.apolio.domain.account.Role;
+import com.ssafy.apolio.domain.user.User;
+import com.ssafy.apolio.domain.user.AuthProvider;
+import com.ssafy.apolio.domain.user.Role;
 import com.ssafy.apolio.exception.BadRequestException;
 import com.ssafy.apolio.payload.ApiResponse;
 import com.ssafy.apolio.payload.AuthResponse;

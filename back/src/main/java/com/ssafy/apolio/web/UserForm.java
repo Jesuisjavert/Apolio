@@ -1,7 +1,7 @@
 package com.ssafy.apolio.web;
 
-import com.ssafy.apolio.domain.account.AuthProvider;
-import com.ssafy.apolio.domain.account.Role;
+import com.ssafy.apolio.domain.user.AuthProvider;
+import com.ssafy.apolio.domain.user.Role;
 import lombok.Getter;
 import lombok.Setter;
 

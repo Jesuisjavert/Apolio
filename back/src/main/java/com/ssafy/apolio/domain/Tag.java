@@ -23,6 +23,6 @@ public class Tag {
 
     @OneToMany(mappedBy = "tag", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<TagArticle> tagArticles = new ArrayList<>();
+    private List<TagBoard> tagBoards = new ArrayList<>();
 
 }

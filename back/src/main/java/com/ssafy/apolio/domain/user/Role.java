@@ -1,4 +1,4 @@
-package com.ssafy.apolio.domain.account;
+package com.ssafy.apolio.domain.user;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

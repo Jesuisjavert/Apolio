@@ -1,7 +1,7 @@
 package com.ssafy.apolio.security.oauth2.user;
 
 
-import com.ssafy.apolio.domain.account.AuthProvider;
+import com.ssafy.apolio.domain.user.AuthProvider;
 import com.ssafy.apolio.exception.OAuth2AuthenticationProcessingException;
 
 import java.util.Map;

@@ -30,8 +30,12 @@ dependencies {
     compile group: 'io.jsonwebtoken', name: 'jjwt', version: '0.9.1'
     implementation 'io.springfox:springfox-swagger2:2.9.2'
     implementation 'io.springfox:springfox-swagger-ui:2.9.2'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
+
+    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
     compileOnly 'org.projectlombok:lombok'
     compile group: 'org.jsoup', name: 'jsoup', version: '1.11.3'
+    compile group: 'org.apache.clerezza.ext', name: 'org.json.simple', version: '0.4'
     runtimeOnly 'mysql:mysql-connector-java'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
