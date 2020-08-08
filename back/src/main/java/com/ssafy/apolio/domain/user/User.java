@@ -1,4 +1,4 @@
-package com.ssafy.apolio.domain.account;
+package com.ssafy.apolio.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;

@@ -19,7 +19,7 @@ public class CommentController {
     private final CommentService commentService;
 
     @ApiOperation(value = "유저 번호, 블로그 게시물 번호, 댓글 내용을 받아서 댓글에 입력시킨다", response = String.class)
-    @PostMapping(value = "/comment/article")
+    @PostMapping(value = "/comment/board")
     public ResponseEntity<String> insertCommentBoard(@RequestBody CommentForm commentForm){
         Long check = commentService.commentBoard(Long.parseLong(commentForm.getUsername()), Long.parseLong(commentForm.getBoard_id()), commentForm.getContent());
         if(check != 0){
@@ -39,9 +39,9 @@ public class CommentController {
     }
 
     @ApiOperation(value = "블로그 게시물 번호에 해당하는 댓글들을 조회한다", response = List.class)
-    @GetMapping(value = "/comment/article/{article_id}")
-    public ResponseEntity<List<Comment>> BoardComment(@PathVariable Long article_id){
-        List<Comment> commentList = commentService.findCommentByBoard(article_id);
+    @GetMapping(value = "/comment/board/{board_id}")
+    public ResponseEntity<List<Comment>> BoardComment(@PathVariable Long board_id){
+        List<Comment> commentList = commentService.findCommentByBoard(board_id);
         for(Comment c : commentList){
             System.out.println("댓글 작성자: " + c.getUser().getUsername());
             System.out.println("댓글 내용: " + c.getContent());

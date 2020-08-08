@@ -1,6 +1,6 @@
 package com.ssafy.apolio.repository;
 
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

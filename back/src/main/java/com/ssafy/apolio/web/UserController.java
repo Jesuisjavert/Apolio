@@ -1,6 +1,6 @@
 package com.ssafy.apolio.web;
 
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import com.ssafy.apolio.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -17,8 +17,8 @@ public class UserController {
 
 
     @ApiOperation(value = "유저 이름, 비밀번호, 이메일, 닉네임, 프로필 사진을 입력받아서 회원가입을 완료시킨다.", response = String.class)
-    @PostMapping(value = "/account")
-    public ResponseEntity<String> createAccount(@RequestBody UserForm userForm){
+    @PostMapping(value = "/user")
+    public ResponseEntity<String> createUser(@RequestBody UserForm userForm){
         User user = new User();
         user.setUsername(userForm.getUsername());
         user.setPassword(userForm.getPassword());
@@ -35,14 +35,14 @@ public class UserController {
 
     }
     @ApiOperation(value = "유저 리스트 전체를 조회한다.", response = List.class)
-    @GetMapping(value = "/accounts")
-    public ResponseEntity<List<User>> accountList(){
-        List<User> users = userService.findAccount();
+    @GetMapping(value = "/users")
+    public ResponseEntity<List<User>> userList(){
+        List<User> users = userService.findUser();
         return new ResponseEntity<List<User>>(users, HttpStatus.OK);
     }
     @ApiOperation(value = "유저 번호를 입력받아서 해당하는 유저 정보를 조회한다", response = User.class)
-    @GetMapping(value = "/accounts/{id}")
-    public ResponseEntity<User> accountDetail(@PathVariable Long id){
+    @GetMapping(value = "/users/{id}")
+    public ResponseEntity<User> userDetail(@PathVariable Long id){
         User user = userService.findOne(id);
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }

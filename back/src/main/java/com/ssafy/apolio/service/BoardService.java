@@ -4,7 +4,7 @@ import com.ssafy.apolio.domain.Board;
 import com.ssafy.apolio.domain.BoardSearch;
 import com.ssafy.apolio.domain.Tag;
 import com.ssafy.apolio.domain.TagBoard;
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import com.ssafy.apolio.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

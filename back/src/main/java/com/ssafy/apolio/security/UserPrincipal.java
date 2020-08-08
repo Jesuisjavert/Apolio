@@ -1,6 +1,6 @@
 package com.ssafy.apolio.security;
 
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

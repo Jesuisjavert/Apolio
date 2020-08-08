@@ -3,7 +3,7 @@ package com.ssafy.apolio.service;
 import com.ssafy.apolio.domain.Board;
 import com.ssafy.apolio.domain.Comment;
 import com.ssafy.apolio.domain.Blog;
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import com.ssafy.apolio.repository.AccountRepository;
 import com.ssafy.apolio.repository.BoardRepository;
 import com.ssafy.apolio.repository.CommentRepository;
@@ -25,9 +25,9 @@ public class CommentService {
     private final BlogRepository blogRepository;
 
     @Transactional
-    public long commentBoard(Long user_id, Long article_id, String content){
+    public long commentBoard(Long user_id, Long board_id, String content){
         User user = accountRepository.findOne(user_id);
-        Board board = boardRepository.findOne(article_id);
+        Board board = boardRepository.findOne(board_id);
         Comment comment = Comment.createCommentBoard(user.getUsername(), board, content);
         commentRepository.save(comment);
 

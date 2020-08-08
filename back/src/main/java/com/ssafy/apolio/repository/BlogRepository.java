@@ -21,11 +21,11 @@ public class BlogRepository {
     }
 
     public List<Blog> findAll() {
-        return em.createQuery("select c from Blog c", Blog.class)
+        return em.createQuery("select b from Blog b", Blog.class)
                 .getResultList();
     }
     public int updateCommunityById(Blog community){
-        String jpql = "update Blog c set c.title = :title, c.content = :content where c.id = :id";
+        String jpql = "update Blog b set b.title = :title, b.content = :content where b.id = :id";
         Query query = em.createQuery(jpql);
         query.setParameter("title", community.getTitle());
         query.setParameter("content", community.getContent());
@@ -35,7 +35,7 @@ public class BlogRepository {
     }
 
     public int deleteCommunityById(Long id){
-        String jpql = "delete from Blog c where c.id = :id";
+        String jpql = "delete from Blog b where b.id = :id";
         Query query = em.createQuery(jpql);
         query.setParameter("id", id);
         int check = query.executeUpdate();

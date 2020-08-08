@@ -1,6 +1,6 @@
 package com.ssafy.apolio.web;
 
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import lombok.Getter;
 import lombok.Setter;
 

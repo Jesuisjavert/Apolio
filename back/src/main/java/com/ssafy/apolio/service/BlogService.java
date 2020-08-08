@@ -1,7 +1,7 @@
 package com.ssafy.apolio.service;
 
 import com.ssafy.apolio.domain.Blog;
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import com.ssafy.apolio.repository.BlogRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

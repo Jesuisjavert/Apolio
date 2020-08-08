@@ -1,6 +1,6 @@
 package com.ssafy.apolio.security;
 
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import com.ssafy.apolio.exception.ResourceNotFoundException;
 import com.ssafy.apolio.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

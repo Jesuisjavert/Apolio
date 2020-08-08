@@ -20,7 +20,7 @@ public class CommentRepository {
     }
 
     public List<Comment> findAllByBoardId(Long id){
-        String jpql = "select c from Comment c where c.article.id = :id";
+        String jpql = "select c from Comment c where c.board.id = :id";
         TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
         query.setParameter("id", id);
         List<Comment> commentList = query.getResultList();
