@@ -33,7 +33,7 @@ public class BoardRepository {
     //JPQL로 처리
     public List<Board> find(BoardSearch boardSearch) {
         //language=JPQAL
-        String jpql = "select a From Board a join a.tagArticles ta join ta.tag t";
+        String jpql = "select b From Board b join b.tagBoards tb join tb.tag t";
         boolean isFirstCondition = true;
         //태그 선택
         if (boardSearch.getTagName() != null) {
@@ -46,22 +46,22 @@ public class BoardRepository {
             jpql += " t.name = :tagName";
         }
         //게시글 제목 검색
-        if (StringUtils.hasText(boardSearch.getArticleTitle())) {
+        if (StringUtils.hasText(boardSearch.getBoardTitle())) {
             if (isFirstCondition) {
                 jpql += " where";
                 isFirstCondition = false;
             } else {
                 jpql += " and";
             }
-            jpql += " a.title like concat('%', :articleTitle, '%')";
+            jpql += " b.title like concat('%', :boardTitle, '%')";
         }
         TypedQuery<Board> query = em.createQuery(jpql, Board.class)
                 .setMaxResults(1000); //최대 1000건
         if (boardSearch.getTagName() != null) {
             query = query.setParameter("tagName", boardSearch.getTagName());
         }
-        if (StringUtils.hasText(boardSearch.getArticleTitle())) {
-            query = query.setParameter("articleTitle", boardSearch.getArticleTitle());
+        if (StringUtils.hasText(boardSearch.getBoardTitle())) {
+            query = query.setParameter("boardTitle", boardSearch.getBoardTitle());
         }
         return query.getResultList();
     }

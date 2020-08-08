@@ -3,7 +3,7 @@ package com.ssafy.apolio.service;
 import com.ssafy.apolio.domain.Board;
 import com.ssafy.apolio.domain.BoardSearch;
 import com.ssafy.apolio.domain.Tag;
-import com.ssafy.apolio.domain.TagArticle;
+import com.ssafy.apolio.domain.TagBoard;
 import com.ssafy.apolio.domain.account.User;
 import com.ssafy.apolio.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -33,10 +33,10 @@ public class BoardService { //서비스에서는 단순히 엔티티에 필요�
         Tag tag = tagRepository.findOne(tagId);
 
         //태그 생성
-        TagArticle tagArticle = TagArticle.createTagArticle(tag);
+        TagBoard tagBoard = TagBoard.createTagBoard(tag);
 
         //게시물 생성
-        Board board = Board.createBoard(user, title, content, img_thumb, tagArticle);
+        Board board = Board.createBoard(user, title, content, img_thumb, tagBoard);
 
         //게시물 저장
         boardRepository.save(board);
@@ -48,8 +48,8 @@ public class BoardService { //서비스에서는 단순히 엔티티에 필요�
     public List<Board> findBoardsAll() {
         return boardRepository.findAll();
     }
-    public Board findBoard(Long article_id) {
-        return boardRepository.findOne(article_id);
+    public Board findBoard(Long board_id) {
+        return boardRepository.findOne(board_id);
     }
 
     //게시물 검색

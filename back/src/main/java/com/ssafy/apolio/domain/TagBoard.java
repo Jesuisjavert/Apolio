@@ -12,11 +12,11 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Getter
 @Setter
-public class TagArticle {
+public class TagBoard {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "tag_article_id")
+    @Column(name = "tag_board_id")
     private Long id;
 
     @ManyToOne(fetch = LAZY)
@@ -30,10 +30,10 @@ public class TagArticle {
     private Board board;
 
     //==생성 메서드==//
-    public static TagArticle createTagArticle(Tag tag) {
-        TagArticle tagArticle = new TagArticle();
-        tagArticle.setTag(tag);
+    public static TagBoard createTagBoard(Tag tag) {
+        TagBoard tagBoard = new TagBoard();
+        tagBoard.setTag(tag);
 
-        return tagArticle;
+        return tagBoard;
     }
 }
