@@ -2,7 +2,7 @@
   <v-app-bar
     id="core-app-bar"
     app
-    color="#270949"
+    color="#FFFFFF"
     elevate-on-scroll
     height="96"
   >
@@ -10,7 +10,7 @@
       <v-row>
         <div class="d-flex align-center">
           <v-img
-            :src="require('@/assets/logo3.png')"
+            :src="require('@/assets/logo.png')"
             contain
             class="shrink mr-2"
             height="90"
@@ -34,8 +34,8 @@
             class="subtitle-1 ml-1"
             exact
             min-width="128"
-            text="accent"
-            color="accent"
+            text
+            color="000000"
           >
             <span>{{ link }}</span>
           </v-btn>
