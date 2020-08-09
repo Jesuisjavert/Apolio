@@ -20,7 +20,7 @@ public class CommentRepository {
     }
 
     public List<Comment> findAllByBoardId(Long id){
-        String jpql = "select c from Comment c where c.board.id = :id";
+        String jpql = "select c from Comment c where c.board.id = :id order by c.comment_group";
         //String jpql = "select c from Comment c group by c.comment_group having c.board.id = :id order by c.comment_group asc";
         TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
         query.setParameter("id", id);
@@ -44,7 +44,7 @@ public class CommentRepository {
 
 
     public List<Comment> findAllByBlogId(Long id){
-        String jpql = "select c from Comment c where c.blog.id = :id";
+        String jpql = "select c from Comment c where c.blog.id = :id order by c.comment_group";
         //String jpql = "select c from Comment c group by c.comment_group having c.blog.id = :id order by c.comment_group asc";
         TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
         query.setParameter("id", id);
