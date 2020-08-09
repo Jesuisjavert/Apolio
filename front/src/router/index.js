@@ -56,6 +56,11 @@ export default new Router({
           name: 'Login',
           component: () => import('@/views/login/Index.vue'),
         },
+        {
+          path: '/oauth2/redirect',
+          name: 'Oauth',
+          component: () => import('@/views/oauth/Index.vue'),
+        },
       ],
     },
   ],

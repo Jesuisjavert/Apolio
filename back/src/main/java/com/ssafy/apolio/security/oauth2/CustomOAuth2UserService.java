@@ -1,5 +1,6 @@
 package com.ssafy.apolio.security.oauth2;
 
+import com.ssafy.apolio.domain.account.Role;
 import com.ssafy.apolio.domain.account.User;
 import com.ssafy.apolio.domain.account.AuthProvider;
 import com.ssafy.apolio.exception.OAuth2AuthenticationProcessingException;
@@ -70,6 +71,7 @@ public class CustomOAuth2UserService extends DefaultOAuth2UserService {
         user.setUsername(oAuth2UserInfo.getName());
         user.setEmail(oAuth2UserInfo.getEmail());
         user.setPicture(oAuth2UserInfo.getImageUrl());
+        user.setRole(Role.MEMBER);
         System.out.println("user : "+ user);
         return userRepository.save(user);
     }
