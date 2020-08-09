@@ -35,7 +35,9 @@ public class Comment {
     @JsonBackReference
     private Blog blog;
 
-    private Long parent;
+    private Long parent;//댓글인지, 대댓글인지 구별하는 column(parent가 null이면 댓글, 아니면은 대댓글)
+
+    private Long comment_group;//댓글별로 그룹을 지정하여서 정렬할 때 사용
 
     private String content;
 
@@ -75,6 +77,7 @@ public class Comment {
         comment.setContent(content);//대댓글 내용
         comment.setCreate_date(LocalDateTime.now());//대댓글 작성 시간
         comment.setParent(parent);//대댓글의 부모 댓글
+        comment.setComment_group(parent);
         user.addComment(comment);
         board.addComment(comment);
         return comment;
@@ -88,6 +91,7 @@ public class Comment {
         comment.setContent(content);//대댓글 내용
         comment.setCreate_date(LocalDateTime.now());//대댓글 작성 시간
         comment.setParent(parent);//대댓글의 부모 댓글
+        comment.setComment_group(parent);
         user.addComment(comment);
         blog.addComment(comment);
         return comment;
