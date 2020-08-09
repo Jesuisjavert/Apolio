@@ -37,8 +37,6 @@ public class Comment {
 
     private Long parent;
 
-    private Long depth;
-
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long seq;
 

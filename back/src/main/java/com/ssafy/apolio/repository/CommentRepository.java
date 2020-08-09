@@ -31,6 +31,15 @@ public class CommentRepository {
         return commentList;
     }
 
+    public Comment findOneByBoardId(Long id){ //대댓글 작성을 위해 부모 댓글 조회
+        String jpql = "select c from Comment c where c.board.id = :id and c.seq = 1";
+        TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
+        query.setParameter("id", id);
+        Comment comment = query.getSingleResult();
+        return comment;
+    }
+
+
     public List<Comment> findAllByBlogId(Long id){
         String jpql = "select c from Comment c where c.blog.id = :id";
         TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
@@ -41,6 +50,14 @@ public class CommentRepository {
             System.out.println("댓글 내용: " + comment.getContent());
         }
         return commentList;
+    }
+
+    public Comment findOneByBlogId(Long id){ //대댓글 작성을 위해 부모 댓글 조회
+        String jpql = "select c from Comment c where c.blog.id = :id and c.seq = 1";
+        TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
+        query.setParameter("id", id);
+        Comment comment = query.getSingleResult();
+        return comment;
     }
 
 
@@ -58,7 +75,7 @@ public class CommentRepository {
     }
 
     public int deleteComment(Long comment_id){
-        String jpql = "delete from Comment c where c.id = :id";
+        String jpql = "delete from Comment c where c.parent = :id";
         Query query = em.createQuery(jpql);
         query.setParameter("id", comment_id);
         int check = query.executeUpdate();
