@@ -25,20 +25,38 @@ public class CommentService {
     private final BlogRepository blogRepository;
 
     @Transactional
-    public long commentBoard(Long user_id, Long article_id, String content){
-        User user = accountRepository.findOne(user_id);
-        Board board = boardRepository.findOne(article_id);
-        Comment comment = Comment.createCommentBoard(user.getUsername(), board, content);
+    public long commentBoard(String username, Long board_id, String content){
+        User user = accountRepository.findByName(username);
+        Board board = boardRepository.findOne(board_id);
+        Comment comment = Comment.createCommentBoard(user, board, content);
+        commentRepository.save(comment);
+
+        return comment.getId();
+    }
+    @Transactional
+    public long replyBoard(Long parent, String username, Long board_id, String content){
+        User user = accountRepository.findByName(username);
+        Board board = boardRepository.findOne(board_id);
+        Comment comment = Comment.createReplyBoard(parent, user, board, content);
         commentRepository.save(comment);
 
         return comment.getId();
     }
 
     @Transactional
-    public long commentBlog(Long user_id, Long blog_id, String content){
-        User user = accountRepository.findOne(user_id);
+    public long commentBlog(String username, Long blog_id, String content){
+        User user = accountRepository.findByName(username);
         Blog blog = blogRepository.findOne(blog_id);
-        Comment comment = Comment.createCommentBlog(user.getUsername(), blog, content);
+        Comment comment = Comment.createCommentBlog(user, blog, content);
+        commentRepository.save(comment);
+
+        return comment.getId();
+    }
+    @Transactional
+    public long replyBlog(Long parent, String username, Long blog_id, String content){
+        User user = accountRepository.findByName(username);
+        Blog blog = blogRepository.findOne(blog_id);
+        Comment comment = Comment.createReplyBlog(parent, user, blog, content);
         commentRepository.save(comment);
 
         return comment.getId();
