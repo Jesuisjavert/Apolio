@@ -26,7 +26,7 @@ public class PortfolioController {
 
     @ApiOperation(value = "새로운 포트폴리오 게시물을 입력한다.", response = String.class)
     @PostMapping("/portfolio")
-    public ResponseEntity<String> insertPortfolio(@RequestBody PortfolioForm portfolioForm) throws IOException {
+    public ResponseEntity<String> insertPortfolio(PortfolioForm portfolioForm) throws IOException {
         //Long check = portfolioService.portfolio(portfolio.getTitle(), portfolio.getContent(), portfolio.getImg());
         Long check = 0L;
         if(portfolioForm.getUploadFile() == null){
