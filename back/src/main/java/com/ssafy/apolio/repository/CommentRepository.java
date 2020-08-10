@@ -20,42 +20,48 @@ public class CommentRepository {
     }
 
     public List<Comment> findAllByBoardId(Long id){
-        String jpql = "select c from Comment c where c.board.id = :id";
+        String jpql = "select c from Comment c where c.board.id = :id order by c.comment_group";
+        //String jpql = "select c from Comment c group by c.comment_group having c.board.id = :id order by c.comment_group asc";
         TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
         query.setParameter("id", id);
         List<Comment> commentList = query.getResultList();
         for(Comment comment : commentList){
             System.out.println("댓글 달린 커뮤니티 게시물 번호: " + comment.getBoard().getId());
+            System.out.println("댓글 작성자: " + comment.getUser().getUsername());
             System.out.println("댓글 내용: " + comment.getContent());
         }
         return commentList;
     }
 
-    public Comment findOneByBoardId(Long id){ //대댓글 작성을 위해 부모 댓글 조회
-        String jpql = "select c from Comment c where c.board.id = :id and c.seq = 1";
+    public Comment findOneByBoardId(Long id, Long parent){ //대댓글 작성을 위해 부모 댓글 조회
+        String jpql = "select c from Comment c where c.board.id = :id and c.id = :parent";
         TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
         query.setParameter("id", id);
+        query.setParameter("parent", parent);
         Comment comment = query.getSingleResult();
         return comment;
     }
 
 
     public List<Comment> findAllByBlogId(Long id){
-        String jpql = "select c from Comment c where c.blog.id = :id";
+        String jpql = "select c from Comment c where c.blog.id = :id order by c.comment_group";
+        //String jpql = "select c from Comment c group by c.comment_group having c.blog.id = :id order by c.comment_group asc";
         TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
         query.setParameter("id", id);
         List<Comment> commentList = query.getResultList();
         for(Comment comment : commentList){
             System.out.println("댓글 달린 블로그 게시물 번호: " + comment.getBlog().getId());
+            System.out.println("댓글 작성자: " + comment.getUser().getUsername());
             System.out.println("댓글 내용: " + comment.getContent());
         }
         return commentList;
     }
 
-    public Comment findOneByBlogId(Long id){ //대댓글 작성을 위해 부모 댓글 조회
-        String jpql = "select c from Comment c where c.blog.id = :id and c.seq = 1";
+    public Comment findOneByBlogId(Long id, Long parent){ //대댓글 작성을 위해 부모 댓글 조회
+        String jpql = "select c from Comment c where c.blog.id = :id and c.id = :parent";
         TypedQuery<Comment> query = em.createQuery(jpql, Comment.class);
         query.setParameter("id", id);
+        query.setParameter("parent", parent);
         Comment comment = query.getSingleResult();
         return comment;
     }
@@ -63,6 +69,14 @@ public class CommentRepository {
 
     public List<Comment> findAll(){
         return em.createQuery("select c from Comment c", Comment.class).getResultList();
+    }
+
+    public int updateParentComment(Long parent){
+        String jpql = "update Comment c set c.comment_group = :parent where c.id = :parent";
+        Query query = em.createQuery(jpql);
+        query.setParameter("parent", parent);
+        int check = query.executeUpdate();
+        return check;
     }
 
     public int updateCommentById(Comment comment){
@@ -74,10 +88,10 @@ public class CommentRepository {
         return check;
     }
 
-    public int deleteComment(Long comment_id){
-        String jpql = "delete from Comment c where c.parent = :id";
+    public int deleteCommentById(Long id){
+        String jpql = "delete from Comment c where c.id = :id";
         Query query = em.createQuery(jpql);
-        query.setParameter("id", comment_id);
+        query.setParameter("id", id);
         int check = query.executeUpdate();
         return check;
     }

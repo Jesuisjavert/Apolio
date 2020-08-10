@@ -2,6 +2,7 @@ package com.ssafy.apolio.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ssafy.apolio.domain.user.User;
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 import javax.persistence.*;
@@ -10,8 +11,7 @@ import static javax.persistence.FetchType.LAZY;
 
 
 @Entity
-@Getter
-@Setter
+@Data
 public class Comment {
 
     @Id
@@ -20,12 +20,12 @@ public class Comment {
     private Long id;
 
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "board_id")
     @JsonBackReference
     private Board board;
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
@@ -35,10 +35,9 @@ public class Comment {
     @JsonBackReference
     private Blog blog;
 
-    private Long parent;
+    private Long parent;//댓글인지, 대댓글인지 구별하는 column(parent가 null이면 댓글, 아니면은 대댓글)
 
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long seq;
+    private Long comment_group;//댓글별로 그룹을 지정하여서 정렬할 때 사용
 
     private String content;
 
@@ -46,10 +45,8 @@ public class Comment {
 
 
     // 댓글 작성 메소드
-    public static Comment createCommentBoard(String username, Board board, String content){
+    public static Comment createCommentBoard(User user, Board board, String content){
         Comment comment = new Comment();
-        User user = new User();
-        user.setUsername(username);
         comment.setUser(user);
         comment.setBoard(board);
         comment.setContent(content);//댓글 내용
@@ -60,14 +57,41 @@ public class Comment {
 
     }
 
-    public static Comment createCommentBlog(String username, Blog blog, String content){
+    public static Comment createCommentBlog(User user, Blog blog, String content){
         Comment comment = new Comment();
-        User user = new User();
-        user.setUsername(username);
         comment.setUser(user);
         comment.setBlog(blog);
         comment.setContent(content);//댓글 내용
         comment.setCreate_date(LocalDateTime.now());//댓글 작성 시간
+        user.addComment(comment);
+        blog.addComment(comment);
+        return comment;
+
+    }
+
+    //대댓글 작성 메소드
+    public static Comment createReplyBoard(Long parent, User user, Board board, String content){
+        Comment comment = new Comment();
+        comment.setUser(user);
+        comment.setBoard(board);
+        comment.setContent(content);//대댓글 내용
+        comment.setCreate_date(LocalDateTime.now());//대댓글 작성 시간
+        comment.setParent(parent);//대댓글의 부모 댓글
+        comment.setComment_group(parent);
+        user.addComment(comment);
+        board.addComment(comment);
+        return comment;
+
+    }
+
+    public static Comment createReplyBlog(Long parent, User user, Blog blog, String content){
+        Comment comment = new Comment();
+        comment.setUser(user);
+        comment.setBlog(blog);
+        comment.setContent(content);//대댓글 내용
+        comment.setCreate_date(LocalDateTime.now());//대댓글 작성 시간
+        comment.setParent(parent);//대댓글의 부모 댓글
+        comment.setComment_group(parent);
         user.addComment(comment);
         blog.addComment(comment);
         return comment;

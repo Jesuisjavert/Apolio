@@ -35,7 +35,7 @@ public class Board {
     @JsonManagedReference
     private List<TagBoard> tagBoards = new ArrayList<>();
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;

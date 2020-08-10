@@ -25,23 +25,55 @@ public class CommentService {
     private final BlogRepository blogRepository;
 
     @Transactional
-    public long commentBoard(Long user_id, Long board_id, String content){
-        User user = accountRepository.findOne(user_id);
+    public long commentBoard(String username, Long board_id, String content){
+        User user = accountRepository.findByName(username);
         Board board = boardRepository.findOne(board_id);
-        Comment comment = Comment.createCommentBoard(user.getUsername(), board, content);
+        Comment comment = Comment.createCommentBoard(user, board, content);
         commentRepository.save(comment);
 
         return comment.getId();
     }
+    @Transactional
+    public long replyBoard(Long parent, String username, Long board_id, String content){
+        User user = accountRepository.findByName(username);
+        Board board = boardRepository.findOne(board_id);
+        Comment parentComment = commentRepository.findOneByBoardId(board_id, parent);
+        int ok = commentRepository.updateParentComment(parentComment.getId());//첫번 째 댓글 그룹 지정
+        if(ok != 0){
+            Comment comment = Comment.createReplyBoard(parent, user, board, content);//대댓글 입력 및 그룹 지정
+            commentRepository.save(comment);
+            return comment.getId();
+        }
+//        Comment comment = Comment.createReplyBoard(parent, user, board, content);//대댓글 입력 및 그룹 지정
+//        commentRepository.save(comment);
+
+        return 0;
+    }
 
     @Transactional
-    public long commentBlog(Long user_id, Long blog_id, String content){
-        User user = accountRepository.findOne(user_id);
+    public long commentBlog(String username, Long blog_id, String content){
+        User user = accountRepository.findByName(username);
         Blog blog = blogRepository.findOne(blog_id);
-        Comment comment = Comment.createCommentBlog(user.getUsername(), blog, content);
+        Comment comment = Comment.createCommentBlog(user, blog, content);
         commentRepository.save(comment);
 
         return comment.getId();
+    }
+    @Transactional
+    public long replyBlog(Long parent, String username, Long blog_id, String content){
+        User user = accountRepository.findByName(username);
+        Blog blog = blogRepository.findOne(blog_id);
+        Comment parentComment = commentRepository.findOneByBlogId(blog_id, parent);
+        int ok = commentRepository.updateParentComment(parentComment.getId());//첫번 째 댓글 그룹 지정
+        if(ok != 0){
+            Comment comment = Comment.createReplyBlog(parent, user, blog, content);//대댓글 입력 및 그룹 지정
+            commentRepository.save(comment);
+            return comment.getId();
+        }
+//        Comment comment = Comment.createReplyBlog(parent, user, blog, content);
+//        commentRepository.save(comment);
+
+        return 0;
     }
 
 
@@ -64,7 +96,7 @@ public class CommentService {
 
     @Transactional
     public int delete(Long comment_id){
-        return commentRepository.deleteComment(comment_id);
+        return commentRepository.deleteCommentById(comment_id);
     }
 
 }
