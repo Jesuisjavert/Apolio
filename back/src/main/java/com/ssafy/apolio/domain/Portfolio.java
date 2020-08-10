@@ -20,4 +20,6 @@ public class Portfolio {
     private String content;
 
     private String img;
+
+    private String file_name;
 }

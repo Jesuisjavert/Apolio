@@ -5,10 +5,16 @@ import com.ssafy.apolio.domain.Portfolio;
 import com.ssafy.apolio.service.PortfolioService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin(origins = { "*" }, maxAge = 6000)
 @RestController
@@ -20,8 +26,27 @@ public class PortfolioController {
 
     @ApiOperation(value = "새로운 포트폴리오 게시물을 입력한다.", response = String.class)
     @PostMapping("/portfolio")
-    public ResponseEntity<String> insertPortfolio(@RequestBody Portfolio portfolio){
-        Long check = portfolioService.portfolio(portfolio.getTitle(), portfolio.getContent(), portfolio.getImg());
+    public ResponseEntity<String> insertPortfolio(@RequestBody PortfolioForm portfolioForm) throws IOException {
+        //Long check = portfolioService.portfolio(portfolio.getTitle(), portfolio.getContent(), portfolio.getImg());
+        Long check = 0L;
+        if(portfolioForm.getUploadFile() == null){
+            check = portfolioService.portfolio(portfolioForm.getTitle(), portfolioForm.getContent(), portfolioForm.getImg());
+        }else{
+            String fileName = null;
+            MultipartFile uploadFile = portfolioForm.getUploadFile();
+            if(!uploadFile.isEmpty()){
+                String origin_filename = uploadFile.getOriginalFilename();
+                System.out.println("origin name:" + origin_filename);
+                String ext = FilenameUtils.getExtension(origin_filename);//파일 확장자 구하기
+                System.out.println("확장자: " + ext);
+                UUID uuid = UUID.randomUUID(); // UUID 구하기
+                fileName = uuid + "." + ext;
+                System.out.println("file name: " + fileName);
+                uploadFile.transferTo(new File("C:/apolio_file/" + fileName));
+            }
+
+            check = portfolioService.portfolioWithFile(portfolioForm.getTitle(), portfolioForm.getContent(), portfolioForm.getImg(), fileName);
+        }
         if(check != 0){
             return new ResponseEntity<String>("portfolio insert success", HttpStatus.OK);
         }
