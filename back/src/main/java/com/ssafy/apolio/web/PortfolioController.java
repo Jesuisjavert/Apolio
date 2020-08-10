@@ -39,8 +39,7 @@ public class PortfolioController {
                 System.out.println("origin name:" + origin_filename);
                 String ext = FilenameUtils.getExtension(origin_filename);//파일 확장자 구하기
                 System.out.println("확장자: " + ext);
-                UUID uuid = UUID.randomUUID(); // UUID 구하기
-                fileName = uuid + "." + ext;
+                fileName = origin_filename + "." + ext;
                 System.out.println("file name: " + fileName);
                 uploadFile.transferTo(new File("C:/apolio_file/" + fileName));
             }
