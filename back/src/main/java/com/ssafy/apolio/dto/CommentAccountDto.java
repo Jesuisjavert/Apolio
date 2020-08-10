@@ -1,8 +1,6 @@
 package com.ssafy.apolio.dto;
 
 import lombok.Getter;
-
-import javax.persistence.ColumnResult;
 import java.time.LocalDateTime;
 
 @Getter
