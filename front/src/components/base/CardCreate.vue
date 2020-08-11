@@ -46,7 +46,13 @@
             <v-list-item>
               <v-list-item-content>
                 <v-list-item-title>글 제목</v-list-item-title>
-                <base-text-field
+                <!-- <base-text-field
+                  id="title"
+                  v-model="title"
+                  label="title"
+                  required
+                /> -->
+                <v-text-field
                   id="title"
                   v-model="title"
                   label="title"
@@ -81,7 +87,7 @@
 <script>
   import axios from 'axios'
 
-  const API_URL = 'http://127.0.0.1:8000'
+  const API_URL = 'http://127.0.0.1:8080'
 
   export default {
     name: 'ArticleCreate',
@@ -103,14 +109,19 @@
           content: this.content,
         }
         console.log(articleData)
-        const RequestHeader = {
-          headers: {
-            Authorization: `Token ${this.$cookies.get('auth-token')}`,
-          },
-        }
-        axios.post(API_URL + '/articles/create/', articleData, RequestHeader)
+        // const RequestHeader = {
+        //   headers: {
+        //     Authorization: `Token ${this.$cookies.get('auth-token')}`,
+        //   },
+        // }
+        axios.post(API_URL + '/api/blog/', articleData) // , RequestHeader
           .then((res) => {
+            console.log('잘 가는거')
             this.$router.go(0)
+          })
+          .catch((err) => {
+            console.log('못가는거')
+            console.log(err.response)
           })
       },
     },
