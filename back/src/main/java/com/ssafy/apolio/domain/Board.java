@@ -2,7 +2,7 @@ package com.ssafy.apolio.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -33,9 +33,9 @@ public class Board {
 
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<TagArticle> tagArticles = new ArrayList<>();
+    private List<TagBoard> tagBoards = new ArrayList<>();
 
-    @ManyToOne(fetch = LAZY)
+    @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
@@ -59,13 +59,13 @@ public class Board {
         heart.setBoard(this);
     }
 
-    public void addTagArticle(TagArticle tagArticle) {
-        tagArticles.add(tagArticle);
-        tagArticle.setBoard(this);
+    public void addTagBoard(TagBoard tagBoard) {
+        tagBoards.add(tagBoard);
+        tagBoard.setBoard(this);
     }
 
     //==생성 메서드==//
-    public static Board createBoard(User user, String title, String content, String img_thumb, TagArticle... tagArticles) {
+    public static Board createBoard(User user, String title, String content, String img_thumb, TagBoard... tagBoards) {
         Board board = new Board();
 
         board.setTitle(title);
@@ -73,8 +73,8 @@ public class Board {
         board.setImg_thumb(img_thumb);
         board.setCreate_date(LocalDateTime.now());
         board.setUser(user);
-        for (TagArticle tagArticle : tagArticles){
-            board.addTagArticle(tagArticle);
+        for (TagBoard tagBoard : tagBoards){
+            board.addTagBoard(tagBoard);
         }
 
         return board;

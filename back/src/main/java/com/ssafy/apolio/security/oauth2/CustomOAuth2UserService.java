@@ -1,8 +1,8 @@
 package com.ssafy.apolio.security.oauth2;
 
-import com.ssafy.apolio.domain.account.Role;
-import com.ssafy.apolio.domain.account.User;
-import com.ssafy.apolio.domain.account.AuthProvider;
+import com.ssafy.apolio.domain.user.Role;
+import com.ssafy.apolio.domain.user.User;
+import com.ssafy.apolio.domain.user.AuthProvider;
 import com.ssafy.apolio.exception.OAuth2AuthenticationProcessingException;
 import com.ssafy.apolio.repository.UserRepository;
 import com.ssafy.apolio.security.UserPrincipal;

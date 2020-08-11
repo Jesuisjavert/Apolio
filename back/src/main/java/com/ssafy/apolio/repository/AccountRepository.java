@@ -1,6 +1,6 @@
 package com.ssafy.apolio.repository;
 
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -21,14 +21,20 @@ public class AccountRepository{
         return em.find(User.class, id);
     }
 
+    public User findByName(String username){
+        return em.createQuery("select a from User a where a.username = :username", User.class)
+                .setParameter("username", username)
+                .getSingleResult();
+    }
+
 
     public List<User> findAll() {
-        return em.createQuery("select a from User a", User.class)
+        return em.createQuery("select u from User u", User.class)
                 .getResultList();
     }
 
     public List<User> findByEmail(String email) {
-        return em.createQuery("select a from User a where a.email = :email", User.class)
+        return em.createQuery("select u from User u where u.email = :email", User.class)
                 .setParameter("email", email)
                 .getResultList();
     }

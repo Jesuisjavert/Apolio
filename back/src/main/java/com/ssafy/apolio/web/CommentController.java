@@ -18,46 +18,52 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @ApiOperation(value = "유저 번호, 블로그 게시물 번호, 댓글 내용을 받아서 댓글에 입력시킨다", response = String.class)
-    @PostMapping(value = "/comment/article")
+    @ApiOperation(value = "유저 번호, 커뮤니티 게시물 번호, 댓글 내용을 받아서 댓글에 입력시킨다", response = String.class)
+    @PostMapping(value = "/comment/board")
     public ResponseEntity<String> insertCommentBoard(@RequestBody CommentForm commentForm){
-        Long check = commentService.commentArticle(Long.parseLong(commentForm.getUsername()), Long.parseLong(commentForm.getArticle_id()), commentForm.getContent());
+        Long check = 0L;
+        if(commentForm.getParent() == null){ // 기본 댓글일 때
+            check = commentService.commentBoard(commentForm.getUsername(), Long.parseLong(commentForm.getBoard_id()), commentForm.getContent());
+        }else{ // 대댓글일 때
+            check = commentService.replyBoard(Long.parseLong(commentForm.getParent()), commentForm.getUsername(), Long.parseLong(commentForm.getBoard_id()), commentForm.getContent());
+        }
+        //Long check = commentService.commentBoard(Long.parseLong(commentForm.getUsername()), Long.parseLong(commentForm.getBoard_id()), commentForm.getContent());
         if(check != 0){
             return new ResponseEntity<String>("comment success", HttpStatus.OK);
         }
         return new ResponseEntity<String>("comment fail", HttpStatus.NO_CONTENT);
     }
 
-    @ApiOperation(value = "유저 번호, 블로그 게시물 번호, 댓글 내용을 받아서 댓글에 입력시킨다", response = String.class)
+    @ApiOperation(value = "유저 번호, 블로그 게시물 번호, 댓글 내용을 받아서 댓글에 입력한다", response = String.class)
     @PostMapping(value = "/comment/blog")
     public ResponseEntity<String> insertCommentBlog(@RequestBody CommentForm commentForm){
-        Long check = commentService.commentCommunity(Long.parseLong(commentForm.getUsername()), Long.parseLong(commentForm.getCommunity_id()), commentForm.getContent());
+        Long check = 0L;
+        if(commentForm.getParent() == null){ // 기본 댓글일 때
+            check = commentService.commentBlog(commentForm.getUsername(), Long.parseLong(commentForm.getBlog_id()), commentForm.getContent());
+        }else{ // 대댓글일 때
+            check = commentService.replyBlog(Long.parseLong(commentForm.getParent()), commentForm.getUsername(), Long.parseLong(commentForm.getBlog_id()), commentForm.getContent());
+        }
+        //Long check = commentService.commentBlog(Long.parseLong(commentForm.getUsername()), Long.parseLong(commentForm.getBlog_id()), commentForm.getContent());
         if(check != 0){
             return new ResponseEntity<String>("comment success", HttpStatus.OK);
         }
         return new ResponseEntity<String>("comment fail", HttpStatus.NO_CONTENT);
     }
 
-    @ApiOperation(value = "블로그 게시물 번호에 해당하는 댓글들을 조회한다", response = List.class)
-    @GetMapping(value = "/comment/article/{article_id}")
-    public ResponseEntity<List<Comment>> ArticleComment(@PathVariable Long article_id){
-        List<Comment> commentList = commentService.findCommentByBoard(article_id);
-        for(Comment c : commentList){
-            System.out.println("댓글 작성자: " + c.getUser().getUsername());
-            System.out.println("댓글 내용: " + c.getContent());
-        }
+
+    @ApiOperation(value = "커뮤니티 게시물 번호에 해당하는 댓글들을 조회한다", response = List.class)
+    @GetMapping(value = "/comment/board/{id}")
+    public ResponseEntity<List<Comment>> BoardComment(@PathVariable Long id){
+        List<Comment> commentList = commentService.findCommentByBoard(id);
         System.out.println("end point");
+        System.out.println("commentList"+ commentList.toString());
         return new ResponseEntity<List<Comment>>(commentList, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "커뮤니티 게시물 번호에 해당하는 댓글들을 조회한다", response = List.class)
+    @ApiOperation(value = "블로그 게시물 번호에 해당하는 댓글들을 조회한다", response = List.class)
     @GetMapping(value = "/comment/blog/{id}")
-    public ResponseEntity<List<Comment>> CommunityBlog(@PathVariable Long id){
+    public ResponseEntity<List<Comment>> BlogComment(@PathVariable Long id){
         List<Comment> commentList = commentService.findCommentByBlog(id);
-        for(Comment c : commentList){
-            System.out.println("댓글 작성자: " + c.getUser().getUsername());
-            System.out.println("댓글 내용: " + c.getContent());
-        }
         System.out.println("end point");
         return new ResponseEntity<List<Comment>>(commentList, HttpStatus.OK);
     }

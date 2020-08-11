@@ -1,7 +1,7 @@
 package com.ssafy.apolio.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import lombok.Getter;
 import lombok.Setter;
 

@@ -7,7 +7,6 @@
   >
     <home-headline />
 
-    <gallery />
   </v-container>
 </template>
 
@@ -16,7 +15,6 @@
     name: 'Home',
 
     components: {
-      Gallery: () => import('@/components/base/Gallery'),
       HomeHeadline: () => import('@/components/base/HomeHeadline'),
     },
   }

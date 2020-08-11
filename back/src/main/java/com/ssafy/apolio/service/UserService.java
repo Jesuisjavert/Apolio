@@ -1,6 +1,6 @@
 package com.ssafy.apolio.service;
 
-import com.ssafy.apolio.domain.account.User;
+import com.ssafy.apolio.domain.user.User;
 import com.ssafy.apolio.repository.AccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,12 +20,12 @@ public class UserService {
      */
     @Transactional
     public Long join(User user) {
-        validateDuplicateAccount(user); //중복 회원 검증
+        validateDuplicateUser(user); //중복 회원 검증
         accountRepository.save(user);
         return user.getId();
     }
 
-    private void validateDuplicateAccount(User user) {
+    private void validateDuplicateUser(User user) {
         List<User> findUser = accountRepository.findByEmail(user.getEmail());
         if (!findUser.isEmpty()) {
             throw new IllegalStateException("이미 존재하는 회원입니다.");
@@ -33,11 +33,11 @@ public class UserService {
     }
 
     //회원 전체 조회
-    public List<User> findAccount() {
+    public List<User> findUser() {
         return accountRepository.findAll();
     }
 
-    public User findOne(Long accountId) {
-        return accountRepository.findOne(accountId);
+    public User findOne(Long userId) {
+        return accountRepository.findOne(userId);
     }
 }
