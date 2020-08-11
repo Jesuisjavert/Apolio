@@ -65,12 +65,23 @@
             </tr>
           </tbody> -->
         </v-simple-table>
-        <!-- <v-spacer /> -->
-        <!-- <base-article-create
+        <v-spacer />
+        <base-card-create
           fluid
           class="pa-0"
-        /> -->
+        />
+        <!--
         <v-container class="text-center">
+          <v-btn
+            text
+            medium
+            to="/card-create"
+          >
+            Write
+          </v-btn>
+        </v-container>
+         -->
+        <!-- <v-container class="text-center">
           <v-btn
             text
             medium
@@ -78,7 +89,7 @@
           >
             Write
           </v-btn>
-        </v-container>
+        </v-container> -->
       </v-col>
     </v-row>
   </v-container>
@@ -90,8 +101,9 @@
 
     components: {
       BlogHero: () => import('@/components/base/BlogHero'),
+      CardCreate: () => import('@/components/base/CardCreate'),
       // eslint-disable-next-line vue/no-unused-components
-      ArticleCreate: () => import('@/components/base/ArticleCreate'),
+      // ArticleCreate: () => import('@/components/base/ArticleCreate'),
     },
   }
 </script>
