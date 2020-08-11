@@ -59,8 +59,8 @@ public class HomeController {
             case "usa": // 미국 뉴스
                 address += "us";
                 break;
-            case "Italy": // 이탈리아 뉴스
-                address += "it";
+            case "france": // 이탈리아 뉴스
+                address += "fr";
                 break;
             case "singapore":// 싱가포르 뉴스
                 address += "sg";

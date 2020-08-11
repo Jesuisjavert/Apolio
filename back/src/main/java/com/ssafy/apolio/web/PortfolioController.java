@@ -11,8 +11,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.UUID;
 
@@ -83,6 +85,50 @@ public class PortfolioController {
         return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
     }
 
+    @ApiOperation(value = "포트폴리오 상세 조회에서 첨부파일이 있을 때 다운로드 할 수 있는 기능", response = String.class)
+    @GetMapping("/portfolio/download/{filename}")
+    public ResponseEntity<String> downloadFile(@PathVariable String filename, HttpServletRequest request, HttpServletResponse response){
+        String get_fileName = filename;
+        String real_fileName = "";
+        try{
+            String browser = request.getHeader("User-Agent");
+            if(browser.contains("MSIE") || browser.contains("Trident") || browser.contains("Chrome")){
+                get_fileName = URLEncoder.encode(get_fileName, "UTF-8").replaceAll("\\+", "%20");
+
+            }else{
+                get_fileName = new String(get_fileName.getBytes("UTF-8"), "ISO-8859-1");
+            }
+        } catch (UnsupportedEncodingException e) {
+            System.out.println("file encoding exception");
+        }
+        real_fileName = "C:/apolio_file/" + get_fileName;
+        System.out.println("download file name: " + real_fileName);
+        File file = new File(real_fileName);
+        if(!file.exists()){
+            return new ResponseEntity<String>("file not exist", HttpStatus.NO_CONTENT);
+        }
+        // 파일명 지정
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Transfer-Encoding", "binary;");
+        response.setHeader("Content-Disposition", "attachment; filename=\"" + get_fileName + "\"");
+        try {
+            OutputStream os = response.getOutputStream();
+            FileInputStream fis = new FileInputStream(real_fileName);
+
+            int ncount = 0;
+            byte[] bytes = new byte[512];
+
+            while ((ncount = fis.read(bytes)) != -1 ) {
+                os.write(bytes, 0, ncount);
+            }
+            fis.close();
+            os.close();
+        } catch (Exception e) {
+            System.out.println("FileNotFoundException : " + e);
+        }
+        return new ResponseEntity<String>("file download success", HttpStatus.OK);
+
+    }
 
 
 
