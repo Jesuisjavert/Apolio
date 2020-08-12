@@ -3,8 +3,7 @@ package com.ssafy.apolio.domain;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.ssafy.apolio.domain.user.User;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import static javax.persistence.FetchType.LAZY;
@@ -31,9 +30,9 @@ public class Comment {
     private User user;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "blog_id")
+    @JoinColumn(name = "community_id")
     @JsonBackReference
-    private Blog blog;
+    private Community community;
 
     private Long parent;//댓글인지, 대댓글인지 구별하는 column(parent가 null이면 댓글, 아니면은 대댓글)
 
@@ -57,14 +56,14 @@ public class Comment {
 
     }
 
-    public static Comment createCommentBlog(User user, Blog blog, String content){
+    public static Comment createCommentCommunity(User user, Community community, String content){
         Comment comment = new Comment();
         comment.setUser(user);
-        comment.setBlog(blog);
+        comment.setCommunity(community);
         comment.setContent(content);//댓글 내용
         comment.setCreate_date(LocalDateTime.now());//댓글 작성 시간
         user.addComment(comment);
-        blog.addComment(comment);
+        community.addComment(comment);
         return comment;
 
     }
@@ -84,16 +83,16 @@ public class Comment {
 
     }
 
-    public static Comment createReplyBlog(Long parent, User user, Blog blog, String content){
+    public static Comment createReplyCommunity(Long parent, User user, Community community, String content){
         Comment comment = new Comment();
         comment.setUser(user);
-        comment.setBlog(blog);
+        comment.setCommunity(community);
         comment.setContent(content);//대댓글 내용
         comment.setCreate_date(LocalDateTime.now());//대댓글 작성 시간
         comment.setParent(parent);//대댓글의 부모 댓글
         comment.setComment_group(parent);
         user.addComment(comment);
-        blog.addComment(comment);
+        community.addComment(comment);
         return comment;
 
     }

@@ -16,10 +16,10 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Getter
 @Setter
-public class Blog {
+public class Community {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "blog_id")
+    @Column(name = "community_id")
     private Long id;
 
     @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
@@ -27,11 +27,11 @@ public class Blog {
     @JsonBackReference
     private User user;
 
-    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Heart> hearts = new ArrayList<>();
 
@@ -43,20 +43,20 @@ public class Blog {
 
     public void addComment(Comment comment) {
         comments.add(comment);
-        comment.setBlog(this);
+        comment.setCommunity(this);
     }
 
     public void addHeart(Heart heart) {
         hearts.add(heart);
-        heart.setBlog(this);
+        heart.setCommunity(this);
     }
 
-    public static Blog createBlog(String title, String content, User user) {
-        Blog blog = new Blog();
-        blog.setTitle(title);
-        blog.setContent(content);
-        blog.setUser(user);
-        blog.setCreate_date(LocalDateTime.now());
-        return blog;
+    public static Community createCommunity(String title, String content, User user) {
+        Community community = new Community();
+        community.setTitle(title);
+        community.setContent(content);
+        community.setUser(user);
+        community.setCreate_date(LocalDateTime.now());
+        return community;
     }
 }

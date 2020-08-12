@@ -18,7 +18,7 @@ public class CommentController {
 
     private final CommentService commentService;
 
-    @ApiOperation(value = "유저 번호, 커뮤니티 게시물 번호, 댓글 내용을 받아서 댓글에 입력시킨다", response = String.class)
+    @ApiOperation(value = "유저 번호, 블로그 게시물 번호, 댓글 내용을 받아서 댓글에 입력시킨다", response = String.class)
     @PostMapping(value = "/comment/board")
     public ResponseEntity<String> insertCommentBoard(@RequestBody CommentForm commentForm){
         Long check = 0L;
@@ -34,14 +34,14 @@ public class CommentController {
         return new ResponseEntity<String>("comment fail", HttpStatus.NO_CONTENT);
     }
 
-    @ApiOperation(value = "유저 번호, 블로그 게시물 번호, 댓글 내용을 받아서 댓글에 입력한다", response = String.class)
-    @PostMapping(value = "/comment/blog")
-    public ResponseEntity<String> insertCommentBlog(@RequestBody CommentForm commentForm){
+    @ApiOperation(value = "유저 번호, 커뮤니티 게시물 번호, 댓글 내용을 받아서 댓글에 입력한다", response = String.class)
+    @PostMapping(value = "/comment/community")
+    public ResponseEntity<String> insertCommentCommunity(@RequestBody CommentForm commentForm){
         Long check = 0L;
         if(commentForm.getParent() == null){ // 기본 댓글일 때
-            check = commentService.commentBlog(commentForm.getUsername(), Long.parseLong(commentForm.getBlog_id()), commentForm.getContent());
+            check = commentService.commentCommunity(commentForm.getUsername(), Long.parseLong(commentForm.getCommunity_id()), commentForm.getContent());
         }else{ // 대댓글일 때
-            check = commentService.replyBlog(Long.parseLong(commentForm.getParent()), commentForm.getUsername(), Long.parseLong(commentForm.getBlog_id()), commentForm.getContent());
+            check = commentService.replyCommunity(Long.parseLong(commentForm.getParent()), commentForm.getUsername(), Long.parseLong(commentForm.getCommunity_id()), commentForm.getContent());
         }
         //Long check = commentService.commentBlog(Long.parseLong(commentForm.getUsername()), Long.parseLong(commentForm.getBlog_id()), commentForm.getContent());
         if(check != 0){
@@ -51,7 +51,7 @@ public class CommentController {
     }
 
 
-    @ApiOperation(value = "커뮤니티 게시물 번호에 해당하는 댓글들을 조회한다", response = List.class)
+    @ApiOperation(value = "블로그 게시물 번호에 해당하는 댓글들을 조회한다", response = List.class)
     @GetMapping(value = "/comment/board/{id}")
     public ResponseEntity<List<Comment>> BoardComment(@PathVariable Long id){
         List<Comment> commentList = commentService.findCommentByBoard(id);
@@ -60,10 +60,10 @@ public class CommentController {
         return new ResponseEntity<List<Comment>>(commentList, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "블로그 게시물 번호에 해당하는 댓글들을 조회한다", response = List.class)
-    @GetMapping(value = "/comment/blog/{id}")
-    public ResponseEntity<List<Comment>> BlogComment(@PathVariable Long id){
-        List<Comment> commentList = commentService.findCommentByBlog(id);
+    @ApiOperation(value = "커뮤니티 게시물 번호에 해당하는 댓글들을 조회한다", response = List.class)
+    @GetMapping(value = "/comment/community/{id}")
+    public ResponseEntity<List<Comment>> CommunityComment(@PathVariable Long id){
+        List<Comment> commentList = commentService.findCommentByCommunity(id);
         System.out.println("end point");
         return new ResponseEntity<List<Comment>>(commentList, HttpStatus.OK);
     }

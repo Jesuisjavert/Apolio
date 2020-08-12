@@ -53,7 +53,7 @@ public class User extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<Blog> blogs = new ArrayList<>();
+    private List<Community> blogs = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -65,7 +65,7 @@ public class User extends BaseTimeEntity {
         board.setUser(this);
     }
 
-    public void addBlog(Blog blog){
+    public void addBlog(Community blog){
         blogs.add(blog);
         blog.setUser(this);
     }

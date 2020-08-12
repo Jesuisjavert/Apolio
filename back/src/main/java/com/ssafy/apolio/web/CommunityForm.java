@@ -5,7 +5,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BlogForm {
+public class CommunityForm {
     private String title;
     private String content;
     private String username;

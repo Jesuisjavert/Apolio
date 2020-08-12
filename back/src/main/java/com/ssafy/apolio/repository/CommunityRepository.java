@@ -1,6 +1,6 @@
 package com.ssafy.apolio.repository;
 
-import com.ssafy.apolio.domain.Blog;
+import com.ssafy.apolio.domain.Community;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
@@ -9,23 +9,23 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class BlogRepository {
+public class CommunityRepository {
     private final EntityManager em;
 
-    public void save(Blog community) {
+    public void save(Community community) {
         em.persist(community);
     }
 
-    public Blog findOne(Long id) {
-        return em.find(Blog.class, id);
+    public Community findOne(Long id) {
+        return em.find(Community.class, id);
     }
 
-    public List<Blog> findAll() {
-        return em.createQuery("select b from Blog b", Blog.class)
+    public List<Community> findAll() {
+        return em.createQuery("select c from Community c", Community.class)
                 .getResultList();
     }
-    public int updateCommunityById(Blog community){
-        String jpql = "update Blog b set b.title = :title, b.content = :content where b.id = :id";
+    public int updateCommunityById(Community community){
+        String jpql = "update Community c set c.title = :title, c.content = :content where c.id = :id";
         Query query = em.createQuery(jpql);
         query.setParameter("title", community.getTitle());
         query.setParameter("content", community.getContent());
@@ -35,7 +35,7 @@ public class BlogRepository {
     }
 
     public int deleteCommunityById(Long id){
-        String jpql = "delete from Blog b where b.id = :id";
+        String jpql = "delete from Community c where c.id = :id";
         Query query = em.createQuery(jpql);
         query.setParameter("id", id);
         int check = query.executeUpdate();

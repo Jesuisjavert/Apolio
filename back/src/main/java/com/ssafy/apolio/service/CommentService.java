@@ -2,12 +2,12 @@ package com.ssafy.apolio.service;
 
 import com.ssafy.apolio.domain.Board;
 import com.ssafy.apolio.domain.Comment;
-import com.ssafy.apolio.domain.Blog;
+import com.ssafy.apolio.domain.Community;
 import com.ssafy.apolio.domain.user.User;
 import com.ssafy.apolio.repository.AccountRepository;
 import com.ssafy.apolio.repository.BoardRepository;
 import com.ssafy.apolio.repository.CommentRepository;
-import com.ssafy.apolio.repository.BlogRepository;
+import com.ssafy.apolio.repository.CommunityRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,7 +22,7 @@ public class CommentService {
     private final CommentRepository commentRepository;
     private final BoardRepository boardRepository;
     private final AccountRepository accountRepository;
-    private final BlogRepository blogRepository;
+    private final CommunityRepository blogRepository;
 
     @Transactional
     public long commentBoard(String username, Long board_id, String content){
@@ -51,22 +51,22 @@ public class CommentService {
     }
 
     @Transactional
-    public long commentBlog(String username, Long blog_id, String content){
+    public long commentCommunity(String username, Long blog_id, String content){
         User user = accountRepository.findByName(username);
-        Blog blog = blogRepository.findOne(blog_id);
-        Comment comment = Comment.createCommentBlog(user, blog, content);
+        Community blog = blogRepository.findOne(blog_id);
+        Comment comment = Comment.createCommentCommunity(user, blog, content);
         commentRepository.save(comment);
 
         return comment.getId();
     }
     @Transactional
-    public long replyBlog(Long parent, String username, Long blog_id, String content){
+    public long replyCommunity(Long parent, String username, Long blog_id, String content){
         User user = accountRepository.findByName(username);
-        Blog blog = blogRepository.findOne(blog_id);
+        Community blog = blogRepository.findOne(blog_id);
         Comment parentComment = commentRepository.findOneByBlogId(blog_id, parent);
         int ok = commentRepository.updateParentComment(parentComment.getId());//첫번 째 댓글 그룹 지정
         if(ok != 0){
-            Comment comment = Comment.createReplyBlog(parent, user, blog, content);//대댓글 입력 및 그룹 지정
+            Comment comment = Comment.createReplyCommunity(parent, user, blog, content);//대댓글 입력 및 그룹 지정
             commentRepository.save(comment);
             return comment.getId();
         }
@@ -81,7 +81,7 @@ public class CommentService {
         return commentRepository.findAllByBoardId(id);
     }
 
-    public List<Comment> findCommentByBlog(Long id){
+    public List<Comment> findCommentByCommunity(Long id){
         return commentRepository.findAllByBlogId(id);
     }
 
