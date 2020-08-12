@@ -9,5 +9,5 @@ import javax.persistence.EntityManager;
 
 @Repository
 public interface HeartRepository extends JpaRepository<Heart, Long> {
-    Long countByBoardId(Long board_id);
+    Long countByBlogId(Long blog_id);
 }

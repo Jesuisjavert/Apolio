@@ -20,9 +20,9 @@ public class Comment {
 
 
     @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "board_id")
+    @JoinColumn(name = "blog_id")
     @JsonBackReference
-    private Board board;
+    private Blog blog;
 
     @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -44,14 +44,14 @@ public class Comment {
 
 
     // 댓글 작성 메소드
-    public static Comment createCommentBoard(User user, Board board, String content){
+    public static Comment createCommentBlog(User user, Blog blog, String content){
         Comment comment = new Comment();
         comment.setUser(user);
-        comment.setBoard(board);
+        comment.setBlog(blog);
         comment.setContent(content);//댓글 내용
         comment.setCreate_date(LocalDateTime.now());//댓글 작성 시간
         user.addComment(comment);
-        board.addComment(comment);
+        blog.addComment(comment);
         return comment;
 
     }
@@ -69,16 +69,16 @@ public class Comment {
     }
 
     //대댓글 작성 메소드
-    public static Comment createReplyBoard(Long parent, User user, Board board, String content){
+    public static Comment createReplyBlog(Long parent, User user, Blog blog, String content){
         Comment comment = new Comment();
         comment.setUser(user);
-        comment.setBoard(board);
+        comment.setBlog(blog);
         comment.setContent(content);//대댓글 내용
         comment.setCreate_date(LocalDateTime.now());//대댓글 작성 시간
         comment.setParent(parent);//대댓글의 부모 댓글
         comment.setComment_group(parent);
         user.addComment(comment);
-        board.addComment(comment);
+        blog.addComment(comment);
         return comment;
 
     }

@@ -16,24 +16,24 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Getter
 @Setter
-public class Board {
+public class Blog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "board_id")
+    @Column(name = "blog_id")
     private Long id;
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Heart> hearts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<TagBoard> tagBoards = new ArrayList<>();
+    private List<TagBlog> tagBlogs = new ArrayList<>();
 
     @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -51,33 +51,33 @@ public class Board {
     //==연관관계 메서드==//
     public void addComment(Comment comment) {
         comments.add(comment);
-        comment.setBoard(this);
+        comment.setBlog(this);
     }
 
     public void addHeart(Heart heart) {
         hearts.add(heart);
-        heart.setBoard(this);
+        heart.setBlog(this);
     }
 
-    public void addTagBoard(TagBoard tagBoard) {
-        tagBoards.add(tagBoard);
-        tagBoard.setBoard(this);
+    public void addTagBlog(TagBlog tagBlog) {
+        tagBlogs.add(tagBlog);
+        tagBlog.setBlog(this);
     }
 
     //==생성 메서드==//
-    public static Board createBoard(User user, String title, String content, String img_thumb, TagBoard... tagBoards) {
-        Board board = new Board();
+    public static Blog createBlog(User user, String title, String content, String img_thumb, TagBlog... tagBlogs) {
+        Blog blog = new Blog();
 
-        board.setTitle(title);
-        board.setContent(content);
-        board.setImg_thumb(img_thumb);
-        board.setCreate_date(LocalDateTime.now());
-        board.setUser(user);
-        for (TagBoard tagBoard : tagBoards){
-            board.addTagBoard(tagBoard);
+        blog.setTitle(title);
+        blog.setContent(content);
+        blog.setImg_thumb(img_thumb);
+        blog.setCreate_date(LocalDateTime.now());
+        blog.setUser(user);
+        for (TagBlog tagBlog : tagBlogs){
+            blog.addTagBlog(tagBlog);
         }
 
-        return board;
+        return blog;
     }
 
 }

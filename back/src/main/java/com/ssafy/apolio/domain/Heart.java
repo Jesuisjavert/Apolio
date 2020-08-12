@@ -25,9 +25,9 @@ public class Heart {
     private User user;
 
     @ManyToOne(fetch = LAZY)
-    @JoinColumn(name = "board_id")
+    @JoinColumn(name = "blog_id")
     @JsonBackReference
-    private Board board;
+    private Blog blog;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "community_id")

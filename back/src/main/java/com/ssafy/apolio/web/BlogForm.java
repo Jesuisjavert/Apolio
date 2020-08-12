@@ -6,7 +6,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BoardForm {
+public class BlogForm {
     private User user;
     private String title;
     private String content;

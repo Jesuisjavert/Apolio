@@ -1,7 +1,7 @@
 package com.ssafy.apolio.repository;
 
-import com.ssafy.apolio.domain.Board;
-import com.ssafy.apolio.domain.BoardSearch;
+import com.ssafy.apolio.domain.Blog;
+import com.ssafy.apolio.domain.BlogSearch;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.util.StringUtils;
@@ -12,31 +12,31 @@ import java.util.List;
 
 @Repository
 @RequiredArgsConstructor
-public class BoardRepository {
+public class BlogRepository {
 
     private final EntityManager em;
 
-    public void save(Board board) {
-        em.persist(board);
+    public void save(Blog blog) {
+        em.persist(blog);
     }
 
-    public Board findOne(Long id) {
-        return em.find(Board.class, id);
+    public Blog findOne(Long id) {
+        return em.find(Blog.class, id);
     }
 
-    public List<Board> findAll() {
-        return em.createQuery("select b from Board b", Board.class)
+    public List<Blog> findAll() {
+        return em.createQuery("select b from Blog b", Blog.class)
                 .getResultList();
     }
 
     //검색 조건에 동적으로 쿼리를 생성해서 Board 엔티티를 조회한다.
     //JPQL로 처리
-    public List<Board> find(BoardSearch boardSearch) {
+    public List<Blog> find(BlogSearch blogSearch) {
         //language=JPQAL
-        String jpql = "select b From Board b join b.tagBoards tb join tb.tag t";
+        String jpql = "select b From Blog b join b.tagBlogs tb join tb.tag t";
         boolean isFirstCondition = true;
         //태그 선택
-        if (boardSearch.getTagName() != null) {
+        if (blogSearch.getTagName() != null) {
             if (isFirstCondition) {
                 jpql += " where";
                 isFirstCondition = false;
@@ -46,22 +46,22 @@ public class BoardRepository {
             jpql += " t.name = :tagName";
         }
         //게시글 제목 검색
-        if (StringUtils.hasText(boardSearch.getBoardTitle())) {
+        if (StringUtils.hasText(blogSearch.getBlogTitle())) {
             if (isFirstCondition) {
                 jpql += " where";
                 isFirstCondition = false;
             } else {
                 jpql += " and";
             }
-            jpql += " b.title like concat('%', :boardTitle, '%')";
+            jpql += " b.title like concat('%', :blogTitle, '%')";
         }
-        TypedQuery<Board> query = em.createQuery(jpql, Board.class)
+        TypedQuery<Blog> query = em.createQuery(jpql, Blog.class)
                 .setMaxResults(1000); //최대 1000건
-        if (boardSearch.getTagName() != null) {
-            query = query.setParameter("tagName", boardSearch.getTagName());
+        if (blogSearch.getTagName() != null) {
+            query = query.setParameter("tagName", blogSearch.getTagName());
         }
-        if (StringUtils.hasText(boardSearch.getBoardTitle())) {
-            query = query.setParameter("boardTitle", boardSearch.getBoardTitle());
+        if (StringUtils.hasText(blogSearch.getBlogTitle())) {
+            query = query.setParameter("blogTitle", blogSearch.getBlogTitle());
         }
         return query.getResultList();
     }

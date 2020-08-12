@@ -13,6 +13,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommunityService {
 
+    private final CommunityRepository communityRepository;
+
     @Transactional
     public Long community(String title, String content, String username) {
         User user = new User();
@@ -22,8 +24,6 @@ public class CommunityService {
 
         return community.getId();
     }
-
-    private final CommunityRepository communityRepository;
 
     public List<Community> findCommunityAll() {
         return communityRepository.findAll();
