@@ -97,26 +97,33 @@
     data () {
       return {
         dialog: false,
-        title: null,
         content: null,
-        username: 'muke',
+        title: null,
+        username: null,
       }
     },
     methods: {
       createArticle () {
         this.dialog = false
-        const articleData = {
-          title: this.title,
+        // const RequestHeader = {
+        //   body: {
+        //     content: this.content,
+        //     title: this.title,
+        //     username: this.username,
+        //   },
+        // }
+        const createData = {
           content: this.content,
+          title: this.title,
           username: this.username,
         }
-        console.log(articleData)
+        console.log(createData)
         // const RequestHeader = {
         //   headers: {
         //     Authorization: `Token ${this.$cookies.get('auth-token')}`,
         //   },
         // }
-        axios.post(API_URL + '/api/board/', articleData) // , RequestHeader
+        axios.post(API_URL + '/api/community', createData) // , RequestHeader
           .then((res) => {
             console.log('잘 가는거')
             this.$router.go(0)

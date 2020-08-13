@@ -52,7 +52,7 @@
                     <span class="headline">{{ feature.title }}</span>
                   </v-card-title>
                   <v-card-text>
-                    <span> {{ feature.user.name }}</span>
+                    <span> {{ feature.username }}</span>
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer />
@@ -118,7 +118,7 @@
     },
     methods: {
       loadArticle () {
-        axios.get(`${API_URL}/api/board/`).then((res) => {
+        axios.get(`${API_URL}/api/community`).then((res) => {
           this.features = res.data
           console.log(res.data)
           console.log('----------------')
