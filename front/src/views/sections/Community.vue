@@ -52,7 +52,7 @@
                     <span class="headline">{{ feature.title }}</span>
                   </v-card-title>
                   <v-card-text>
-                    <span> {{ feature.content }}</span>
+                    <span> {{ feature.user.name }}</span>
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer />
