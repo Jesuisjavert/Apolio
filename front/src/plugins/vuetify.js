@@ -5,15 +5,14 @@ import Vuetify, { VRow } from 'vuetify/lib'
 Vue.use(Vuetify, {
   components: { VRow },
 })
-// primary 빨간 / secondary 짙은 남색 / accent 흰색
 export default new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: '#CE1F39',
-        secondary: '#270949',
-        accent: '#FFFFFF',
-        error: '#FF5252',
+        primary: '#CC5163',
+        secondary: '#FFFFFF',
+        accent: '#3AAA1D',
+        error: '#FF5252', 
         info: '#2196F3',
         success: '#4CAF50',
         warning: '#FFC107',
@@ -21,3 +20,8 @@ export default new Vuetify({
     },
   },
 })
+
+// Error : 빨간색
+// info : 짙하늘색
+// success: 에메랄드초록
+// warning: 바나나노랑

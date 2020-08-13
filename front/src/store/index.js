@@ -17,6 +17,7 @@ export default new Vuex.Store({
       'Blog',
       'Community',
       'Contact',
+      'Login',
     ],
   },
 

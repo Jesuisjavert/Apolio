@@ -5,10 +5,18 @@ import com.ssafy.apolio.domain.Portfolio;
 import com.ssafy.apolio.service.PortfolioService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.io.FilenameUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.net.URLEncoder;
 import java.util.List;
+import java.util.UUID;
 
 @CrossOrigin(origins = { "*" }, maxAge = 6000)
 @RestController
@@ -20,8 +28,24 @@ public class PortfolioController {
 
     @ApiOperation(value = "새로운 포트폴리오 게시물을 입력한다.", response = String.class)
     @PostMapping("/portfolio")
-    public ResponseEntity<String> insertPortfolio(@RequestBody Portfolio portfolio){
-        Long check = portfolioService.portfolio(portfolio.getTitle(), portfolio.getContent(), portfolio.getImg());
+    public ResponseEntity<String> insertPortfolio(PortfolioForm portfolioForm) throws IOException {
+        //Long check = portfolioService.portfolio(portfolio.getTitle(), portfolio.getContent(), portfolio.getImg());
+        Long check = 0L;
+        if(portfolioForm.getUploadFile() == null){
+            check = portfolioService.portfolio(portfolioForm.getTitle(), portfolioForm.getContent(), portfolioForm.getImg());
+        }else{
+            String fileName = null;
+            MultipartFile uploadFile = portfolioForm.getUploadFile();
+            if(!uploadFile.isEmpty()){
+                String origin_filename = uploadFile.getOriginalFilename();
+                System.out.println("origin name:" + origin_filename);
+                fileName = origin_filename;
+                System.out.println("file name: " + fileName);
+                uploadFile.transferTo(new File("C:/apolio_file/" + fileName));
+            }
+
+            check = portfolioService.portfolioWithFile(portfolioForm.getTitle(), portfolioForm.getContent(), portfolioForm.getImg(), fileName);
+        }
         if(check != 0){
             return new ResponseEntity<String>("portfolio insert success", HttpStatus.OK);
         }
@@ -61,6 +85,50 @@ public class PortfolioController {
         return new ResponseEntity<String>("fail", HttpStatus.NO_CONTENT);
     }
 
+    @ApiOperation(value = "포트폴리오 상세 조회에서 첨부파일이 있을 때 다운로드 할 수 있는 기능", response = String.class)
+    @GetMapping("/portfolio/download/{filename}")
+    public ResponseEntity<String> downloadFile(@PathVariable String filename, HttpServletRequest request, HttpServletResponse response){
+        String get_fileName = filename;
+        String real_fileName = "";
+        try{
+            String browser = request.getHeader("User-Agent");
+            if(browser.contains("MSIE") || browser.contains("Trident") || browser.contains("Chrome")){
+                get_fileName = URLEncoder.encode(get_fileName, "UTF-8").replaceAll("\\+", "%20");
+
+            }else{
+                get_fileName = new String(get_fileName.getBytes("UTF-8"), "ISO-8859-1");
+            }
+        } catch (UnsupportedEncodingException e) {
+            System.out.println("file encoding exception");
+        }
+        real_fileName = "C:/apolio_file/" + get_fileName;
+        System.out.println("download file name: " + real_fileName);
+        File file = new File(real_fileName);
+        if(!file.exists()){
+            return new ResponseEntity<String>("file not exist", HttpStatus.NO_CONTENT);
+        }
+        // 파일명 지정
+        response.setContentType("application/octet-stream");
+        response.setHeader("Content-Transfer-Encoding", "binary;");
+        response.setHeader("Content-Disposition", "attachment; filename=\"" + get_fileName + "\"");
+        try {
+            OutputStream os = response.getOutputStream();
+            FileInputStream fis = new FileInputStream(real_fileName);
+
+            int ncount = 0;
+            byte[] bytes = new byte[512];
+
+            while ((ncount = fis.read(bytes)) != -1 ) {
+                os.write(bytes, 0, ncount);
+            }
+            fis.close();
+            os.close();
+        } catch (Exception e) {
+            System.out.println("FileNotFoundException : " + e);
+        }
+        return new ResponseEntity<String>("file download success", HttpStatus.OK);
+
+    }
 
 
 

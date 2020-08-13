@@ -1,8 +1,8 @@
 package com.ssafy.apolio;
 
-import com.ssafy.apolio.domain.Board;
+import com.ssafy.apolio.domain.Blog;
 import com.ssafy.apolio.domain.Tag;
-import com.ssafy.apolio.domain.TagBoard;
+import com.ssafy.apolio.domain.TagBlog;
 import com.ssafy.apolio.domain.user.User;
 import com.ssafy.apolio.domain.user.Role;
 import lombok.RequiredArgsConstructor;
@@ -39,10 +39,10 @@ public class InitDB {
             em.persist(tag1);
             Tag tag2 = createTag("앱");
             em.persist(tag2);
-            TagBoard tagBoard1 = TagBoard.createTagBoard(tag1);
-            TagBoard tagBoard2 = TagBoard.createTagBoard(tag2);
-            Board board = Board.createBoard(user,"잘생겨지는 방법", "응 타고나~", null, tagBoard1, tagBoard2);
-            em.persist(board);
+            TagBlog tagBlog1 = TagBlog.createTagBlog(tag1);
+            TagBlog tagBlog2 = TagBlog.createTagBlog(tag2);
+            Blog blog = Blog.createBlog(user,"잘생겨지는 방법", "응 타고나~", null, tagBlog1, tagBlog2);
+            em.persist(blog);
         }
 
         public void dbInit2() {
@@ -52,10 +52,10 @@ public class InitDB {
             em.persist(tag1);
             Tag tag2 = createTag("클라우드");
             em.persist(tag2);
-            TagBoard tagBoard1 = TagBoard.createTagBoard(tag1);
-            TagBoard tagBoard2 = TagBoard.createTagBoard(tag2);
-            Board board = Board.createBoard(user,"귀여워지는 방법", "큐티 앙", null, tagBoard1, tagBoard2);
-            em.persist(board);
+            TagBlog tagBlog1 = TagBlog.createTagBlog(tag1);
+            TagBlog tagBlog2 = TagBlog.createTagBlog(tag2);
+            Blog blog = Blog.createBlog(user,"귀여워지는 방법", "큐티 앙", null, tagBlog1, tagBlog2);
+            em.persist(blog);
         }
 
         public void dbInit3() {
@@ -65,10 +65,10 @@ public class InitDB {
             em.persist(tag1);
             Tag tag2 = createTag("네트워크");
             em.persist(tag2);
-            TagBoard tagBoard1 = TagBoard.createTagBoard(tag1);
-            TagBoard tagBoard2 = TagBoard.createTagBoard(tag2);
-            Board board = Board.createBoard(user,"섹시해지는 방법", "땀 흘리는 남자 박승범", "sssssss", tagBoard1, tagBoard2);
-            em.persist(board);
+            TagBlog tagBlog1 = TagBlog.createTagBlog(tag1);
+            TagBlog tagBlog2 = TagBlog.createTagBlog(tag2);
+            Blog blog = Blog.createBlog(user,"섹시해지는 방법", "땀 흘리는 남자 박승범", "sssssss", tagBlog1, tagBlog2);
+            em.persist(blog);
         }
 
         public void dbInit4() {
@@ -78,10 +78,10 @@ public class InitDB {
             em.persist(tag1);
             Tag tag2 = createTag("알고리즘");
             em.persist(tag2);
-            TagBoard tagBoard1 = TagBoard.createTagBoard(tag1);
-            TagBoard tagBoard2 = TagBoard.createTagBoard(tag2);
-            Board board = Board.createBoard(user,"깜찍해지는 방법", "뀨잉뀨잉", "wwss.fa", tagBoard1, tagBoard2);
-            em.persist(board);
+            TagBlog tagBlog1 = TagBlog.createTagBlog(tag1);
+            TagBlog tagBlog2 = TagBlog.createTagBlog(tag2);
+            Blog blog = Blog.createBlog(user,"깜찍해지는 방법", "뀨잉뀨잉", "wwss.fa", tagBlog1, tagBlog2);
+            em.persist(blog);
         }
 
         public void dbInit5() {
@@ -91,10 +91,10 @@ public class InitDB {
             em.persist(tag1);
             Tag tag2 = createTag("소프트웨어공학");
             em.persist(tag2);
-            TagBoard tagBoard1 = TagBoard.createTagBoard(tag1);
-            TagBoard tagBoard2 = TagBoard.createTagBoard(tag2);
-            Board board = Board.createBoard(user,"DFS란 무엇인가", "BFS와의 차이점을 알려드리겠습니다.", "aa", tagBoard1, tagBoard2);
-            em.persist(board);
+            TagBlog tagBlog1 = TagBlog.createTagBlog(tag1);
+            TagBlog tagBlog2 = TagBlog.createTagBlog(tag2);
+            Blog blog = Blog.createBlog(user,"DFS란 무엇인가", "BFS와의 차이점을 알려드리겠습니다.", "aa", tagBlog1, tagBlog2);
+            em.persist(blog);
         }
 
         private User createAccount(String username, String email, String picture, String nickname, Role role) {

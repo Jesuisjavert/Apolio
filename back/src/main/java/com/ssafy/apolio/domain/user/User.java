@@ -53,21 +53,21 @@ public class User extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<Blog> blogs = new ArrayList<>();
+    private List<Community> communities = new ArrayList<>();
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<Board> boards = new ArrayList<>();
+    private List<Blog> blogs = new ArrayList<>();
 
 
-    public void addBoard(Board board){
-        boards.add(board);
-        board.setUser(this);
-    }
-
-    public void addBlog(Blog blog){
+    public void addBoard(Blog blog){
         blogs.add(blog);
         blog.setUser(this);
+    }
+
+    public void addCommunity(Community community){
+        communities.add(community);
+        community.setUser(this);
     }
 
     public void addComment(Comment comment){

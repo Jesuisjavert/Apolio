@@ -11,7 +11,7 @@
         :key="i"
         class="ma-1"
         icon
-        text="accent"
+        text
         color="primary"
       >
         <v-icon v-text="icon" />

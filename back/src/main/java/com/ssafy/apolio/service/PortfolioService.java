@@ -26,6 +26,17 @@ public class PortfolioService {
         return portfolio.getId();
     }
 
+    @Transactional
+    public Long portfolioWithFile(String title, String content, String img, String filename){
+        Portfolio portfolio = new Portfolio();
+        portfolio.setTitle(title);
+        portfolio.setContent(content);
+        portfolio.setImg(img);
+        portfolio.setFile_name(filename);
+        portfolioRepository.save(portfolio);
+        return portfolio.getId();
+    }
+
     public List<Portfolio> searchAll(){
         return portfolioRepository.findPortfolioAll();
     }
