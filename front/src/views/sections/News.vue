@@ -1,12 +1,10 @@
 <template>
   <v-container
     id="news"
-    class="pt-12 pb-0 px-0"
-    fluid
     tag="section"
   >
     <div>
-      <div class="text-center pa-3">
+      <div class="text-center">
         <v-btn
           icon
           @click="showTabs = !showTabs"

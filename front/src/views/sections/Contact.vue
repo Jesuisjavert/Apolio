@@ -35,15 +35,19 @@
         </div>
 
         <div class="mb-4">
-          <strong>Phone</strong> (062) 950-6114
+          <strong>Name</strong>: 강 동 훈 ( Kang Donghoon )
         </div>
 
         <div class="mb-4">
-          <strong>Email</strong> ssafy7@gmail.com
+          <strong>Phone</strong> +82) 10 - 4873 - 3847
         </div>
 
         <div class="mb-4">
-          <strong>Fax</strong> (062) 950-6114
+          <strong>Email</strong> jesuisjavert@gmail.com
+        </div>
+
+        <div class="mb-4">
+          <strong>Company</strong> Samsung Software Academy For Youth
         </div>
       </v-col>
 

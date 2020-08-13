@@ -6,7 +6,6 @@
     tag="section"
   >
     <home-headline />
-
   </v-container>
 </template>
 
