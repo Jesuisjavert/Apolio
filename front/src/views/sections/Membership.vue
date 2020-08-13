@@ -48,7 +48,7 @@
   const API_URL = 'http://127.0.0.1:8080/auth'
 
   export default {
-    name: 'Login',
+    name: 'Membership',
 
     components: {
     },
@@ -68,7 +68,6 @@
           })
           .catch(err => {
             console.log(err);
-
           })
       }
     },

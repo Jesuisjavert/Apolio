@@ -7,22 +7,22 @@
   import LoadSections from '@/mixins/load-sections'
 
   export default {
-    name: 'Login',
+    name: 'Membership',
 
-    metaInfo: { title: 'Login' },
+    metaInfo: { title: 'Membership' },
 
     extends: View,
 
     mixins: [
       LoadSections([
-        'Login',
+        'Membership',
       ]),
     ],
 
     props: {
       id: {
         type: String,
-        default: 'Login',
+        default: 'Membership',
       },
     },
   }

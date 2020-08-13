@@ -7,22 +7,22 @@
         max-width="450"
       >
         <template v-slot:activator="{ on, attrs }">
-          <base-btn
-            :color="!theme.isDark ? 'accent' : 'white'"
-            outlined
+          <v-btn
+            :color="!theme.isDark ? 'primary' : 'white'"
+            x-large
             v-bind="attrs"
             v-on="on"
           >
             Write
-          </base-btn>
+          </v-btn>
         </template>
         <v-card>
           <v-toolbar
-            dark
+            color="success"
           >
             <v-btn
               icon
-              dark
+
               @click="dialog = false"
             >
               <v-icon>mdi-close</v-icon>
@@ -31,8 +31,8 @@
             <v-spacer />
             <v-toolbar-items>
               <v-btn
-                dark
                 text
+                white
                 @click="createArticle"
               >
                 Save

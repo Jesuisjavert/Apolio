@@ -15,6 +15,9 @@
             class="shrink mr-2"
             height="90"
             width="200"
+            to="home"
+            @click="gohome"
+            style="cursor: pointer"
           />
         </div>
 
@@ -65,6 +68,9 @@
       ...mapMutations({
         setDrawer: 'SET_DRAWER',
       }),
+      gohome() {
+        this.$router.push('/')
+      },
     },
   }
 </script>
