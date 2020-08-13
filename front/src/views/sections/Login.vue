@@ -1,20 +1,20 @@
 <template>
-  <div class="container">
+  <div class="container" style="margin-bottom: 48px">
     <div class="welcome">
       <div class="pinkbox" :style="{transform: myTansfrom}">
         <div class="signup" :class="{nodisplay: !this.flag}">
-          <h1>register</h1>
+          <h1>Sign up</h1>
           <input type="email" placeholder="email" v-model="signupData.email">
           <input type="password" placeholder="password" v-model="signupData.password">
           <input type="text" placeholder="nickname" v-model="signupData.nickname">
           <button class="button submit" @click="signup">create account </button>
         </div>
         <div class="signin" :class="{nodisplay: this.flag}">
-          <h1>sign in</h1>
+          <h1>Login</h1>
             <input type="email" placeholder="email" v-model="loginData.email">
             <input type="password" placeholder="password" v-model="loginData.password">
 
-            <button class="button submit" @click="login">login</button>
+            <button class="button submit" @click="login">login</button><br>
 
             <button class="loginBtn loginBtn--facebook" onclick="location.href='http://localhost:8080/oauth2/authorize/facebook?redirect_uri=http://localhost:3000/oauth2/redirect'">
               Login with Facebook
@@ -26,16 +26,15 @@
         </div>
       </div>
       <div class="leftbox">
-        <h2 class="title"><span>BLOOM</span>&<br>BOUQUET</h2>
-        <p class="desc">pick your perfect <span>bouquet</span></p>
-        <img class="flower smaller" src="https://image.ibb.co/d5X6pn/1357d638624297b.jpg" alt="1357d638624297b" border="0">
+        <h2 class="title"><span>회원가입</span><br> & Sign Up</h2>
+        <img class="flower smaller" src="https://image.ibb.co/d5X6pn/1357d638624297b.jpg" alt="1357d638624297b" border="0"><br>
         <p class="account">have an account?</p>
         <button class="button" id="signin" @click="flag = false">login</button>
       </div>
       <div class="rightbox">
-        <h2 class="title"><span>BLOOM</span>&<br>BOUQUET</h2>
-        <p class="desc"> pick your perfect <span>bouquet</span></p>
+        <h2 class="title"><span>로그인</span> & Login</h2>
         <img class="flower" src="https://preview.ibb.co/jvu2Un/0057c1c1bab51a0.jpg"/>
+        <br><br>
         <p class="account">don't have an account?</p>
         <button class="button" id="signup" @click="flag = true">sign up</button>
       </div>
@@ -81,6 +80,7 @@
     data() {
       return{
         flag: false,
+        justify: 'center',
         loginData: {
           email: null,
           password: null,
@@ -103,10 +103,10 @@
 
   $pink: darken($pale, 20%);
 
-  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora');
+  // @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora');
 
-  $sans-serif: 'Open Sans', sans-serif;
-  $serif: 'Lora', serif;
+  // $sans-serif: 'Open Sans', sans-serif;
+  // $serif: 'Lora', serif;
 
   body {
     background: $lavender;
@@ -163,7 +163,7 @@
 
   /* font & button styling */
   h1 {
-    font-family: $sans-serif;
+    // font-family: $sans-serif;
     text-align: center;
     margin-top: 95px;
     text-transform: uppercase;
@@ -173,7 +173,7 @@
   }
 
   .title {
-    font-family: $serif;
+    // font-family: $serif;
     color: $gray;
     font-size: 1.8em;
     line-height: 1.1em;
@@ -186,19 +186,20 @@
     margin-top: -8px;
   }
   .account {
+    color: black;
     margin-top: 45%;
     font-size: 10px;
   }
   p {
-    font-family: $sans-serif;
+    // font-family: $sans-serif;
     font-size: .7em;
     letter-spacing: 2px;
-    color: $gray;
+    color: #000000;
     text-align: center;
   }
 
   span {
-    color: $pale;
+    color: #ff6b87;
   }
 
   .flower {
@@ -220,7 +221,7 @@
 
   button {
     padding: 12px;
-    font-family: $sans-serif;
+    // font-family: $sans-serif;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 11px;
@@ -296,7 +297,7 @@
   }
 
   label {
-    font-family: $sans-serif;
+    // font-family: $sans-serif;
     color: $pink;
     font-size: 0.8em;
     letter-spacing: 1px;
@@ -322,16 +323,18 @@
   .loginBtn {
     box-sizing: border-box;
     position: relative;
-    /* width: 13em;  - apply for fixed size */
+    width: 20em;
     margin: 0.2em;
     padding: 0 15px 0 46px;
     border: none;
     text-align: left;
     line-height: 34px;
     white-space: nowrap;
-    border-radius: 0.2em;
-    font-size: 16px;
+    border-radius: 0.8em;
+    font-size: 12px;  
     color: #FFF;
+    margin-left: 35px;
+    
   }
   .loginBtn:before {
     content: "";
@@ -356,6 +359,7 @@
     background-image: linear-gradient(#4C69BA, #3B55A0);
     /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
     text-shadow: 0 -1px 0 #354C8C;
+    margin-bottom: 12px;
   }
   .loginBtn--facebook:before {
     border-right: #364e92 1px solid;
@@ -370,7 +374,7 @@
 
   /* Google */
   .loginBtn--google {
-    /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+    // /*font-family: "Roboto", Roboto, arial, sans-serif;*/
     background: #DD4B39;
   }
   .loginBtn--google:before {
