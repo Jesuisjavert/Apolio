@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import pathify from 'vuex-pathify'
 import * as modules from './modules'
+import axios from 'axios'
+import router from '../router'
+// import { $cookies } from 'vue/types/umd'
 
 Vue.use(Vuex)
 
@@ -19,6 +22,7 @@ export default new Vuex.Store({
       'Contact',
       'Login',
     ],
+    token: ''
   },
 
   mutations: {

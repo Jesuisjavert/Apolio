@@ -10,4 +10,5 @@ import javax.persistence.EntityManager;
 @Repository
 public interface HeartRepository extends JpaRepository<Heart, Long> {
     Long countByBlogId(Long blog_id);
+
 }

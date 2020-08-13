@@ -1,11 +1,18 @@
 package com.ssafy.apolio.web;
 
 import com.ssafy.apolio.domain.user.User;
+import com.ssafy.apolio.exception.ResourceNotFoundException;
+import com.ssafy.apolio.repository.AccountRepository;
+import com.ssafy.apolio.repository.UserRepository;
+import com.ssafy.apolio.security.CurrentUser;
+import com.ssafy.apolio.security.UserPrincipal;
 import com.ssafy.apolio.service.UserService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -15,6 +22,8 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
+    @Autowired
+    UserRepository userRepository;
 
     @ApiOperation(value = "유저 이름, 비밀번호, 이메일, 닉네임, 프로필 사진을 입력받아서 회원가입을 완료시킨다.", response = String.class)
     @PostMapping(value = "/user")
@@ -46,4 +55,13 @@ public class UserController {
         User user = userService.findOne(id);
         return new ResponseEntity<User>(user, HttpStatus.OK);
     }
+
+    @GetMapping("/user/me")
+    @PreAuthorize("isAuthenticated()")
+    public User getCurrentUser(@CurrentUser UserPrincipal userPrincipal) {
+        System.out.println("/user/me");
+        return userRepository.findById(userPrincipal.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", userPrincipal.getId()));
+    }
+
 }

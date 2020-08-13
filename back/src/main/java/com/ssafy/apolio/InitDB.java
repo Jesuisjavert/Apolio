@@ -41,7 +41,7 @@ public class InitDB {
             em.persist(tag2);
             TagBlog tagBlog1 = TagBlog.createTagBlog(tag1);
             TagBlog tagBlog2 = TagBlog.createTagBlog(tag2);
-            Blog blog = Blog.createBlog(user,"잘생겨지는 방법", "응 타고나~", null, tagBlog1, tagBlog2);
+            Blog blog = Blog.createBlog(user,"잘생겨지는 방법", "응 타고나~","description", null, tagBlog1, tagBlog2);
             em.persist(blog);
         }
 
@@ -54,7 +54,7 @@ public class InitDB {
             em.persist(tag2);
             TagBlog tagBlog1 = TagBlog.createTagBlog(tag1);
             TagBlog tagBlog2 = TagBlog.createTagBlog(tag2);
-            Blog blog = Blog.createBlog(user,"귀여워지는 방법", "큐티 앙", null, tagBlog1, tagBlog2);
+            Blog blog = Blog.createBlog(user,"귀여워지는 방법", "큐티 앙","description", null, tagBlog1, tagBlog2);
             em.persist(blog);
         }
 
@@ -67,7 +67,7 @@ public class InitDB {
             em.persist(tag2);
             TagBlog tagBlog1 = TagBlog.createTagBlog(tag1);
             TagBlog tagBlog2 = TagBlog.createTagBlog(tag2);
-            Blog blog = Blog.createBlog(user,"섹시해지는 방법", "땀 흘리는 남자 박승범", "sssssss", tagBlog1, tagBlog2);
+            Blog blog = Blog.createBlog(user,"섹시해지는 방법", "땀 흘리는 남자 박승범", "description", "sssssss", tagBlog1, tagBlog2);
             em.persist(blog);
         }
 
@@ -80,7 +80,7 @@ public class InitDB {
             em.persist(tag2);
             TagBlog tagBlog1 = TagBlog.createTagBlog(tag1);
             TagBlog tagBlog2 = TagBlog.createTagBlog(tag2);
-            Blog blog = Blog.createBlog(user,"깜찍해지는 방법", "뀨잉뀨잉", "wwss.fa", tagBlog1, tagBlog2);
+            Blog blog = Blog.createBlog(user,"깜찍해지는 방법", "뀨잉뀨잉", "description", "wwss.fa", tagBlog1, tagBlog2);
             em.persist(blog);
         }
 
@@ -93,7 +93,7 @@ public class InitDB {
             em.persist(tag2);
             TagBlog tagBlog1 = TagBlog.createTagBlog(tag1);
             TagBlog tagBlog2 = TagBlog.createTagBlog(tag2);
-            Blog blog = Blog.createBlog(user,"DFS란 무엇인가", "BFS와의 차이점을 알려드리겠습니다.", "aa", tagBlog1, tagBlog2);
+            Blog blog = Blog.createBlog(user,"DFS란 무엇인가", "BFS와의 차이점을 알려드리겠습니다.", "description", "aa", tagBlog1, tagBlog2);
             em.persist(blog);
         }
 

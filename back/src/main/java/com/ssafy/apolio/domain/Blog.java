@@ -44,6 +44,8 @@ public class Blog {
 
     private String content;
 
+    private String description;
+
     private String img_thumb;
 
     private LocalDateTime create_date;
@@ -65,11 +67,12 @@ public class Blog {
     }
 
     //==생성 메서드==//
-    public static Blog createBlog(User user, String title, String content, String img_thumb, TagBlog... tagBlogs) {
+    public static Blog createBlog(User user, String title, String content, String description,  String img_thumb, TagBlog... tagBlogs) {
         Blog blog = new Blog();
 
         blog.setTitle(title);
         blog.setContent(content);
+        blog.setDescription(description);
         blog.setImg_thumb(img_thumb);
         blog.setCreate_date(LocalDateTime.now());
         blog.setUser(user);
