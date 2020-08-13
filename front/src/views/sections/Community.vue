@@ -31,7 +31,7 @@
               </th>
             </tr>
           </thead>
-          <!-- <tbody>
+          <tbody>
             <tr
               v-for="feature in features"
               :key="feature.id"
@@ -52,25 +52,36 @@
                     <span class="headline">{{ feature.title }}</span>
                   </v-card-title>
                   <v-card-text>
-                    <span> {{ feature.content }}</span>
+                    <span> {{ feature.username }}</span>
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer />
                   </v-card-actions>
                 </v-card>
               </v-dialog>
-              <td class="text-center">
-                {{ feature.user.username }}
-              </td>
+              <!-- <td class="text-center">
+                {{ feature.user.name }}
+              </td> -->
             </tr>
-          </tbody> -->
+          </tbody>
         </v-simple-table>
-        <!-- <v-spacer /> -->
-        <!-- <base-article-create
+        <v-spacer />
+        <base-card-create
           fluid
           class="pa-0"
-        /> -->
+        />
+        <!--
         <v-container class="text-center">
+          <v-btn
+            text
+            medium
+            to="/card-create"
+          >
+            Write
+          </v-btn>
+        </v-container>
+         -->
+        <!-- <v-container class="text-center">
           <v-btn
             text
             medium
@@ -78,20 +89,45 @@
           >
             Write
           </v-btn>
-        </v-container>
+        </v-container> -->
       </v-col>
     </v-row>
   </v-container>
 </template>
 
 <script>
+  import axios from 'axios'
+
+  const API_URL = 'http://127.0.0.1:8080'
   export default {
     name: 'Community',
 
     components: {
       BlogHero: () => import('@/components/base/BlogHero'),
+      CardCreate: () => import('@/components/base/CardCreate'),
       // eslint-disable-next-line vue/no-unused-components
-      ArticleCreate: () => import('@/components/base/ArticleCreate'),
+      // ArticleCreate: () => import('@/components/base/ArticleCreate'),
+    },
+    data () {
+      return {
+        features: [],
+      }
+    },
+    created () {
+      this.loadArticle()
+    },
+    methods: {
+      loadArticle () {
+        axios.get(`${API_URL}/api/community`).then((res) => {
+          this.features = res.data
+          console.log(res.data)
+          console.log('----------------')
+        })
+          .catch((err) => {
+            console.log(err.response)
+          })
+        console.log(this.features)
+      },
     },
   }
 </script>

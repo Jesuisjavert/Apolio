@@ -11,11 +11,10 @@
       class="mx-auto subtitle-1 grey--text"
       max-width="550"
     >
-      My name is jesuisjavert<br>
-      Welcome to my blog<br>
-      My blog is the best IT portfolio blog<br>
-      I hope you enjoy watching my blog<br>
-      Thank you!
+      Hi! Welcome to my Blog. My Name is Javert<br>
+      I'm a junior developer in Samsung Software Academy For Youth<br>
+      You could see Top 20 IT News of six differents countries<br>
+      Thank you for visiting my blog<br>
     </v-responsive>
   </section>
 </template>

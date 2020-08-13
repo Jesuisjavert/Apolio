@@ -57,9 +57,9 @@ export default new Router({
           component: () => import('@/views/contact/Index.vue'),
         },
         {
-          path: '/login',
-          name: 'Login',
-          component: () => import('@/views/login/Index.vue'),
+          path: '/membership',
+          name: 'Membership',
+          component: () => import('@/views/membership/Index.vue'),
         },
         {
           path: '/Mypage',

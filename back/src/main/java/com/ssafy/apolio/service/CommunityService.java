@@ -1,6 +1,7 @@
 package com.ssafy.apolio.service;
 
 import com.ssafy.apolio.domain.Community;
+import com.ssafy.apolio.domain.user.Role;
 import com.ssafy.apolio.domain.user.User;
 import com.ssafy.apolio.repository.CommunityRepository;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ public class CommunityService {
     public Long community(String title, String content, String username) {
         User user = new User();
         user.setUsername(username);
+        user.setRole(Role.MEMBER);
         Community community = Community.createCommunity(title, content, user);
         communityRepository.save(community);
 
