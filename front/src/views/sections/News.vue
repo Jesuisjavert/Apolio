@@ -4,6 +4,7 @@
     tag="section"
   >
     <div>
+      <div class="text-center">Click<br>↓</div>
       <div class="text-center">
         <v-btn
           icon
@@ -30,7 +31,6 @@
             </v-tab>
           </v-tabs>
         </v-expand-transition>
-        <!-- <span @click="dataFilter">클릭해주세요~~~~~~~</span> -->
     </div> 
     <!-- 필터 -->
    <v-responsive
