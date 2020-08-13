@@ -9,19 +9,23 @@ export default new Vuetify({
   theme: {
     themes: {
       light: {
-        primary: '#CC5163',
+        primary: '#ff6b87',
         secondary: '#FFFFFF',
         accent: '#3AAA1D',
-        error: '#FF5252', 
-        info: '#2196F3',
-        success: '#4CAF50',
+        error: '#ffeaee', 
+        info: '#eaf9ff',
+        success: '#f1eaff',
         warning: '#FFC107',
       },
     },
   },
 })
 
-// Error : 빨간색
-// info : 짙하늘색
-// success: 에메랄드초록
-// warning: 바나나노랑
+
+// primary : 짙은 벚꽃
+// secondary: 흰색
+// accent: 월계수 초록
+// Error : 연한벚꽃
+// info : 연하늘색
+// success: 에메랄드초록 (안씀)
+// warning: 바나나노랑(안씀)

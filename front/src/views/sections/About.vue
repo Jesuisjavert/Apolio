@@ -15,7 +15,7 @@
       >
         <v-img
           height="calc(100vh - 96px - 156px)"
-          src="@/assets/apolio.jpg"
+          src="@/assets/javert3.jpg"
         />
       </v-col>
 
