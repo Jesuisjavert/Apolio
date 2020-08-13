@@ -17,15 +17,11 @@ import static javax.persistence.FetchType.LAZY;
 @Getter
 @Setter
 public class Blog {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "blog_id")
     private Long id;
-
-    @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    @JsonBackReference
-    private User user;
 
     @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
     @JsonManagedReference
@@ -35,12 +31,24 @@ public class Blog {
     @JsonManagedReference
     private List<Heart> hearts = new ArrayList<>();
 
+    @OneToMany(mappedBy = "blog", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    private List<TagBlog> tagBlogs = new ArrayList<>();
+
+    @ManyToOne(fetch = LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    private User user;
+
     private String title;
 
     private String content;
 
+    private String img_thumb;
+
     private LocalDateTime create_date;
 
+    //==연관관계 메서드==//
     public void addComment(Comment comment) {
         comments.add(comment);
         comment.setBlog(this);
@@ -51,12 +59,25 @@ public class Blog {
         heart.setBlog(this);
     }
 
-    public static Blog createBlog(String title, String content, User user) {
+    public void addTagBlog(TagBlog tagBlog) {
+        tagBlogs.add(tagBlog);
+        tagBlog.setBlog(this);
+    }
+
+    //==생성 메서드==//
+    public static Blog createBlog(User user, String title, String content, String img_thumb, TagBlog... tagBlogs) {
         Blog blog = new Blog();
+
         blog.setTitle(title);
         blog.setContent(content);
-        blog.setUser(user);
+        blog.setImg_thumb(img_thumb);
         blog.setCreate_date(LocalDateTime.now());
+        blog.setUser(user);
+        for (TagBlog tagBlog : tagBlogs){
+            blog.addTagBlog(tagBlog);
+        }
+
         return blog;
     }
+
 }

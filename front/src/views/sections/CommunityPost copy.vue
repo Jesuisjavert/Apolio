@@ -5,14 +5,15 @@
     fluid
     tag="section"
   >
-    <blog-hero
+    <!-- <blog-hero
       class="text-center white--text align-center"
       height="30vh"
     >
       <h1 class="display-2">
         jesuisjavert's Blog
       </h1>
-    </blog-hero>
+    </blog-hero> -->
+    <article-create />
   </v-container>
 </template>
 
@@ -21,7 +22,9 @@
     name: 'CommunityPost',
 
     components: {
-      BlogHero: () => import('@/components/base/BlogHero'),
+      // BlogHero: () => import('@/components/base/BlogHero'),
+      // eslint-disable-next-line vue/no-unused-components
+      ArticleCreate: () => import('@/components/base/ArticleCreate'),
     },
   }
 </script>

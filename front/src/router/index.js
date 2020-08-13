@@ -51,6 +51,16 @@ export default new Router({
           name: 'Contact',
           component: () => import('@/views/contact/Index.vue'),
         },
+        {
+          path: '/login',
+          name: 'Login',
+          component: () => import('@/views/login/Index.vue'),
+        },
+        {
+          path: '/oauth2/redirect',
+          name: 'Oauth',
+          component: () => import('@/views/oauth/Index.vue'),
+        },
       ],
     },
   ],
