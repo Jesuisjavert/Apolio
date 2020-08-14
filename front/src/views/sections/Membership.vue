@@ -45,7 +45,7 @@
 <script>
   import axios from 'axios'
 
-  const API_URL = 'http://127.0.0.1:8080/auth'
+  const API_URL = 'http://127.0.0.1:4000/auth'
 
   export default {
     name: 'Membership',

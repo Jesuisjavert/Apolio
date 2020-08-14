@@ -37,7 +37,7 @@
   import { Editor, Viewer } from '@toast-ui/vue-editor'
   import '@toast-ui/editor/dist/toastui-editor-viewer.css'
 
-  const API_URL = 'http://127.0.0.1:8080/api/blog'
+  const API_URL = 'http://127.0.0.1:4000/api/blog'
 
   export default {
     name: 'ArticleCreate',
