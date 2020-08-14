@@ -103,7 +103,7 @@
 import axios from 'axios'
 import { mapState,mapActions } from 'vuex'
 
-const API_URL = 'http://127.0.0.1:8080'
+const API_URL = 'http://i3c103.p.ssafy.io:3000'
 
 export default {
   name: 'News',

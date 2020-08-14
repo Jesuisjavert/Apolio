@@ -40,7 +40,7 @@
 <script>
   import axios from 'axios'
 
-  const API_URL = 'http://localhost:8080'
+  const API_URL = 'http://i3c103.p.ssafy.io:4000'
 
   export default {
     name: 'Blog',
