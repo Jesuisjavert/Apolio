@@ -10,10 +10,14 @@ import com.ssafy.apolio.service.HeartService;
 import com.ssafy.apolio.service.TagService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
 import java.util.List;
 
 @CrossOrigin(origins = { "*" }, maxAge = 6000)
@@ -31,8 +35,19 @@ public class BlogController {
 
     @ApiOperation(value = "태그 아이디, 제목, 내용, 이미지를 입력받아서 게시물을 작성한다.", response = String.class)
     @PostMapping(value = "/blog")
-    public ResponseEntity<String> insertBoard(@RequestBody BlogForm blogForm, @RequestParam("tagId") Long tagId){
-        Long check = blogService.blog(blogForm.getUser(), tagId, blogForm.getTitle(), blogForm.getContent(), blogForm.getImg_thumb());
+    public ResponseEntity<String> insertBoard(@RequestBody BlogForm blogForm){
+        System.out.println(blogForm);
+
+//        System.out.println(files);
+//        String baseDir = "C:\\Users\\User\\Documents\\ServerFiles";
+//        String filePath = baseDir + "\\" + files.getOriginalFilename();
+//        files.transferTo(new File(filePath));
+
+        blogForm.setUser_id(1);
+        blogForm.setTagId(1);
+        blogForm.setImg(null);
+
+        Long check = blogService.blog(blogForm);
         if(check != 0){
             return new ResponseEntity<String>("blog success", HttpStatus.OK);
         }

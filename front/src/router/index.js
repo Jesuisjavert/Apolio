@@ -31,10 +31,15 @@ export default new Router({
           name: 'Blog',
           component: () => import('@/views/blog/Index.vue'),
         },
+        // {
+        //   path: '/blog/{index}',
+        //   name: 'Blog Post',
+        //   component: () => import('@/views/blog-post/Index.vue'),
+        // },
         {
-          path: '/blog-post',
-          name: 'Blog Post',
-          component: () => import('@/views/blog-post/Index.vue'),
+          path: '/blog/create',
+          name: 'BlogCreate',
+          component: () => import('@/views/blog-create/Index.vue'),
         },
         {
           path: '/community',
@@ -55,6 +60,11 @@ export default new Router({
           path: '/membership',
           name: 'Membership',
           component: () => import('@/views/membership/Index.vue'),
+        },
+        {
+          path: '/Mypage',
+          name: 'Mypage',
+          component: () => import('@/views/mypage/Index.vue'),
         },
         {
           path: '/oauth2/redirect',

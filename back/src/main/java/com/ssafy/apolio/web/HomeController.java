@@ -78,7 +78,7 @@ public class HomeController {
         String protocol = "GET";
         HttpURLConnection conn = (HttpURLConnection)url.openConnection();
         conn.setRequestMethod(protocol);
-        System.out.println("api url : " + address);
+//        System.out.println("api url : " + address);
         BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));;
         String news_json = br.readLine();
         JSONParser jsonParser = new JSONParser();
@@ -86,7 +86,7 @@ public class HomeController {
         JSONArray news_list = (JSONArray) jsonObj.get("articles");//articles 배열 추출
         int size = news_list.size();
         List<NewsApiDto> newsApiDtos = new ArrayList<>();
-        System.out.println("news list size : " + size);
+//        System.out.println("news list size : " + size);
         // articles에서 author, title, content, date, url, img 추출
         for(int i=0;i<size;i++){
             NewsApiDto newsApiDto = new NewsApiDto();
@@ -94,32 +94,32 @@ public class HomeController {
 
             if(object.get("author") != null){
                 String author = object.get("author").toString();
-                System.out.println("author : " + author);
+//                System.out.println("author : " + author);
                 newsApiDto.setAuthor(author);
             }
             if(object.get("title") != null){
                 String title = object.get("title").toString();
-                System.out.println("title : " + title);
+//                System.out.println("title : " + title);
                 newsApiDto.setTitle(title);
             }
             if(object.get("description") != null){
                 String description = object.get("description").toString();
-                System.out.println("des : " + description);
+//                System.out.println("des : " + description);
                 newsApiDto.setDescription(description);
             }
             if(object.get("url") != null){
                 String news_url = object.get("url").toString();
-                System.out.println("url : " + news_url);
+//                System.out.println("url : " + news_url);
                 newsApiDto.setUrl(news_url);
             }
             if(object.get("urlToImage") != null){
                 String urlToImage = object.get("urlToImage").toString();
-                System.out.println("img : " + urlToImage);
+//                System.out.println("img : " + urlToImage);
                 newsApiDto.setUrltoimage(urlToImage);
             }
             if(object.get("publishedAt") != null){
                 String publishedAt = object.get("publishedAt").toString();
-                System.out.println("pub : " + publishedAt);
+//                System.out.println("pub : " + publishedAt);
                 newsApiDto.setPublishedAt(publishedAt);
             }
             newsApiDtos.add(newsApiDto);

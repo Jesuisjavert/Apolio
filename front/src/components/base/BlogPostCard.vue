@@ -13,13 +13,13 @@
               class="align-end pa-3 justify-start"
               opacity=".2"
             >
-              <v-btn
+              <!-- <v-btn
                 color="#252525"
                 dark
                 small
               >
                 {{ post.category }}
-              </v-btn>
+              </v-btn> -->
             </v-overlay>
           </template>
         </v-hover>

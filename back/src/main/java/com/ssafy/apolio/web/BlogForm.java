@@ -7,8 +7,10 @@ import lombok.Setter;
 @Getter
 @Setter
 public class BlogForm {
-    private User user;
+    private long user_id;
     private String title;
     private String content;
-    private String img_thumb;
+    private String description;
+    private long tagId;
+    private String img;
 }

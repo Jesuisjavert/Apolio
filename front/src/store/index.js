@@ -29,7 +29,6 @@ export default new Vuex.Store({
     UK: [],
     // posts: [],
   },
-
   mutations: {
     SET_DRAWER (state, payload) {
       state.drawer = payload
@@ -78,7 +77,7 @@ export default new Vuex.Store({
       commit("UK", resp6);
       window.console.log(resp6)
       // state.thumbnails = [...state.Korea,...state.USA,...state.France,...state.Singapore,...state.Canada,...state.UK]
-      },
+    },
       // inputData({state}){
         // state.thumbnails = [state.thumbnails,...state.Korea,...state.]
         // const Korea = state.Korea.map((Korea) => {
@@ -118,7 +117,7 @@ export default new Vuex.Store({
         //   return thumbnails
         // })
         // state.thumbnails = [...state.thumbnails,...Korea,...USA,...France,...Singapore,...Canada,...UK]
-      },
+  },
   
   plugins: [pathify.plugin],
 })

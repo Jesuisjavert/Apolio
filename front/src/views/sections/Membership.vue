@@ -76,6 +76,11 @@
         return this.flag ? 'translateX(80%)' : 'translateX(0%)'
       }
     },
+    created() {
+      if (!!this.$cookies.get("accessToken")){
+        this.$router.push("/mypage") 
+      }
+    },
     data() {
       return{
         flag: false,
