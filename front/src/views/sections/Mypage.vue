@@ -14,10 +14,14 @@
         <p>I'm an aspiring ruler of hoomans from Chicago, looking for my fur-ever home. I like treats and playing and treats. And treats. I'd do well in a home where hoomans give me lots of treats!</p>
         <footer class="profile-card_footer">
           <div class="social-row">
-            
+            <v-btn
+              @click="logout"
+            >
+              Logout
+            </v-btn>
 
           </div>
-          <p><a class="back-to-profile" href="#">Full Adoption Profile</a></p>
+          <p><a class="back-to-profile">Full Adoption Profile</a></p>
         </footer>
       </div>
     </section>
@@ -48,6 +52,10 @@
       this.getUserInfo()
     },
     methods: {
+      logout() {
+        this.$cookies.remove("accessToken")
+        this.$router.push('/')
+      },
       getUserInfo() {
         axios.get(API_URL, {
             headers: {
@@ -55,7 +63,6 @@
             }
           })
           .then((res) => {
-            console.log(res)
             this.user.picture = res.data.picture
             this.user.name = res.data.username
             this.user.role = res.data.role
@@ -63,9 +70,8 @@
             this.user.email = res.data.email
           })
           .catch((err) => {
-            console.log(err)
             this.$cookies.remove("accessToken")
-            this.$router.push('/login')
+            this.$router.push('/membership')
           })
       }
     }

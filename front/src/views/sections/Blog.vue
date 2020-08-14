@@ -14,11 +14,22 @@
       </h1>
     </blog-hero>
 
+    
+
     <v-responsive
       class="mx-auto"
       max-width="1280"
     >
       <v-container>
+        <div float:right>
+          <v-btn
+            :color="'primary'"
+            x-large
+            @click="createBlog"
+          >
+            Write
+          </v-btn>
+        </div>
         <v-filter :tabs="tabs" />
 
         <v-row>
@@ -126,7 +137,25 @@
         'Design',
         ]
       }
-    }, // data 끝
+    }, 
+  // data 끝
+
+  methods: {
+    createBlog() {
+      axios.get(API_URL+"/user/me", {
+          headers: {
+            Authorization: "Bearer " + this.$cookies.get("accessToken")
+          }
+        })
+        .then((res) => {
+          this.$router.push('/blog/create')
+        })
+        .catch((err) => {
+          this.$cookies.remove("accessToken")
+          this.$router.push('/membership')
+        })
+    }
+  }
   //   created () {
   //     this.loadArticle()
   //   },

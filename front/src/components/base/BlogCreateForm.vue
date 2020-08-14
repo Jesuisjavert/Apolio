@@ -110,8 +110,6 @@ html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat
   margin: auto;
 	left: 50%;
   margin-top:30px;
-  -moz-border-radius: 7px;
-  -webkit-border-radius: 7px;
 }
 
 .feedback-input {
