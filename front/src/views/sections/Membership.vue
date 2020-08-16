@@ -16,11 +16,11 @@
 
             <button class="button submit" @click="login">login</button><br>
 
-            <button class="loginBtn loginBtn--facebook" onclick="location.href='http://localhost:8080/oauth2/authorize/facebook?redirect_uri=http://localhost:3000/oauth2/redirect'">
+            <button class="loginBtn loginBtn--facebook" onclick="location.href='http://localhost:4000/oauth2/authorize/facebook?redirect_uri=http://localhost:8080/oauth2/redirect'">
               Login with Facebook
             </button>
 
-            <button class="loginBtn loginBtn--google" onclick="location.href='http://localhost:8080/oauth2/authorize/google?redirect_uri=http://localhost:3000/oauth2/redirect'">
+            <button class="loginBtn loginBtn--google" onclick="location.href='http://localhost:4000/oauth2/authorize/google?redirect_uri=http://localhost:8080/oauth2/redirect'">
               Login with Google
             </button>
         </div>

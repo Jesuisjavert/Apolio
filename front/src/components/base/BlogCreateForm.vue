@@ -10,7 +10,7 @@
       </p>
 
       <p>
-        메인 이미지 : <input name="userfile" type="file" @change="fileChange($event)" />
+        메인 이미지 : <input name="userfile" multiple="multiple" type="file" ref="myImg" @change="fileChange($event)" />
       </p>
 
       <p class="text">
@@ -25,7 +25,10 @@
         <input type="submit" value="SEND" id="button-blue"/>
         <div class="ease" @click="createBlog"></div>
       </div>
-
+      <form action="http://localhost:4000/api/blog" method="POST" enctype="multipart/form-data">
+        <input name="userfile" multiple="multiple" type="file"/>
+        <input type="submit" value="전송">
+      </form>
     </div>
   </div>
 </template>
@@ -37,7 +40,7 @@
   import { Editor, Viewer } from '@toast-ui/vue-editor'
   import '@toast-ui/editor/dist/toastui-editor-viewer.css'
 
-  const API_URL = 'http://127.0.0.1:4000/api/blog'
+  const API_URL = 'http://127.0.0.1:4000'
 
   export default {
     name: 'ArticleCreate',
@@ -54,29 +57,61 @@
             enctype: "application/json",
           },
         },
-       
         blogData : {
           user_id: null,
           title: null,
           description: null,
           content: null,
-          img: null,
           tageId: 1,
         },
+        img: null,
       }
+    },
+    created() {
+      this.getUserId()
     },
     methods: {
       createBlog () {
         this.blogData.content = this.$refs.toastuiEditor.invoke('getHtml')
-        axios.post(API_URL,this.blogData)
-          .then((res) => {
-            console.log(res)
-          })
+        
+        let formData = new FormData();
+
+        formData.append("userfile",this.img)
+        formData.append("userId",this.blogData.user_id)
+        formData.append("title",this.blogData.title)
+        formData.append("description",this.blogData.description)
+        formData.append("content",this.blogData.content)
+        formData.append("tageId",this.blogData.tageId)
           
+        axios
+          .post(API_URL+"/api/blog", formData, {
+            headers: {
+              "Content-Type": "multipart/form-data",
+              Authorization: "Bearer " + this.$cookies.get("accessToken")
+            },
+          })
+          .then(res => {
+            alert("블로그 생성 완료");
+        })
       },
       fileChange (event) {
-        // this.blogData.img = event.target.files[0]
-        // console.log(this.blogData.img)
+        //this.img = event.target.files[0]
+        this.img = this.$refs.myImg.files[0]
+      },
+      getUserId() {
+        axios.get(API_URL+"/user/me", {
+            headers: {
+              Authorization: "Bearer " + this.$cookies.get("accessToken")
+            }
+          })
+          .then((res) => {
+            this.blogData.user_id = res.data.id
+            console.log(this.blogData.user_id)
+          })
+          .catch((err) => {
+            this.$cookies.remove("accessToken")
+            this.$router.push('/membership')
+          })
       },
     },
   }
@@ -101,7 +136,7 @@ html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat
 }
 
 #form-div {
-	background-color: #eaf9ff;
+	background-color: #dee2e6;
 	padding-left:35px;
 	padding-right:35px;
 	padding-top:35px;
