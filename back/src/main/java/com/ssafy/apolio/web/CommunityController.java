@@ -20,7 +20,8 @@ public class CommunityController {
     @ApiOperation(value = "유저 아이디, 제목, 내용을 입력받아서 커뮤니티 게시물을 작성한다.", response = String.class)
     @PostMapping(value = "/community")
     public ResponseEntity<String> insertCommunity(@RequestBody CommunityForm communityForm){
-        Long check = communityService.community(communityForm.getTitle(), communityForm.getContent(), communityForm.getUsername());
+        System.out.println("title = " + communityForm.getTitle());
+        Long check = communityService.community(communityForm.getTitle(), communityForm.getContent(), communityForm.getUser_id());
         if(check != 0){
             return new ResponseEntity<String>("community success", HttpStatus.OK);
         }

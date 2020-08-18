@@ -8,5 +8,5 @@ import lombok.Setter;
 public class CommunityForm {
     private String title;
     private String content;
-    private String username;
+    private String user_id;
 }

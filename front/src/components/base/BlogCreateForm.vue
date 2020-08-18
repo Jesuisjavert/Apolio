@@ -106,7 +106,6 @@
           })
           .then((res) => {
             this.blogData.user_id = res.data.id
-            console.log(this.blogData.user_id)
           })
           .catch((err) => {
             this.$cookies.remove("accessToken")

@@ -29,6 +29,9 @@
               <th class="body-1 font-weight-bold text-center">
                 작성자
               </th>
+              <th class="body-1 font-weight-bold text-center">
+                작성일
+              </th>
             </tr>
           </thead>
           <tbody>
@@ -51,6 +54,9 @@
                   <v-card-title>
                     <span class="headline">{{ feature.title }}</span>
                   </v-card-title>
+                  <v-card-text>
+                    <span> {{ feature.username }}</span>
+                  </v-card-text>
                   <v-card-text>
                     <span> {{ feature.username }}</span>
                   </v-card-text>
@@ -98,7 +104,7 @@
 <script>
   import axios from 'axios'
 
-  const API_URL = 'http://i3c103.p.ssafy.io:4000'
+  const API_URL = 'http://localhost:4000'
   export default {
     name: 'Community',
 
@@ -126,7 +132,7 @@
           .catch((err) => {
             console.log(err.response)
           })
-        console.log(this.features)
+        console.log("features : " + this.features)
       },
     },
   }
