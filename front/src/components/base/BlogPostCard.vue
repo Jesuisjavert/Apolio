@@ -32,6 +32,8 @@
         v-text="post.title"
       />
 
+      <heart/>
+      
       <v-card-text class="body-1 grey--text text-darken-2">
         <div
           class="mb-4"
@@ -40,6 +42,7 @@
 
         <div v-text="post.description" />
       </v-card-text>
+      
     </div>
   </v-card>
 </template>
@@ -47,6 +50,10 @@
 <script>
   export default {
     name: 'BlogCard',
+
+    components: {
+      Heart: () => import('./Heart'),
+    },
 
     props: {
       post: {
