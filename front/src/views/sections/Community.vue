@@ -18,7 +18,7 @@
       justify="center"
     >
       <v-col
-        cols="12"
+        cols="9"
       >
         <v-simple-table>
           <thead>
@@ -47,6 +47,7 @@
                   <td
                     v-bind="attrs"
                     v-on="on"
+                    col="6"
                     v-text="feature.title"
                   />
                 </template>
@@ -55,19 +56,22 @@
                     <span class="headline">{{ feature.title }}</span>
                   </v-card-title>
                   <v-card-text>
-                    <span> {{ feature.username }}</span>
+                    <span> {{ feature.email }}</span>
                   </v-card-text>
                   <v-card-text>
-                    <span> {{ feature.username }}</span>
+                    <span> {{ feature.create_at }}</span>
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer />
                   </v-card-actions>
                 </v-card>
               </v-dialog>
-              <!-- <td class="text-center">
-                {{ feature.user.name }}
-              </td> -->
+              <td class="text-center">
+                {{ feature.email }}
+              </td>
+              <td class="text-center">
+                {{ feature.create_at }}
+              </td>
             </tr>
           </tbody>
         </v-simple-table>

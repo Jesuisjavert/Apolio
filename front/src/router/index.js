@@ -31,11 +31,11 @@ export default new Router({
           name: 'Blog',
           component: () => import('@/views/blog/Index.vue'),
         },
-        // {
-        //   path: '/blog/{index}',
-        //   name: 'Blog Post',
-        //   component: () => import('@/views/blog-post/Index.vue'),
-        // },
+        {
+          path: '/blog-post',
+          name: 'Blog Post',
+          component: () => import('@/views/blog-post/Index.vue'),
+        },
         {
           path: '/blog/create',
           name: 'BlogCreate',

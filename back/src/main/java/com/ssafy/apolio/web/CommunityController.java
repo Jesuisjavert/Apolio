@@ -1,6 +1,7 @@
 package com.ssafy.apolio.web;
 
 import com.ssafy.apolio.domain.Community;
+import com.ssafy.apolio.dto.CommunityAllDto;
 import com.ssafy.apolio.service.CommunityService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -29,9 +30,10 @@ public class CommunityController {
     }
     @ApiOperation(value = "커뮤니티 게시물 전체를 조회한다.", response = List.class)
     @GetMapping(value = "/community")
-    public ResponseEntity<List<Community>> communityList(){
-        List<Community> communities = communityService.findCommunityAll();
-        return new ResponseEntity<List<Community>>(communities, HttpStatus.OK);
+    public ResponseEntity<List<CommunityAllDto>> communityList(){
+        List<CommunityAllDto> communities = communityService.findCommunityAll();
+
+        return new ResponseEntity<List<CommunityAllDto>>(communities, HttpStatus.OK);
     }
 
     @ApiOperation(value = "게시물 번호에 해당하는 커뮤니티 게시물을 조회한다.", response = Community.class)
