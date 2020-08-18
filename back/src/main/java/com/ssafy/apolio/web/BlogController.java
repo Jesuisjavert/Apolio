@@ -51,18 +51,12 @@ public class BlogController {
         blogForm.setTitle((String) mtfRequest.getParameter("title"));
         blogForm.setContent((String) mtfRequest.getParameter("content"));
         blogForm.setDescription((String) mtfRequest.getParameter("description"));
-//        blogForm.setUser_id((Long) mtfRequest.getAttribute("tageId"));
-        blogForm.setTagId(1);
+        blogForm.setTagId((Long) mtfRequest.getAttribute("tageId"));
         blogForm.setImg("http://localhost:4000/img/"+file.getOriginalFilename());
 
         String baseDir = "C:\\Users\\User\\Documents\\UPLOAD_FILES";
         String filePath = baseDir + "\\" + file.getOriginalFilename();
         file.transferTo(new File(filePath));
-
-//        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-//                .path("/downloadFile/")
-//                .path(filePath)
-//                .toUriString();
 
         Long check = blogService.blog(blogForm);
         if(check != 0){
@@ -97,10 +91,6 @@ public class BlogController {
     public ResponseEntity<Blog> blogDetail(@PathVariable Long id){
         Blog blog = blogService.findBlog(id);
         System.out.println(blog.getTitle());
-//        for(Comment c : board.getComments()){
-//            System.out.println("댓글 작성자: " + c.getUser().getUsername());
-//            System.out.println("댓글 내용: " + c.getContent());
-//        }
         System.out.println(blog.getContent());
         return new ResponseEntity<Blog>(blog, HttpStatus.OK);
     }
