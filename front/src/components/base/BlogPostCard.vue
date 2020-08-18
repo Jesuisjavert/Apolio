@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-img
-      :src="post.src"
+      :src="post.img_thumb"
       height="200"
     >
       <router-link to="/blog-post">
@@ -35,10 +35,10 @@
       <v-card-text class="body-1 grey--text text-darken-2">
         <div
           class="mb-4"
-          v-text="post.date"
+          v-text="post.create_date"
         />
 
-        <div v-text="post.blurb" />
+        <div v-text="post.description" />
       </v-card-text>
     </div>
   </v-card>

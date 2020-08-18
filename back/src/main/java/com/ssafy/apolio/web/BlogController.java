@@ -16,9 +16,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = { "*" }, maxAge = 6000)
 @RestController
@@ -35,17 +40,29 @@ public class BlogController {
 
     @ApiOperation(value = "태그 아이디, 제목, 내용, 이미지를 입력받아서 게시물을 작성한다.", response = String.class)
     @PostMapping(value = "/blog")
-    public ResponseEntity<String> insertBoard(@RequestBody BlogForm blogForm){
-        System.out.println(blogForm);
+    public ResponseEntity<String> insertBoard(MultipartHttpServletRequest mtfRequest)throws Exception {
+        System.out.println("==");
 
-//        System.out.println(files);
-//        String baseDir = "C:\\Users\\User\\Documents\\ServerFiles";
-//        String filePath = baseDir + "\\" + files.getOriginalFilename();
-//        files.transferTo(new File(filePath));
+        List<MultipartFile> files =  mtfRequest.getFiles("userfile");
 
-        blogForm.setUser_id(1);
+        MultipartFile file = files.get(0);
+        BlogForm blogForm = new BlogForm();
+        blogForm.setUser_id(Long.parseLong(mtfRequest.getParameter("userId")));
+        blogForm.setTitle((String) mtfRequest.getParameter("title"));
+        blogForm.setContent((String) mtfRequest.getParameter("content"));
+        blogForm.setDescription((String) mtfRequest.getParameter("description"));
+//        blogForm.setUser_id((Long) mtfRequest.getAttribute("tageId"));
         blogForm.setTagId(1);
-        blogForm.setImg(null);
+        blogForm.setImg("http://localhost:4000/img/"+file.getOriginalFilename());
+
+        String baseDir = "C:\\Users\\User\\Documents\\UPLOAD_FILES";
+        String filePath = baseDir + "\\" + file.getOriginalFilename();
+        file.transferTo(new File(filePath));
+
+//        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+//                .path("/downloadFile/")
+//                .path(filePath)
+//                .toUriString();
 
         Long check = blogService.blog(blogForm);
         if(check != 0){

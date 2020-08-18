@@ -1,40 +1,41 @@
 <template>
-  <div class="container" style="margin-bottom: 48px">
+  <div class="container">
     <div class="welcome">
       <div class="pinkbox" :style="{transform: myTansfrom}">
         <div class="signup" :class="{nodisplay: !this.flag}">
-          <h1>Sign up</h1>
+          <h1>register</h1>
           <input type="email" placeholder="email" v-model="signupData.email">
           <input type="password" placeholder="password" v-model="signupData.password">
-          <input type="text" placeholder="nickname" v-model="signupData.nickname">
+          <input type="text" placeholder="name" v-model="signupData.name">
           <button class="button submit" @click="signup">create account </button>
         </div>
         <div class="signin" :class="{nodisplay: this.flag}">
-          <h1>Login</h1>
+          <h1>sign in</h1>
             <input type="email" placeholder="email" v-model="loginData.email">
             <input type="password" placeholder="password" v-model="loginData.password">
 
-            <button class="button submit" @click="login">login</button><br>
+            <button class="button submit" @click="login">login</button>
 
-            <button class="loginBtn loginBtn--facebook" onclick="location.href='http://localhost:4000/oauth2/authorize/facebook?redirect_uri=http://localhost:8080/oauth2/redirect'">
+            <button class="loginBtn loginBtn--facebook">
               Login with Facebook
             </button>
 
-            <button class="loginBtn loginBtn--google" onclick="location.href='http://localhost:4000/oauth2/authorize/google?redirect_uri=http://localhost:8080/oauth2/redirect'">
+            <button class="loginBtn loginBtn--google" onclick = "location.href = 'http://localhost:8080/oauth2/authorize/google?redirect_uri=https://localhost:3000' ">
               Login with Google
             </button>
         </div>
       </div>
       <div class="leftbox">
-        <h2 class="title"><span>회원가입</span><br> & Sign Up</h2>
-        <img class="flower smaller" src="https://image.ibb.co/d5X6pn/1357d638624297b.jpg" alt="1357d638624297b" border="0"><br>
+        <h2 class="title"><span>BLOOM</span>&<br>BOUQUET</h2>
+        <p class="desc">pick your perfect <span>bouquet</span></p>
+        <img class="flower smaller" src="https://image.ibb.co/d5X6pn/1357d638624297b.jpg" alt="1357d638624297b" border="0">
         <p class="account">have an account?</p>
         <button class="button" id="signin" @click="flag = false">login</button>
       </div>
       <div class="rightbox">
-        <h2 class="title"><span>로그인</span> & Login</h2>
+        <h2 class="title"><span>BLOOM</span>&<br>BOUQUET</h2>
+        <p class="desc"> pick your perfect <span>bouquet</span></p>
         <img class="flower" src="https://preview.ibb.co/jvu2Un/0057c1c1bab51a0.jpg"/>
-        <br><br>
         <p class="account">don't have an account?</p>
         <button class="button" id="signup" @click="flag = true">sign up</button>
       </div>
@@ -45,10 +46,10 @@
 <script>
   import axios from 'axios'
 
-  const API_URL = 'http://127.0.0.1:4000/auth'
+  const API_URL = 'http://127.0.0.1:8080/auth'
 
   export default {
-    name: 'Membership',
+    name: 'Login',
 
     components: {
     },
@@ -57,34 +58,32 @@
         axios.post(API_URL + "/login", this.loginData)
           .then((res) => {
             this.$cookies.set('accessToken', res.data.accessToken)
-            this.$router.push('/');
+            this.$router.push('/')
+          })
+          .catch((err) => {
+            console.log(err.response)
           })
       },
       signup() {
+        console.log(this.signupData)
         axios.post(API_URL + "/signup", this.signupData)
           .then((res) => {
-            alert("아이디 생성 완료");
-            this.$router.push('/');
+            console.log(res)
+            this.$router.push('/')
           })
-          .catch(err => {
-            console.log(err);
+          .catch((err) => {
+            console.log(err.response)
           })
-      }
+      },
     },
     computed: {
       myTansfrom() {
         return this.flag ? 'translateX(80%)' : 'translateX(0%)'
       }
     },
-    created() {
-      if (!!this.$cookies.get("accessToken")){
-        this.$router.push("/mypage") 
-      }
-    },
     data() {
       return{
         flag: false,
-        justify: 'center',
         loginData: {
           email: null,
           password: null,
@@ -92,7 +91,7 @@
         signupData: {
           email: null,
           password: null,
-          nickname: null,
+          name: null,
         }
       }
     }
@@ -107,10 +106,10 @@
 
   $pink: darken($pale, 20%);
 
-  // @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora');
+  @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400|Lora');
 
-  // $sans-serif: 'Open Sans', sans-serif;
-  // $serif: 'Lora', serif;
+  $sans-serif: 'Open Sans', sans-serif;
+  $serif: 'Lora', serif;
 
   body {
     background: $lavender;
@@ -167,7 +166,7 @@
 
   /* font & button styling */
   h1 {
-    // font-family: $sans-serif;
+    font-family: $sans-serif;
     text-align: center;
     margin-top: 95px;
     text-transform: uppercase;
@@ -177,7 +176,7 @@
   }
 
   .title {
-    // font-family: $serif;
+    font-family: $serif;
     color: $gray;
     font-size: 1.8em;
     line-height: 1.1em;
@@ -190,20 +189,19 @@
     margin-top: -8px;
   }
   .account {
-    color: black;
     margin-top: 45%;
     font-size: 10px;
   }
   p {
-    // font-family: $sans-serif;
+    font-family: $sans-serif;
     font-size: .7em;
     letter-spacing: 2px;
-    color: #000000;
+    color: $gray;
     text-align: center;
   }
 
   span {
-    color: #ff6b87;
+    color: $pale;
   }
 
   .flower {
@@ -225,7 +223,7 @@
 
   button {
     padding: 12px;
-    // font-family: $sans-serif;
+    font-family: $sans-serif;
     text-transform: uppercase;
     letter-spacing: 3px;
     font-size: 11px;
@@ -301,7 +299,7 @@
   }
 
   label {
-    // font-family: $sans-serif;
+    font-family: $sans-serif;
     color: $pink;
     font-size: 0.8em;
     letter-spacing: 1px;
@@ -324,21 +322,20 @@
     color: $pink;
     transition: .5s all ease;
   }
+
   .loginBtn {
-    box-sizing: border-box;
-    position: relative;
-    width: 20em;
-    margin: 0.2em;
-    padding: 0 15px 0 46px;
-    border: none;
-    text-align: left;
-    line-height: 34px;
-    white-space: nowrap;
-    border-radius: 0.8em;
-    font-size: 12px;  
-    color: #FFF;
-    margin-left: 35px;
-    
+  box-sizing: border-box;
+  position: relative;
+  /* width: 13em;  - apply for fixed size */
+  margin: 0.2em;
+  padding: 0 15px 0 46px;
+  border: none;
+  text-align: left;
+  line-height: 34px;
+  white-space: nowrap;
+  border-radius: 0.2em;
+  font-size: 16px;
+  color: #FFF;
   }
   .loginBtn:before {
     content: "";
@@ -363,7 +360,6 @@
     background-image: linear-gradient(#4C69BA, #3B55A0);
     /*font-family: "Helvetica neue", Helvetica Neue, Helvetica, Arial, sans-serif;*/
     text-shadow: 0 -1px 0 #354C8C;
-    margin-bottom: 12px;
   }
   .loginBtn--facebook:before {
     border-right: #364e92 1px solid;
@@ -378,7 +374,7 @@
 
   /* Google */
   .loginBtn--google {
-    // /*font-family: "Roboto", Roboto, arial, sans-serif;*/
+    /*font-family: "Roboto", Roboto, arial, sans-serif;*/
     background: #DD4B39;
   }
   .loginBtn--google:before {

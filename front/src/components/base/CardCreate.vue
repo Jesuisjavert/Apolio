@@ -87,7 +87,7 @@
 <script>
   import axios from 'axios'
 
-  const API_URL = 'http://i3c103.p.ssafy.io:4000'
+  const API_URL = 'http://localhost:4000'
 
   export default {
     name: 'ArticleCreate',
@@ -96,40 +96,45 @@
 
     data () {
       return {
+        user_id: null,
         dialog: false,
         content: null,
         title: null,
         username: null,
       }
     },
+    created() {
+      this.getUserId()
+    },
     methods: {
+      getUserId() {
+        axios.get(API_URL+"/user/me", {
+            headers: {
+              Authorization: "Bearer " + this.$cookies.get("accessToken")
+            }
+          })
+          .then((res) => {
+            this.user_id = res.data.id
+          })
+          .catch((err) => {
+            this.$cookies.remove("accessToken")
+            this.$router.push('/membership')
+          })
+      },
       createArticle () {
         this.dialog = false
-        // const RequestHeader = {
-        //   body: {
-        //     content: this.content,
-        //     title: this.title,
-        //     username: this.username,
-        //   },
-        // }
+
         const createData = {
-          content: this.content,
-          title: this.title,
-          username: this.username,
+          "content": this.content,
+          "title": this.title,
+          "user_id": this.user_id,
         }
-        console.log(createData)
-        // const RequestHeader = {
-        //   headers: {
-        //     Authorization: `Token ${this.$cookies.get('auth-token')}`,
-        //   },
-        // }
+        
         axios.post(API_URL + '/api/community', createData) // , RequestHeader
           .then((res) => {
-            console.log('잘 가는거')
             this.$router.go(0)
           })
           .catch((err) => {
-            console.log('못가는거')
             console.log(err.response)
           })
       },

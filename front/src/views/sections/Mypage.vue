@@ -32,7 +32,7 @@
   import { mapGetters } from "vuex";
   import axios from 'axios'
 
-  const API_URL = 'http://i3c103.p.ssafy.io:4000/user/me'
+  const API_URL = 'http://127.0.0.1:4000/user/me'
 
   export default {
     name: 'Mypage',

@@ -1,6 +1,7 @@
 package com.ssafy.apolio.web;
 
 import com.ssafy.apolio.domain.Community;
+import com.ssafy.apolio.dto.CommunityAllDto;
 import com.ssafy.apolio.service.CommunityService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,8 @@ public class CommunityController {
     @ApiOperation(value = "유저 아이디, 제목, 내용을 입력받아서 커뮤니티 게시물을 작성한다.", response = String.class)
     @PostMapping(value = "/community")
     public ResponseEntity<String> insertCommunity(@RequestBody CommunityForm communityForm){
-        Long check = communityService.community(communityForm.getTitle(), communityForm.getContent(), communityForm.getUsername());
+        System.out.println("title = " + communityForm.getTitle());
+        Long check = communityService.community(communityForm.getTitle(), communityForm.getContent(), communityForm.getUser_id());
         if(check != 0){
             return new ResponseEntity<String>("community success", HttpStatus.OK);
         }
@@ -28,9 +30,10 @@ public class CommunityController {
     }
     @ApiOperation(value = "커뮤니티 게시물 전체를 조회한다.", response = List.class)
     @GetMapping(value = "/community")
-    public ResponseEntity<List<Community>> communityList(){
-        List<Community> communities = communityService.findCommunityAll();
-        return new ResponseEntity<List<Community>>(communities, HttpStatus.OK);
+    public ResponseEntity<List<CommunityAllDto>> communityList(){
+        List<CommunityAllDto> communities = communityService.findCommunityAll();
+
+        return new ResponseEntity<List<CommunityAllDto>>(communities, HttpStatus.OK);
     }
 
     @ApiOperation(value = "게시물 번호에 해당하는 커뮤니티 게시물을 조회한다.", response = Community.class)

@@ -18,7 +18,7 @@
       justify="center"
     >
       <v-col
-        cols="12"
+        cols="9"
       >
         <v-simple-table>
           <thead>
@@ -28,6 +28,9 @@
               </th>
               <th class="body-1 font-weight-bold text-center">
                 작성자
+              </th>
+              <th class="body-1 font-weight-bold text-center">
+                작성일
               </th>
             </tr>
           </thead>
@@ -44,6 +47,7 @@
                   <td
                     v-bind="attrs"
                     v-on="on"
+                    col="6"
                     v-text="feature.title"
                   />
                 </template>
@@ -52,16 +56,22 @@
                     <span class="headline">{{ feature.title }}</span>
                   </v-card-title>
                   <v-card-text>
-                    <span> {{ feature.username }}</span>
+                    <span> {{ feature.email }}</span>
+                  </v-card-text>
+                  <v-card-text>
+                    <span> {{ feature.create_at }}</span>
                   </v-card-text>
                   <v-card-actions>
                     <v-spacer />
                   </v-card-actions>
                 </v-card>
               </v-dialog>
-              <!-- <td class="text-center">
-                {{ feature.user.name }}
-              </td> -->
+              <td class="text-center">
+                {{ feature.email }}
+              </td>
+              <td class="text-center">
+                {{ feature.create_at }}
+              </td>
             </tr>
           </tbody>
         </v-simple-table>
@@ -98,7 +108,7 @@
 <script>
   import axios from 'axios'
 
-  const API_URL = 'http://i3c103.p.ssafy.io:4000'
+  const API_URL = 'http://localhost:4000'
   export default {
     name: 'Community',
 
@@ -126,7 +136,7 @@
           .catch((err) => {
             console.log(err.response)
           })
-        console.log(this.features)
+        console.log("features : " + this.features)
       },
     },
   }
