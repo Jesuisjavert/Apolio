@@ -4,11 +4,13 @@ import { make } from 'vuex-pathify'
 let image = 247
 const categories = [
   'All',
-  'Vue',
-  'Python',
-  'Algorithm',
+  '운영체제',
+  '소프트웨어공학',
+  '자료구조',
   'Django',
-  'Etc',
+  '알고리즘',
+  '스프링',
+  '클라우드',
 ]
 
 const state = {

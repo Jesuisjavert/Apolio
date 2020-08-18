@@ -13,6 +13,13 @@
         메인 이미지 : <input name="userfile" multiple="multiple" type="file" ref="myImg" @change="fileChange($event)" />
       </p>
 
+      <div id="TagBox">
+        <h3>Tag</h3>
+        <div v-for="tag in tags" :key="tag.id" style="display: inline">
+          <input id="Tag-item" type="radio" name="tag" @click="tagClick(tag)" value:tag.name>{{tag.name}} 
+        </div>
+      </div>
+
       <p class="text">
         <editor
           ref="toastuiEditor"
@@ -25,10 +32,7 @@
         <input type="submit" value="SEND" id="button-blue"/>
         <div class="ease" @click="createBlog"></div>
       </div>
-      <form action="http://localhost:4000/api/blog" method="POST" enctype="multipart/form-data">
-        <input name="userfile" multiple="multiple" type="file"/>
-        <input type="submit" value="전송">
-      </form>
+      
     </div>
   </div>
 </template>
@@ -65,10 +69,12 @@
           tageId: 1,
         },
         img: null,
+        tags : [],
       }
     },
     created() {
       this.getUserId()
+      this.getTags()
     },
     methods: {
       createBlog () {
@@ -95,7 +101,6 @@
         })
       },
       fileChange (event) {
-        //this.img = event.target.files[0]
         this.img = this.$refs.myImg.files[0]
       },
       getUserId() {
@@ -112,6 +117,15 @@
             this.$router.push('/membership')
           })
       },
+      getTags() {
+        axios.get(API_URL+"/api/tags")
+          .then((res) => {
+            this.tags = res.data
+          })
+      },
+      tagClick(tag) {
+        this.blogData.tageId = tag.id
+      }
     },
   }
 </script>
@@ -122,6 +136,15 @@
 html{    background:url(http://thekitemap.com/images/feedback-img.jpg) no-repeat;
   background-size: cover;
   height:100%;
+}
+
+#TagBox{
+  background-color: #fbfbfb;
+  padding: 10px;
+  margin-bottom: 30px;
+}
+#Tag-item{
+  margin: 10px;
 }
 
 #feedback-page{
