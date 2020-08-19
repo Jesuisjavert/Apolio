@@ -2,7 +2,7 @@
 
 <center>
   <a href="https://lab.ssafy.com/s03-webmobile1-sub3/s03p13c103">
-    <img src="https://user-images.githubusercontent.com/59798335/90609277-c5a50f00-e23e-11ea-82ed-b1ff70889310.png" alt="Apolio"/>
+    <img src="https://user-images.githubusercontent.com/59798335/90609277-c5a50f00-e23e-11ea-82ed-b1ff70889310.png" alt="logo"/>
   </a>
 </center>
 
@@ -15,6 +15,14 @@
 [![Downloads Stats][npm-downloads]][npm-url]
 
 한 두 문단으로 프로젝트 소개 글을 작성합니다.
+
+
+
+<center>
+  <a href="https://lab.ssafy.com/s03-webmobile1-sub3/s03p13c103">
+    <img src="https://user-images.githubusercontent.com/59798335/90611385-9e9c0c80-e241-11ea-9072-ef792d451109.gif" alt="apolio" witdth="400"/>
+  </a>
+</center>
 
 ## 설치 방법
 
