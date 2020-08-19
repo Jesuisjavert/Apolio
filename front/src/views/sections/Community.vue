@@ -5,14 +5,14 @@
     fluid
     tag="section"
   >
-    <blog-hero
+    <community-hero
       class="text-center white--text align-center"
       height="30vh"
     >
       <h1 class="display-2">
-        jesuisjavert's Blog
+        Community
       </h1>
-    </blog-hero>
+    </community-hero>
     <v-row
       align="center"
       justify="center"
@@ -23,7 +23,7 @@
         <v-simple-table>
           <thead>
             <tr>
-              <th class="body-1 font-weight-bold text-center">
+              <th class="col body-1 font-weight-bold text-center">
                 게시글
               </th>
               <th class="body-1 font-weight-bold text-center">
@@ -56,6 +56,9 @@
                     <span class="headline">{{ feature.title }}</span>
                   </v-card-title>
                   <v-card-text>
+                    <span> {{ feature.content }}</span>
+                  </v-card-text>
+                  <v-card-text>
                     <span> {{ feature.email }}</span>
                   </v-card-text>
                   <v-card-text>
@@ -77,8 +80,9 @@
         </v-simple-table>
         <v-spacer />
         <base-card-create
+          class="white--text pa-0"
+          color="black"
           fluid
-          class="pa-0"
         />
         <!--
         <v-container class="text-center">
@@ -113,7 +117,7 @@
     name: 'Community',
 
     components: {
-      BlogHero: () => import('@/components/base/BlogHero'),
+      CommunityHero: () => import('@/components/base/CommunityHero'),
       CardCreate: () => import('@/components/base/CardCreate'),
       // eslint-disable-next-line vue/no-unused-components
       // ArticleCreate: () => import('@/components/base/ArticleCreate'),
@@ -130,8 +134,7 @@
       loadArticle () {
         axios.get(`${API_URL}/api/community`).then((res) => {
           this.features = res.data
-          console.log(res.data)
-          console.log('----------------')
+          console.log(this.features)
         })
           .catch((err) => {
             console.log(err.response)

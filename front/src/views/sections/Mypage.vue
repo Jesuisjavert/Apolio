@@ -10,18 +10,17 @@
         </div>
       </header>
       <div class="profile-card_about">
-        <h2>All About Mewy</h2>
-        <p>I'm an aspiring ruler of hoomans from Chicago, looking for my fur-ever home. I like treats and playing and treats. And treats. I'd do well in a home where hoomans give me lots of treats!</p>
+        <h2>For your Dream, Apolio</h2>
         <footer class="profile-card_footer">
           <div class="social-row">
             <v-btn
+              color="primary"
               @click="logout"
             >
               Logout
             </v-btn>
 
           </div>
-          <p><a class="back-to-profile">Full Adoption Profile</a></p>
         </footer>
       </div>
     </section>
@@ -63,6 +62,7 @@
             }
           })
           .then((res) => {
+            console.log(res.data)
             this.user.picture = res.data.picture
             this.user.name = res.data.username
             this.user.role = res.data.role
@@ -91,8 +91,6 @@
     padding: 0;
     margin: 0;
     min-height: 100vh;
-    background: -webkit-linear-gradient(transparent, rgba( 110, 110, 110, .3)), -webkit-linear-gradient(350deg, rgba(250, 214, 195, .8) 30%, #B0EAE8 120%);
-    background: linear-gradient(transparent, rgba( 110, 110, 110, .3)), linear-gradient(100deg, rgba(250, 214, 195, .8) 30%, #B0EAE8 120%);
   }
 
   .sidebar_wrapper {
@@ -104,7 +102,7 @@
     width: 100%;
     max-width: 26rem;
     margin: auto;
-    box-shadow: 2px 4px 2px -2px rgba(0, 0, 0, .3), -2px -4px 15px -2px rgba(0, 0, 0, .2);
+    box-shadow: 2px 4px 2px -2px rgba(247, 0, 0, 0.3), -2px -4px 15px -2px rgba(0, 0, 0, .2);
     animation: profile_in 0.8s;
   }
 
@@ -128,8 +126,8 @@
   }
 
   .profile-card_header {
-    background: #272727;
-    border-left: 0.625rem solid #97ece1;
+    background: #ff6b87;
+    border-left: 0.625rem solid #eaf9ff;
     padding: 1.5em 1.5em 1em;
     text-align: center;
   }
@@ -183,7 +181,7 @@
 
   .profile-card_about {
     line-height: 1.5;
-    background: #ededed;
+    background: #ffeaee;
     padding: 1.5em 2rem;
     color: #222;
     font-family: 'Lato', sans-serif;
@@ -208,7 +206,7 @@
     /*  max-width: 13.8rem;
   */
     height: 1rem;
-    background: #c6f1eb;
+    background: #ffeaee;
     left: -5px;
     top: 50%;
     z-index: -1;
@@ -258,32 +256,6 @@
 
 
   /* back to profile link */
-
-  .back-to-profile,
-  .back-to-profile:visited {
-    display: inline-block;
-    padding-left: 0.5em;
-    padding-bottom: 0.1em;
-    color: #222;
-    text-decoration: none;
-    font-weight: bold;
-    border-top: 0.3125rem solid rgba(0, 0, 0, 0);
-    border-bottom: 0.3125rem solid #97ece1;
-    -webkit-transition: border 0.3s ease-in-out;
-    transition: border 0.3s ease-in-out;
-  }
-
-  .back-to-profile::after {
-    content: "\25b6";
-    margin: 0 0.75em;
-    color: #222;
-  }
-
-  .back-to-profile:hover,
-  .back-to-profile:focus {
-    border-top-color: #222;
-    border-bottom-color: #fdc1a0;
-  }
 
   @media screen and (max-width: 26em) {
     .side_wrapper {

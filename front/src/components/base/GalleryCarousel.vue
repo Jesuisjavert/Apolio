@@ -76,7 +76,6 @@
       <v-responsive min-height="100vh">
         <v-container
           class="pa-0 fill-height"
-          fluid
         >
           <v-row
             align="center"
@@ -146,4 +145,5 @@
 <style lang="sass">
   .v-carousel-item--zoomed .v-image__image
     transform: scale(1.2)
+
 </style>

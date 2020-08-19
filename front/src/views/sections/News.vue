@@ -52,7 +52,7 @@
                 :src="post.urltoimage"
                 height="200"
               >
-                <router-link to="/blog-post">
+                <a :href="post.url">
                   <v-hover>
                     <template v-slot="{ hover }">
                       <v-overlay
@@ -72,7 +72,7 @@
                       </v-overlay>
                     </template>
                   </v-hover>
-                </router-link>
+                </a>
               </v-img>
 
               <div class="px-3 pb-4">

@@ -9,7 +9,7 @@
       allowfullscreen
       frameborder="0"
       height="500"
-      src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Gwangju+(Apolio)&amp;t=&amp;z=9&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+      src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Gwangju+(Apolio)&amp;t=&amp;z=7&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
       style="border:0"
       width="100%"
     />

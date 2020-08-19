@@ -10,26 +10,15 @@
       height="30vh"
     >
       <h1 class="display-2">
-        jesuisjavert's Blog
+        Things that I learned
       </h1>
     </blog-hero>
-
-    
 
     <v-responsive
       class="mx-auto"
       max-width="1280"
     >
       <v-container>
-        <div float:right>
-          <v-btn
-            :color="'primary'"
-            x-large
-            @click="createBlog"
-          >
-            Write
-          </v-btn>
-        </div>
         <v-filter :tabs="tabs" />
 
         <v-row>
@@ -43,7 +32,17 @@
             <post-card :post="post" />
           </v-col>
         </v-row>
-      </v-container>
+      </v-container> <v-spacer/>
+      <div class="text-center">
+        <v-btn
+          class="white--text"
+          color="black"
+          x-large
+          @click="createBlog"
+        >
+          Write
+        </v-btn>
+      </div>
     </v-responsive>
   </v-container>
 </template>

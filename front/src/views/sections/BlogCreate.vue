@@ -5,9 +5,8 @@
     fluid
     tag="section"
   >
-  
     <blog-create-form />
-      
+
   </v-container>
 </template>
 

@@ -32,20 +32,20 @@
             class="mb-6"
             :class="$vuetify.breakpoint.mdAndUp ? 'display-1' : 'display-1'"
           >
-            Hello. This is javert<br>
-            I'm a master of front-end develop.
+            Hello. This is javert.<br>
+            I'm a Junior developer<br>
+            who mainly studies front-end design.
           </h1>
 
           <p>
-            저는 어렸을 때부터 美(미)에 관심이 많았습니다.
-            특히 프랑스로 유학을 가서 '美'의 끝을 접하게 되었습니다.
-            이후 저의 모든 역량을 프론트에 전념하고 있습니다.
-            잘 감상해주세요!
+            SSAFY(삼성 청년 소프트웨어 아카데미)에서 개발하고 있는<br>
+            주니어 프론트엔드 엔지니어 입니다.
           </p>
 
           <p>
-            Ma devise est «La vie est belle». Nous avons toute la beauté fondue sur le web,<br>
-            Alors profitez-en.
+            Language : Python, Java, Javascript, Korean, English, French<br>
+            Back End: Django, Java Spring, AWS<br>
+            Front End: HTML, CSS, Javascript, Vue, Vuetify
           </p>
 
           <div class="signature">

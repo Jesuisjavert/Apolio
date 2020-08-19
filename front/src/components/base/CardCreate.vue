@@ -9,6 +9,7 @@
         <template v-slot:activator="{ on, attrs }">
           <v-btn
             :color="!theme.isDark ? 'primary' : 'white'"
+            class="white--text"
             x-large
             v-bind="attrs"
             v-on="on"

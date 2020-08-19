@@ -1,10 +1,19 @@
 <template>
   <v-container
     id="portfolio"
-    class="pt-12 pb-0 px-0"
+    class="pa-0"
     fluid
     tag="section"
   >
+    <portfolio-hero
+      class="text-center white--text align-center"
+      height="30vh"
+    >
+      <h1 class="display-2">
+        My Portfolio
+      </h1>
+    </portfolio-hero>
+    
     <portfolio-headline />
 
     <gallery />
@@ -17,6 +26,7 @@
 
     components: {
       Gallery: () => import('@/components/base/Gallery'),
+      PortfolioHero: () => import('@/components/base/PortfolioHero'),
       PortfolioHeadline: () => import('@/components/base/PortfolioHeadline'),
     },
   }

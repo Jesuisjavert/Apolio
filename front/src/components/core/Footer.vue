@@ -6,17 +6,33 @@
     inset
   >
     <div class="text-center">
-      <v-btn
-        v-for="(icon, i) in icons"
-        :key="i"
+           <v-btn
         class="ma-1"
         icon
         text
         color="primary"
+        href="https://www.instagram.com/unialike"
       >
-        <v-icon v-text="icon" />
+        <v-icon>mdi-instagram</v-icon>
       </v-btn>
-
+      <v-btn
+        class="ma-1"
+        icon
+        text
+        color="primary"
+        href="https://twitter.com/GbzAfwTpvSpwsr7"
+      >
+        <v-icon>mdi-twitter</v-icon>
+      </v-btn>
+     <v-btn
+        class="ma-1"
+        icon
+        text
+        color="primary"
+        href="https://www.facebook.com/unialike"
+      >
+        <v-icon>mdi-facebook</v-icon>
+      </v-btn>
       <div class="my-3" />
 
       <div>
@@ -32,11 +48,6 @@
 
     data: () => ({
       date: (new Date()).getFullYear(),
-      icons: [
-        'mdi-twitter',
-        'mdi-facebook',
-        'mdi-instagram',
-      ],
     }),
   }
 </script>

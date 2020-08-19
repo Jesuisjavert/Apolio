@@ -27,5 +27,5 @@ export default new Vuetify({
 // accent: 월계수 초록
 // Error : 연한벚꽃
 // info : 연하늘색
-// success: 에메랄드초록 (안씀)
+// success: 연보라
 // warning: 바나나노랑(안씀)

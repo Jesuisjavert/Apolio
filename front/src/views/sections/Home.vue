@@ -5,7 +5,17 @@
     fluid
     tag="section"
   >
+    <!-- <home-hero
+      class="text-center white--text align-center"
+      height="30vh"
+    >
+      <h1 class="display-2">
+        jesuisjavert
+      </h1> -->
+    <!-- <home-hero> -->
+
     <home-headline />
+    
   </v-container>
 </template>
 
@@ -14,6 +24,7 @@
     name: 'Home',
 
     components: {
+      HomeHero : () => import('@/components/base/HomeHero'),
       HomeHeadline: () => import('@/components/base/HomeHeadline'),
     },
   }

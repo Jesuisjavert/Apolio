@@ -1,7 +1,7 @@
 // Utilities
 import { make } from 'vuex-pathify'
 
-let image = 247
+let image = 0
 const categories = [
   'All',
   'Vue',
@@ -19,7 +19,7 @@ const state = {
     image++
 
     return {
-      src: `https://picsum.photos/id/${image}/600/350`,
+      src: `images/pic/pic${image}.png`,
       category: categories[Math.floor(Math.random() * categories.length)],
     }
   }),
