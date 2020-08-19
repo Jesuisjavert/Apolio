@@ -1,31 +1,39 @@
-﻿# Apolio
+﻿# Apolio🚀
 
 <center>
-  <a href="https://lab.ssafy.com/s03-webmobile1-sub3/s03p13c103">
+  <a href="http://i3c103.p.ssafy.io/">
     <img src="https://user-images.githubusercontent.com/59798335/90609277-c5a50f00-e23e-11ea-82ed-b1ff70889310.png" alt="logo"/>
   </a>
 </center>
 
 
+> **해외 취업을 준비하는 IT 개발자들의 포트폴리오 블로그**
 
-> 간략한 프로젝트 소개 문구를 작성합니다.
+
 
 [![NPM Version][npm-image]][npm-url]
 [![Build Status][travis-image]][travis-url]
 [![Downloads Stats][npm-downloads]][npm-url]
 
-한 두 문단으로 프로젝트 소개 글을 작성합니다.
-
 
 
 <center>
-  <a href="https://lab.ssafy.com/s03-webmobile1-sub3/s03p13c103">
+  <a href="http://i3c103.p.ssafy.io/">
     <img src="https://j.gifs.com/WLJLLQ.gif" alt="apolio"/>
   </a>
 </center>
 
 
-## 설치 방법
+
+***더 넓은 세상으로 개발자의 영역을 넓히고 싶은 당신!***
+
+***Apolio가 당신을 위한 아폴로 11호가 되어드리겠습니다🚀***
+
+
+
+[TOC]
+
+## 설치 방법⚙️
 
 OS X & 리눅스:
 
@@ -39,13 +47,17 @@ npm install my-crazy-module --save
 edit autoexec.bat
 ```
 
-## 사용 예제
+
+
+## 사용 예제📌
 
 스크린 샷과 코드 예제를 통해 사용 방법을 자세히 설명합니다.
 
 _더 많은 예제와 사용법은 [Wiki][wiki]를 참고하세요._
 
-## 개발 환경 설정
+
+
+## 개발 환경 설정📋
 
 모든 개발 의존성 설치 방법과 자동 테스트 슈트 실행 방법을 운영체제 별로 작성합니다.
 
@@ -54,7 +66,9 @@ make install
 npm test
 ```
 
-## 업데이트 내역
+
+
+## 업데이트 내역🛠
 
 * 0.2.1
   * 수정: 문서 업데이트 (모듈 코드 동일)
@@ -69,7 +83,9 @@ npm test
 * 0.0.1
   * 작업 진행 중
 
-## 정보
+
+
+## 정보📜
 
 이름 – [@트위터 주소](https://twitter.com/dbader_org) – 이메일주소@example.com
 
@@ -77,13 +93,25 @@ XYZ 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확인할
 
 [https://github.com/yourname/github-link](https://github.com/dbader/)
 
-## 기여 방법
+
+
+## 기여 방법💡
 
 1. (<https://github.com/yourname/yourproject/fork>)을 포크합니다.
 2. (`git checkout -b feature/fooBar`) 명령어로 새 브랜치를 만드세요.
 3. (`git commit -am 'Add some fooBar'`) 명령어로 커밋하세요.
 4. (`git push origin feature/fooBar`) 명령어로 브랜치에 푸시하세요. 
 5. 풀리퀘스트를 보내주세요.
+
+
+
+## 개발자들👨‍💻
+
+| <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/sword278" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1804/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/psb9559" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1814/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/lsdtve" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1731/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/chappy11" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1810/avatar.png?width=400"></a> |
+| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
+|         [강동훈](https://lab.ssafy.com/jesuisjavert)         |           [최일송](https://lab.ssafy.com/sword278)           |           [박승범](https://lab.ssafy.com/psb9559)            |            [배용균](https://lab.ssafy.com/lsdtve)            |           [이준희](https://lab.ssafy.com/chappy11)           |
+
+
 
 <!-- Markdown link & img dfn's -->
 
@@ -94,8 +122,3 @@ XYZ 라이센스를 준수하며 ``LICENSE``에서 자세한 정보를 확인할
 [travis-url]: https://travis-ci.org/dbader/node-datadog-metrics
 [wiki]: https://github.com/yourname/yourproject/wiki
 
-## 개발자들
-
-| <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> |
-| :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
-|         [강동훈](https://lab.ssafy.com/jesuisjavert)         |         [강동훈](https://lab.ssafy.com/jesuisjavert)         |         [강동훈](https://lab.ssafy.com/jesuisjavert)         |         [강동훈](https://lab.ssafy.com/jesuisjavert)         |         [강동훈](https://lab.ssafy.com/jesuisjavert)         |
