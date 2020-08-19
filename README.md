@@ -2,9 +2,10 @@
 
 <center>
   <a href="https://lab.ssafy.com/s03-webmobile1-sub3/s03p13c103">
-    <img src="https://user-images.githubusercontent.com/59798335/89629268-7ffc5400-d8d8-11ea-8167-e51ddb9ff63f.png" alt="Apolio" width="400" />
+    <img src="https://user-images.githubusercontent.com/59798335/90609277-c5a50f00-e23e-11ea-82ed-b1ff70889310.png" alt="Apolio"/>
   </a>
 </center>
+
 
 
 > 간략한 프로젝트 소개 문구를 작성합니다.
