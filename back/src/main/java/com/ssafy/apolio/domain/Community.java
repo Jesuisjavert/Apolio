@@ -31,9 +31,9 @@ public class Community {
     @JsonManagedReference
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
-    @JsonManagedReference
-    private List<Heart> hearts = new ArrayList<>();
+//    @OneToMany(mappedBy = "community", cascade = CascadeType.ALL)
+//    @JsonManagedReference
+//    private List<Heart> hearts = new ArrayList<>();
 
     private String title;
 
@@ -46,10 +46,10 @@ public class Community {
         comment.setCommunity(this);
     }
 
-    public void addHeart(Heart heart) {
-        hearts.add(heart);
-        heart.setCommunity(this);
-    }
+//    public void addHeart(Heart heart) {
+//        hearts.add(heart);
+//        heart.setCommunity(this);
+//    }
 
     public static Community createCommunity(String title, String content, User user) {
         Community community = new Community();

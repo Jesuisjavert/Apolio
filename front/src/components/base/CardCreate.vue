@@ -92,8 +92,6 @@
   export default {
     name: 'ArticleCreate',
 
-    inject: ['theme'],
-
     data () {
       return {
         user_id: null,
@@ -132,9 +130,11 @@
         
         axios.post(API_URL + '/api/community', createData) // , RequestHeader
           .then((res) => {
+            console.log('잘 가는거')
             this.$router.go(0)
           })
           .catch((err) => {
+            console.log('못가는거')
             console.log(err.response)
           })
       },

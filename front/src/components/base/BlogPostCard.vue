@@ -31,9 +31,6 @@
         class="headline font-weight-bold mb-2"
         v-text="post.title"
       />
-
-      <heart/>
-      
       <v-card-text class="body-1 grey--text text-darken-2">
         <div
           class="mb-4"
@@ -43,17 +40,23 @@
         <div v-text="post.description" />
       </v-card-text>
       
+      <button>
+          like
+      </button>
+      <p>{{lodash.size(post.hearts)}}</p>
+      
     </div>
   </v-card>
 </template>
 
 <script>
+  import _ from 'lodash'
+  import axios from 'axios'
+  
+  const API_URL = 'http://localhost:4000'
+
   export default {
     name: 'BlogCard',
-
-    components: {
-      Heart: () => import('./Heart'),
-    },
 
     props: {
       post: {
@@ -64,8 +67,21 @@
           blurb: undefined,
           src: undefined,
           title: undefined,
+          hearts: undefined,
         }),
       },
+    }, 
+    computed: {
     },
+    data() {
+      return {
+      }
+    },
+    methods: {
+      heartClick() {
+        
+      }
+    },
+
   }
 </script>

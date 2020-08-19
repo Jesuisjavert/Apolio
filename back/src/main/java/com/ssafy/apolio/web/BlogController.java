@@ -32,11 +32,8 @@ import java.util.Map;
 public class BlogController {
     private final BlogService blogService;
     private final CommentService commentService;
-    private final HeartService heartService;
     private final TagService tagService;
 
-    @Autowired
-    private HeartRepository heartRepository;
 
     @ApiOperation(value = "태그 아이디, 제목, 내용, 이미지를 입력받아서 게시물을 작성한다.", response = String.class)
     @PostMapping(value = "/blog")
