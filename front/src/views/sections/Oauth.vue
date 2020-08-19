@@ -11,7 +11,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$route.query.token)
     this.$cookies.set('accessToken', this.$route.query.token)
     this.$router.push('/')
   }

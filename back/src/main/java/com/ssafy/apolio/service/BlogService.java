@@ -23,7 +23,6 @@ public class BlogService { //서비스에서는 단순히 엔티티에 필요한
 
     private final BlogRepository blogRepository;
     private final CommentRepository commentRepository;
-    private final HeartRepository heartRepository;
     private final TagRepository tagRepository;
 
     @Autowired

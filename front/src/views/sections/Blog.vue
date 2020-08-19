@@ -64,11 +64,14 @@
     data () {
       return {
         tabs: [
-        'All',
-        'Nature',
-        'Cities',
-        'Branding',
-        'Design',
+          'All',
+          '운영체제',
+          '소프트웨어공학',
+          '자료구조',
+          'Django',
+          '알고리즘',
+          '스프링',
+          '클라우드',
         ],
         posts: []
       }
@@ -99,7 +102,7 @@
           .catch((err) => {
             console.log(err)
           })
-      }
+      },
     }
   }
 </script>
