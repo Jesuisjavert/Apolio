@@ -20,7 +20,7 @@
 
 <center>
   <a href="https://lab.ssafy.com/s03-webmobile1-sub3/s03p13c103">
-    <img src="https://j.gifs.com/ZYMV5g.gif" alt="apolio"/>
+    <img src="https://j.gifs.com/WLJLLQ.gif" alt="apolio"/>
   </a>
 </center>
 
