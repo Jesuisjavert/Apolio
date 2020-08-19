@@ -33,7 +33,7 @@ public class HeartContorller {
     public ResponseEntity<String> getHeart(HttpServletRequest request) {
         Long blog_id = Long.parseLong(request.getParameter("blog_id"));
         Long user_id = Long.parseLong(request.getParameter("user_id"));
-        Optional<Heart> heart =  heartRepository.findByIdAndUserId(blog_id,user_id);
+        Optional<Heart> heart =  heartRepository.findByBlogIdAndUserId(blog_id,user_id);
         System.out.println(heart);
         if (heart.isPresent()){
             return new ResponseEntity<String>("true", HttpStatus.OK);
@@ -43,11 +43,17 @@ public class HeartContorller {
 
     @PostMapping("/heart")
     public ResponseEntity<String> createHeart(@RequestBody HeartForm heartForm) {
-        Heart heart = new Heart();
         try {
-            heart.setBlog(blogRepository.findOne(heartForm.getBlog_id()));
-            heart.setUser(userRepository.findById(heartForm.getUser_id()).get());
-            heartRepository.save(heart);
+            Optional<Heart> heart =  heartRepository.findByBlogIdAndUserId(heartForm.getBlog_id(),heartForm.getUser_id());
+            if (heart.isPresent()){
+                System.out.println("delete");
+                heartRepository.delete(heart.get());
+                return new ResponseEntity<String>("false", HttpStatus.OK);
+            }
+            Heart saveHeart = new Heart();
+            saveHeart.setBlog(blogRepository.findOne(heartForm.getBlog_id()));
+            saveHeart.setUser(userRepository.findById(heartForm.getUser_id()).get());
+            heartRepository.save(saveHeart);
             return new ResponseEntity<String>("true", HttpStatus.OK);
         }catch (Exception err){
             System.out.println(err);

@@ -12,5 +12,5 @@ import java.util.Optional;
 @Repository
 public interface HeartRepository extends JpaRepository<Heart, Long> {
     Long countByBlogId(Long blog_id);
-    Optional<Heart> findByIdAndUserId(Long blog_id, Long user_id);
+    Optional<Heart> findByBlogIdAndUserId(Long blog_id, Long user_id);
 }
