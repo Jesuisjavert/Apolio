@@ -2,7 +2,7 @@
 
 <center>
   <a href="https://lab.ssafy.com/s03-webmobile1-sub3/s03p13c103">
-    <img src="https://user-images.githubusercontent.com/59798335/90609277-c5a50f00-e23e-11ea-82ed-b1ff70889310.png" alt="logo" width="400"/>
+    <img src="https://user-images.githubusercontent.com/59798335/90609277-c5a50f00-e23e-11ea-82ed-b1ff70889310.png" alt="logo"/>
   </a>
 </center>
 
@@ -20,9 +20,10 @@
 
 <center>
   <a href="https://lab.ssafy.com/s03-webmobile1-sub3/s03p13c103">
-    <img src="https://user-images.githubusercontent.com/59798335/90611385-9e9c0c80-e241-11ea-9072-ef792d451109.gif" alt="apolio" witdth="100%"/>
+    <img src="https://j.gifs.com/ZYMV5g.gif" alt="apolio"/>
   </a>
 </center>
+
 
 ## 설치 방법
 
