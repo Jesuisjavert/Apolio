@@ -11,12 +11,6 @@
 
 
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
-
-
-
 <center>
   <a href="http://i3c103.p.ssafy.io/">
     <img src="https://j.gifs.com/WLJLLQ.gif" alt="apolio"/>
@@ -40,11 +34,11 @@
 
   
 
-- [📜간트차트](#간트차트)
+- [📜간트차트](#간트-차트)
 
   
 
-- [💡LRC](#기여-방법)
+- [💡LRC](#LRC)
 
   
 
@@ -60,7 +54,7 @@
 
 ## 프로젝트 개요
 
-* ![function](https://user-images.githubusercontent.com/60089824/90840519-25153300-e395-11ea-8fd0-579605d437b7.png)
+![function](https://user-images.githubusercontent.com/60089824/90840519-25153300-e395-11ea-8fd0-579605d437b7.png)
 
 ## 간트 차트
 
