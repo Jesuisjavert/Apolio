@@ -1,7 +1,7 @@
 ﻿# Apolio🚀
 
 <center>
-  <a href="http://i3c103.p.ssafy.io/">
+  <a href="https://youtu.be/DTFFDdIpiNg">
     <img src="https://user-images.githubusercontent.com/59798335/90609277-c5a50f00-e23e-11ea-82ed-b1ff70889310.png" alt="logo"/>
   </a>
 </center>
@@ -14,10 +14,11 @@
 
 
 <center>
-  <a href="http://i3c103.p.ssafy.io/">
+  <a href="https://youtu.be/DTFFDdIpiNg">
     <img src="screenshot.gif" alt="apolio"/>
   </a>
 </center>
+
 
 
 ***더 넓은 세상으로 개발자의 영역을 넓히고 싶은 당신!***
