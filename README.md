@@ -82,10 +82,11 @@
 
 ## :trophy: Awards
 
-- 공통 프로젝트 UCC 우수팀 선정
+- SSAFY 공통 프로젝트 UCC 우수상
 
-<img src="C:\Users\DonghoonKang\Desktop\github page\images\award.jpg" style="zoom: 20%;" />
+<img src="Apolio.jpg"/>
 
 
 
 <br>
+
