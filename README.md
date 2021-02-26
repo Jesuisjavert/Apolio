@@ -5,21 +5,15 @@
     <img src="https://user-images.githubusercontent.com/59798335/90609277-c5a50f00-e23e-11ea-82ed-b1ff70889310.png" alt="logo"/>
   </a>
 </center>
-
-
 > **해외 취업을 준비하는 IT 개발자들의 포트폴리오 블로그**
 
 
-
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
 
 
 
 <center>
   <a href="http://i3c103.p.ssafy.io/">
-    <img src="https://j.gifs.com/WLJLLQ.gif" alt="apolio"/>
+    <img src="screenshot.gif" alt="apolio"/>
   </a>
 </center>
 
