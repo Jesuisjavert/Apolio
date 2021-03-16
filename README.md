@@ -9,7 +9,7 @@
 
 > **해외 취업을 준비하는 IT 개발자들의 포트폴리오 블로그**
 
-:clapper: [Checkout Live Demo!](https://youtu.be/DTFFDdIpiNg)
+:clapper: [Checkout Project Trailer!](https://youtu.be/DTFFDdIpiNg)
 
 
 
@@ -73,7 +73,7 @@
 
 ## 👤개발자들
 
-| <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1735/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/sword278" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1804/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/psb9559" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1814/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/lsdtve" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1731/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/chappy11" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1810/avatar.png?width=400"></a> |
+| <a href="https://lab.ssafy.com/jesuisjavert" target="_blank"><img src="photo.jpg" width=200></a> | <a href="https://lab.ssafy.com/sword278" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1804/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/psb9559" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1814/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/lsdtve" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1731/avatar.png?width=400"></a> | <a href="https://lab.ssafy.com/chappy11" target="_blank"><img src="https://lab.ssafy.com/uploads/-/system/user/avatar/1810/avatar.png?width=400"></a> |
 | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: | :----------------------------------------------------------: |
 |         [강동훈](https://lab.ssafy.com/jesuisjavert)         |           [최일송](https://lab.ssafy.com/sword278)           |           [박승범](https://lab.ssafy.com/psb9559)            |            [배용균](https://lab.ssafy.com/lsdtve)            |           [이준희](https://lab.ssafy.com/chappy11)           |
 
